@@ -5,7 +5,7 @@ public class Agenda {
 	private String nombre, direccion, telefono;
 
 	public String getNombre() {
-		return nombre;
+		return nombre;		
 	}
 
 	public void setNombre(String nombre) {
