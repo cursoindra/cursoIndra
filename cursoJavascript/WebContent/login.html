@@ -8,6 +8,34 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<style type="text/css"> /* Animación del botón */
+		button{
+			background-color: #00b0ca;
+			margin-bottom: 10px;
+			transition: all 0.5s;
+		}
+		button span{
+  			cursor: pointer;
+  			display: inline-block;
+  			position: relative;
+  			transition: 0.5s;
+		}
+		button span:after{
+  			content: '\00bb';
+  			position: absolute;
+  			opacity: 0;
+  			top: 0;
+  			right: -20px;
+  			transition: 0.5s;
+		}
+		button:hover span{
+			padding-right: 25px;
+		}
+		button:hover span:after {
+  			opacity: 1;
+  			right: 0;
+		}
+	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -22,7 +50,7 @@
 		      <input type="text" class="form-control" placeholder="Usuario" required>
 		      <input type="password" class="form-control" style="margin-top: 7px;" placeholder="Password" required>
 		      <br>
-		      <button class="btn btn-lg btn-block text-white" style="background-color: #00b0ca; margin-bottom: 10px;" type="submit">Entrar</button>
+		      <button class="btn btn-lg btn-block text-white" type="submit"> <span>Entrar</span></button>
 		      <span><a href="#">¿Olvidaste tu contraseña?</a></span>
     </form>
 	</div>
