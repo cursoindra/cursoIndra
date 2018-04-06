@@ -10,87 +10,211 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<title>Red Social Indra</title>
 	<style type="text/css">
-		.boton {
-			background-color: #00b0ca;
-		}
-		.noti {
-			background-color: #DDD;
-		}
-	</style>
+	.boton {
+		background-color: #00b0ca;
+	}
+	.noti {
+		background-color: #DDD;
+	}
+</style>
 </head>
 <body >
 	<div class="container-fluid">	
 		<header class="row py-2" style="background-color: #00b0ca;">
 			<nav class="navbar col-sm-12">
-	          <a href="#"><img src="https://login.indraweb.net/logon/themes/Default/custom_media/logo.png"></a>
-	          <nav class="navbar navbar-expand navbar-light col-lg-4 justify-content-between px-0 d-none d-sm-block">
-				  <ul class="navbar-nav offset-1 font-weight-bold text-right">
-				    <li class="nav-item ">
-				      <a class="nav-link mr-sm-3 text-white" href="#">Notificaciones</a>
-				    </li>
-				    <li class="nav-item">
-				      <a class="nav-link mr-sm-3 text-white" href="calendar.html">Calendario</a>
-				    </li>
-				    <li class="nav-item">
-				      <a class="nav-link mr-sm-3 text-white" href="noticias.html">Noticias</a>
-				    </li>
-				  </ul>
-				</nav>
-	          <div class="dropdownd d-block d-sm-none">
-	            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	              <img src="images/menu.png" width="30px" height="30px">
-	            </button>
-	            <div  style="right: 0px; left: auto; border-color: #00b0ca; border-radius: 10px; border-width: 2px;" class="dropdown-menu">
-	              <a class="dropdown-item" href="#">Notificaciones</a>
-	              <a class="dropdown-item" href="calendar.html">Calendario</a>
-	              <a class="dropdown-item" href="noticias.html">Noticias</a>
-	            </div>
-	          </div>
-	      </nav>
+				<a href="#"><img src="https://login.indraweb.net/logon/themes/Default/custom_media/logo.png"></a>
+				<div class="dropdown">
+					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img src="images/menu.png" width="30px" height="30px">
+					</button>
+					<div  style="right: 0px; left: auto; border-color: #00b0ca; border-radius: 10px; border-width: 2px;" class="dropdown-menu">
+						<a class="dropdown-item" href="#">Notificaciones</a>
+						<a class="dropdown-item" href="calendar.html">Calendario</a>
+						<a class="dropdown-item" href="noticias.html">Noticias</a>
+					</div>
+				</div>
+			</nav>
 		</header>
-				<section id="noticias" style="margin-top: 15px" class="">
-					
-		  <ul class="list-group list-group-flush card ">
-		  	<li class="list-group-item card-header text-center text-info noti">
-		  		<h1>Noticias</h1>
-		  	</li>
-		    <li class="list-group-item ">
-					    <h5 class="card-title">Titulo de la noticia</h5>
-					    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					    quis nostrud exercitation ullamco laboris </p>
-					    <a href="#" class="btn btn-primary boton">Link a algun lado</a>
-					 </li>
-					 <li class="list-group-item ">
-					    <h5 class="card-title">Titulo de la noticia</h5>
-					    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					    quis nostrud exercitation ullamco laboris </p>
-					    <a href="#" class="btn btn-primary boton">Link a algun lado</a>
-					 </li>
-					 <li class="list-group-item ">
-					    <h5 class="card-title">Titulo de la noticia</h5>
-					    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					    quis nostrud exercitation ullamco laboris </p>
-					    <a href="#" class="btn btn-primary boton">Link a algun lado</a>
-					 </li>
-					 <li class="list-group-item ">
-					    <h5 class="card-title">Titulo de la noticia</h5>
-					    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					    quis nostrud exercitation ullamco laboris </p>
-					    <a href="#" class="btn btn-primary boton">Link a algun lado</a>
-					 </li>
-		    
-		  </ul>
-				</section>
-
-		
-
+		<div aria-label="breadcrumb" class="mt-2">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="javascript:history.back()">Indra</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Noticias</li>
+			</ol>
+		</div>
+		<section id="noticias" style="margin-top: 15px" class="">
+			<ul class="list-group list-group-flush card ">
+				<li class="list-group-item card-header text-center text-info noti">
+					<h1>Noticias</h1>
+				</li>
+				<li class="list-group-item ">
+					<h5 class="card-title">Titulo de la noticia</h5>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris </p>
+					<a href="#" class="btn btn-primary boton">Link a algun lado</a>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+						Mostrar Comentarios
+					</button>
+					<div class="collapse" id="collapse1">
+						<div class="card mt-2 ml-3 mr-3">
+							<div class="media mt-3">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<hr><div class="media">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<hr><div class="media">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item ">
+					<h5 class="card-title">Titulo de la noticia</h5>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris </p>
+					<a href="#" class="btn btn-primary boton">Link a algun lado</a>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+						Mostrar Comentarios
+					</button>
+					<div class="collapse" id="collapse2">
+						<div class="card mt-2 ml-3 mr-3">
+							<div class="media mt-3">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<hr><div class="media">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<hr><div class="media">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item ">
+					<h5 class="card-title">Titulo de la noticia</h5>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris </p>
+					<a href="#" class="btn btn-primary boton">Link a algun lado</a>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+						Mostrar Comentarios
+					</button>
+					<div class="collapse" id="collapse3">
+						<div class="card mt-2 ml-3 mr-3">
+							<div class="media mt-3">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<hr><div class="media">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<hr><div class="media">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item ">
+					<h5 class="card-title">Titulo de la noticia</h5>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris </p>
+					<a href="#" class="btn btn-primary boton">Link a algun lado</a>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+						Mostrar Comentarios
+					</button>
+					<div class="collapse" id="collapse4">
+						<div class="card mt-2 ml-3 mr-3">
+							<div class="media mt-3">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<hr><div class="media">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<hr><div class="media">
+								<div class="media-left">
+									<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Left-aligned</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</section>
 	</div>
 	<footer style="height: 200px;" class="bg-dark mt-5">
-			
-		</footer>
+
+	</footer>
 </body>
 </html>
