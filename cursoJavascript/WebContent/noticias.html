@@ -21,18 +21,27 @@
 <body >
 	<div class="container-fluid">	
 		<header class="row py-2" style="background-color: #00b0ca;">
-			<nav class="navbar col-sm-12">
-				<a href="#"><img src="https://login.indraweb.net/logon/themes/Default/custom_media/logo.png"></a>
-				<div class="dropdown">
-					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img src="images/menu.png" width="30px" height="30px">
-					</button>
-					<div  style="right: 0px; left: auto; border-color: #00b0ca; border-radius: 10px; border-width: 2px;" class="dropdown-menu">
-						<a class="dropdown-item" href="#">Notificaciones</a>
-						<a class="dropdown-item" href="calendar.html">Calendario</a>
-						<a class="dropdown-item" href="noticias.html">Noticias</a>
-					</div>
-				</div>
+				<nav class="navbar navbar-expand-lg col-lg-12 navbar-light">
+				 <a href="#"><img src="https://login.indraweb.net/logon/themes/Default/custom_media/logo.png"></a>
+				  <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				    <span class="navbar-toggler-icon"></span>
+				  </button>
+				 <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+					    <ul class="navbar-nav mt-2 mt-lg-0  text-right ">
+					      <li class="nav-item active">
+					        <a class="nav-link text-white font-weight-bold" href="index.html">Home <span class="sr-only">(current)</span></a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link text-white font-weight-bold" href="calendar.html">Calendario</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link  text-white font-weight-bold" href="noticias.html">Noticias</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link  text-white font-weight-bold " href="login.html">Login</a>
+					      </li>
+					    </ul>				    
+					 </div>
 			</nav>
 		</header>
 		<div aria-label="breadcrumb" class="mt-2">
@@ -51,9 +60,9 @@
 					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris </p>
-					<a href="#" class="btn btn-primary boton">Link a algun lado</a>
+					<a href="#" class="btn btn-primary boton">Link a noticia</a>
 					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-						Mostrar Comentarios
+						Comentarios
 					</button>
 					<div class="collapse" id="collapse1">
 						<div class="card mt-2 ml-3 mr-3">
