@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Indrabook Login</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="images/indra.ico" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<style type="text/css"> /* Animación del botón */
+		button{
+			background-color: #00b0ca;
+			margin-bottom: 10px;
+			transition: all 0.5s;
+		}
+		button span{
+  			cursor: pointer;
+  			display: inline-block;
+  			position: relative;
+  			transition: 0.5s;
+		}
+		button span:after{
+  			content: '\00bb';
+  			position: absolute;
+  			opacity: 0;
+  			top: 0;
+  			right: -20px;
+  			transition: 0.5s;
+		}
+		button:hover span{
+			padding-right: 25px;
+		}
+		button:hover span:after {
+  			opacity: 1;
+  			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+				<header class="row py-2" style="background-color: #00b0ca;">
+			<nav class="navbar navbar-expand-lg col-lg-12 navbar-light">
+				 <a href="#"><img src="https://login.indraweb.net/logon/themes/Default/custom_media/logo.png"></a>
+				  <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				    <span class="navbar-toggler-icon"></span>
+				  </button>
+				 <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+				    <ul class="navbar-nav mt-2 mt-lg-0  text-right ">
+				      <li class="nav-item active">
+				        <a class="nav-link text-white font-weight-bold" href="#">Home <span class="sr-only">(current)</span></a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link text-white font-weight-bold" href="#">Calendario</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link  text-white font-weight-bold" href="#">Noticias</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link  text-white font-weight-bold " href="#">Login</a>
+				      </li>
+				    </ul>				    
+				 </div>
+			</nav>
+		</header>
+		<br>
+		<form class="form-signin">
+      		<h1 class="h3 mb-3 font-weight-normal">Identifícate</h1>
+		      <input type="text" class="form-control" placeholder="Usuario" required>
+		      <input type="password" class="form-control" style="margin-top: 7px;" placeholder="Password" required>
+		      <br>
+		      <button class="btn btn-lg btn-block text-white" type="submit"> <span>Entrar</span></button>
+		      <span><a href="#">¿Olvidaste tu contraseña?</a></span>
+    </form>
+	</div>
+</body>
+</html>
