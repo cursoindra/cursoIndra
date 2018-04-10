@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Register profile</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="images/indra.ico" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<style type="text/css">
+	*[class="form-horizontal"] {
+   		max-width: 700px;
+    	padding: 15px;
+    	margin: 0 auto;
+}
+	#image{
+	  max-width:180px;
+	}
+	</style>
+	<script type="text/javascript">
+		function readURL(input) {
+      	if (input.files && input.files[0]) {
+          	var reader = new FileReader();
+
+          	reader.onload = function (e) {
+              	$('#image')
+                  	.attr('src', e.target.result);
+          	};
+
+          	reader.readAsDataURL(input.files[0]);
+      	}
+  	}
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+				<header class="row py-2" style="background-color: #00b0ca;">
+			<nav class="navbar navbar-expand-lg col-lg-12 navbar-light">
+				 <a href="#"><img src="https://login.indraweb.net/logon/themes/Default/custom_media/logo.png"></a>
+				  <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				    <span class="navbar-toggler-icon"></span>
+				  </button>
+				 <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+				    <ul class="navbar-nav mt-2 mt-lg-0  text-right ">
+				      <li class="nav-item active">
+				        <a class="nav-link text-white font-weight-bold" href="#">Home <span class="sr-only">(current)</span></a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link text-white font-weight-bold" href="#">Calendario</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link  text-white font-weight-bold" href="#">Noticias</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link  text-white font-weight-bold " href="#">Login</a>
+				      </li>
+				    </ul>				    
+				 </div>
+			</nav>
+		</header>
+		<br>
+	</div>
+	<div class="container">
+            <form class="form-horizontal">
+                <h3>Dar de alta usuario</h3>
+                <div class="form-group">
+                    <label for="id" class="col-sm-5 control-label">ID (Número de identificación)</label>
+                    <div class="col-sm-9">
+                        <input type="text" pattern="\d*" maxlength="11" minlength="11" placeholder="Número de 11 dígitos" id="id" class="form-control" required autofocus>
+                    </div>
+                </div>
+                <div class="checkbox-group">
+                	<label class="col-sm-3 control-label">Roles</label>
+                	<div class="col-sm-9">
+                	<label class="checkbox-inline"><input type="checkbox" value="option1"> Usuario</label>
+					<label class="checkbox-inline"><input type="checkbox" value="option2"> Administrador</label>
+					<label class="checkbox-inline"><input type="checkbox" value="option3"> Proyecto 1</label>
+					<label class="checkbox-inline"><input type="checkbox" value="option4"> Proyecto 2</label>
+					<label class="checkbox-inline"><input type="checkbox" value="option5"> Proyecto 3</label>
+					</div>
+                </div>
+                <div class="form-group">
+                    <label for="nombre" class="col-sm-3 control-label">Nombre</label>
+                    <div class="col-sm-9">
+                        <input type="text" maxlength="45" id="nombre" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="apellido1" class="col-sm-3 control-label">Apellido 1</label>
+                    <div class="col-sm-9">
+                        <input type="text" maxlength="45" id="apellido1" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="apellido2" class="col-sm-3 control-label">Apellido 2</label>
+                    <div class="col-sm-9">
+                        <input type="text" maxlength="45" id="apellido2" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" maxlength="256" id="password" placeholder="*********" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email (@indra.es)</label>
+                    <div class="col-sm-9">
+                        <input type="email" maxlength="45" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@indra.es" placeholder="ej: xxxxx@indra.es" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fechaNacimiento" class="col-sm-5 control-label">Fecha de nacimiento</label>
+                    <div class="col-sm-9">
+                        <input type="date" id="fechaNacimiento" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                	<label for="image" class="col-sm-3 control-label">Imágen de usuario</label>
+                	<div class="col-sm-9">
+               			<input type='file' id="buscarArchivo" onchange="readURL(this);" style="display: none;">
+               			<input type="button" value="Buscar" onclick="document.getElementById('buscarArchivo').click();"/>
+               			<img id="image" src="images/img_avatar1.png"/>
+					</div>
+				</div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+</body>
+</html>
