@@ -35,3 +35,12 @@
     display: inline;
     margin-right: 7px;
   }
+  .boton {
+    background-color: #00b0ca;
+  }
+  .noti {
+    background-color: #DDD;
+  }
+  .like {
+    text-decoration: none;
+  }
