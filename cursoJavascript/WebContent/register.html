@@ -16,22 +16,8 @@
 }
 	#image{
 	  max-width:180px;
-	}
+}
 	</style>
-	<script type="text/javascript">
-		function readURL(input) {
-      	if (input.files && input.files[0]) {
-          	var reader = new FileReader();
-
-          	reader.onload = function (e) {
-              	$('#image')
-                  	.attr('src', e.target.result);
-          	};
-
-          	reader.readAsDataURL(input.files[0]);
-      	}
-  	}
-	</script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -70,16 +56,27 @@
                         <input type="text" pattern="\d*" maxlength="11" minlength="11" placeholder="Número de 11 dígitos" id="id" class="form-control" required autofocus>
                     </div>
                 </div>
-                <div class="checkbox-group">
-                	<label class="col-sm-3 control-label">Roles</label>
-                	<div class="col-sm-9">
-                	<label class="checkbox-inline"><input type="checkbox" value="option1"> Usuario</label>
-					<label class="checkbox-inline"><input type="checkbox" value="option2"> Administrador</label>
-					<label class="checkbox-inline"><input type="checkbox" value="option3"> Proyecto 1</label>
-					<label class="checkbox-inline"><input type="checkbox" value="option4"> Proyecto 2</label>
-					<label class="checkbox-inline"><input type="checkbox" value="option5"> Proyecto 3</label>
-					</div>
+                <div class="checkbox-group">  
+                    <label class="col-sm-3 control-label">Roles</label>
+                    <div class="col-sm-9">
+                        <div>
+                            <label><input type="checkbox" value="option1"> Usuario</label>
+                        </div>
+                        <div>
+                            <label><input type="checkbox" value="option2"> Administrador</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="option3"> Proyecto 1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="option4"> Proyecto 2</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="option5"> Proyecto 3</label>
+                        </div>
+                    </div>
                 </div>
+                <br>
                 <div class="form-group">
                     <label for="nombre" class="col-sm-3 control-label">Nombre</label>
                     <div class="col-sm-9">
@@ -99,12 +96,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Password</label>
-                    <div class="col-sm-9">
-                        <input type="password" maxlength="256" id="password" placeholder="*********" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email (@indra.es)</label>
                     <div class="col-sm-9">
                         <input type="email" maxlength="45" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@indra.es" placeholder="ej: xxxxx@indra.es" class="form-control" required>
@@ -119,8 +110,6 @@
                 <div class="form-group">
                 	<label for="image" class="col-sm-3 control-label">Imágen de usuario</label>
                 	<div class="col-sm-9">
-               			<input type='file' id="buscarArchivo" onchange="readURL(this);" style="display: none;">
-               			<input type="button" value="Buscar" onclick="document.getElementById('buscarArchivo').click();"/>
                			<img id="image" src="images/img_avatar1.png"/>
 					</div>
 				</div>
