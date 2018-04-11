@@ -152,3 +152,12 @@ function comprobarArea(area){
 		}
 	}
 }
+
+function mostrarArea(){
+	var zoo = comprobarZoo();
+	var area = comprobarArea(zoo);
+
+	document.getElementById("nA").innerHTML = area.nombre;
+	document.getElementById("aA").innerHTML = area.aforo;
+	document.getElementById("dA").innerHTML = area.dinero;
+}
