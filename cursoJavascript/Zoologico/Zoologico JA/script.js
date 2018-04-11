@@ -158,9 +158,13 @@ function mostrarArea(){
 	var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
 
-	document.getElementById("nA").innerHTML = area.nombre;
-	document.getElementById("aA").innerHTML = area.aforo;
-	document.getElementById("dA").innerHTML = area.dinero;
+	var tabla = document.getElementById("areas");
+	for(var i=0; i<zoo.areas.length; i++){
+		var row = tabla.insertRow(tabla.length);
+		row.insertCell(0).innerHTML = area.nombre;
+		row.insertCell(1).innerHTML = area.aforo;
+		row.insertCell(2).innerHTML = area.dinero;
+	}
 }
 
 function mostrarRecinto(){
@@ -168,9 +172,13 @@ function mostrarRecinto(){
 	var area = comprobarArea(zoo);
 	var recinto = comprobarRecinto(area);
 
-	document.getElementById("eR").innerHTML = recinto.especie;
-	document.getElementById("nAR").innerHTML = recinto.cantidadAnimales;
-	document.getElementById("aR").innerHTML = recinto.aforo;
-	document.getElementById("dR").innerHTML = recinto.dinero;
-	document.getElementById("cR").innerHTML = recinto.capacidad;
+	var tabla = document.getElementById("recintos");
+	for(var i=0; i<zoo.areas.length; i++){
+		var row = tabla.insertRow(tabla.length);
+		row.insertCell(0).innerHTML = recinto.especie;
+		row.insertCell(1).innerHTML = recinto.cantidadAnimales;
+		row.insertCell(2).innerHTML = recinto.aforo;
+		row.insertCell(3).innerHTML = recinto.dinero;
+		row.insertCell(4).innerHTML = recinto.capacidad;
+	}
 }
