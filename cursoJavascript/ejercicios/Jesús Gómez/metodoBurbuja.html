@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Metodo de la burbuja</title>
+	<script type="text/javascript">
+		var array = [];
+		function agregar(){
+			array.push(parseInt(document.getElementById("numero").value));
+			document.getElementById("array").value = array;
+		}
+		function ordenar(){
+			var ordenado = true;
+			for(var i=0; i<array.length; i++){
+				if(array[i] > array[i+1]){
+					var num = array[i];
+					array[i] = array[i+1];
+					array[i+1] = num;
+					ordenado = false
+				}
+			}
+			if(!ordenado){
+				ordenar();
+			}
+			document.getElementById("array").value = array;
+		}
+	</script>
+</head>
+<body>
+	<input type="number" id="numero">
+	<button onclick="agregar()">Agregar</button>
+	<button onclick="ordenar()">Ordenar</button><br>
+	<input type="text" id="array">
+</body>
+</html>
