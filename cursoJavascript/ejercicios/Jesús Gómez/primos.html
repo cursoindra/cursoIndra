@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Numeros primos</title>
+	<script type="text/javascript">
+		var array = [];
+		function colocar(){
+			for(var i=1;i<=100;i++){
+				var primo = true;
+				var j = i-1;
+				while(primo && j>1){
+					if(i%j == 0)
+						primo = false;
+					j--;
+				}
+				if(primo)
+					array.push(i);
+			}
+			document.getElementById("primos").innerHTML = array;
+		}
+	</script>
+</head>
+<body>
+	<button onclick="colocar()">Primos del 1 al 100</button><br>
+	<h3 id="primos"></h3>
+</body>
+</html>
