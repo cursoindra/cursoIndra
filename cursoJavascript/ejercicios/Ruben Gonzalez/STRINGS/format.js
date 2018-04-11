@@ -42,6 +42,7 @@ document.getElementById("num").addEventListener("click", () => {
     var letters = document.getElementById("txt").value.toLowerCase().split("");
     var sal = [];
     var num = "";
+    var nums = [];
     letters.forEach( function(letter, index) {
         if(!isNaN(parseInt(letter))){
             num += letter;
@@ -78,6 +79,48 @@ function sumar (num) {
             end = true;
         }
     }
+    return sum;
+}
+
+
+document.getElementById("red").addEventListener("click", () => {
+    var letters = document.getElementById("txt").value.toLowerCase().split("");
+    var sal = [];
+    var nums = [];
+    letters.forEach( function(letter, index) {
+        if(!isNaN(parseInt(letter))){
+            nums.push(parseInt(letter));
+        }
+        else {
+            if(nums.length){
+                sal.push(sumarReduce(nums));
+            }
+            sal.push(letter);
+            nums = [];
+        }
+        if((index == letters.length - 1) && (nums.length)) {
+                sal.push(sumarReduce(nums));
+        }
+    });
+    mostrar(sal);
+});
+
+
+
+function sumarReduce (nums) {
+    var end = false;
+    while (!end) {
+        var sum = nums.reduce(function(current, previous){
+            return parseInt(current) + parseInt(previous);
+        }, 0);
+        if(sum>=10){
+            nums = sum.toString().split("");
+            sum = 0;
+        }
+        else{
+            end = true;
+        }
+    }   
     return sum;
 }
 
