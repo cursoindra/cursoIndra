@@ -1,0 +1,36 @@
+noticias
+
+alta de noticia
+comentarios a las noticias
+likes a noticia
+
+
+10.101.159.12
+curso
+curso
+
+
+
+
+
+
+arrays:
+
+push mete el ultimo
+pop saca el ultimo
+shift saca el de delante
+unshift mete delante
+
+reverse
+sort
+slice 
+splice
+
+
+orden operaciones
+
+incremento, decremento
+negacion
+multi, divi, modulo, suma, resto
+igualdad
+and/or
