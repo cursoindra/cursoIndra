@@ -66,12 +66,13 @@ function crearArea(){
 
 	var zoo = comprobarZoo();
 
-	if(zoo.dinero >= (area.precio + area.dinero)){
+	if(parseInt(zoo.dinero) >= (parseInt(area.precio) + parseInt(area.dinero))){
 		zoo.areas.push(area);
 		zoo.dinero -= area.precio;
 	}
 	else
 		alert("No hay suficiente dinero");
+	console.log(area);
 }
 
 function crearRecinto(){
@@ -84,7 +85,7 @@ function crearRecinto(){
 	var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
 
-	if(area.dinero >= (recinto.precio + recinto.dinero)){
+	if(parseInt(area.dinero) >= (parseInt(recinto.precio) + parseInt(recinto.dinero))){
 		area.recintos.push(recinto);
 		area.aforo += recinto.aforo;
 		zoo.dinero -= recinto.precio;
@@ -113,10 +114,10 @@ function cantidadAnimales(){
 	var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
 	var recinto = comprobarRecinto(area);
-	var coste = recinto.cantidadAnimales * recinto.comida * recinto.precioComida * 7;
+	var coste = parseInt(recinto.cantidadAnimales) * parseInt(recinto.comida) * parseInt(recinto.precioComida) * 7;
 
-	if(recinto.dinero >= coste){
-		if(recinto.capacidad >= cantidad){
+	if(parseInt(recinto.dinero) >= coste){
+		if(parseInt(recinto.capacidad) >= cantidad){
 			recinto.cantidad = cantidad;
 			zoo.dinero -= coste;
 			area.dinero -= coste;
@@ -132,7 +133,7 @@ function cantidadAnimales(){
 
 function comprobarZoo(){
 	for(var i=0; i<zoologicos.length; i++){
-		if(zoologicos[i].nombre == document.getElementById("zoo")){
+		if(zoologicos[i].nombre == document.getElementById("zoo").value){
 			return zoologicos[i];
 		}
 	}
@@ -140,7 +141,7 @@ function comprobarZoo(){
 
 function comprobarArea(zoo){
 	for(var i=0; i<zoo.areas.length; i++){
-		if(zoo.areas[i].nombre == document.getElementById("nombreArea")){
+		if(zoo.areas[i].nombre == document.getElementById("nombreArea").value){
 			return zoo.areas[i];
 		}
 	}
@@ -148,7 +149,7 @@ function comprobarArea(zoo){
 
 function comprobarRecinto(area){
 	for(var i=0; i<area.recintos.length; i++){
-		if(area.recintos[i].especie == document.getElementById("especieRecinto")){
+		if(area.recintos[i].especie == document.getElementById("especieRecinto").value){
 			return area.recintos[i];
 		}
 	}
