@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ej 4 Practica</title>
+	<script type="text/javascript">
+		
+		var cantidad = 100;
+		var j = 0;
+		var numerosPrimos = [];
+
+		for (j=1; j < cantidad; j++){
+			if (primo(j)){
+		    	numerosPrimos.push(j);
+		  	}
+		}
+
+		window.onload = function primo(){
+			document.getElementById('h1').innerHTML = numerosPrimos;
+		}
+
+		function primo(numero){
+			for (var i = 2; i < numero; i++){
+				if (numero % i === 0){
+		      	return false;
+		    	}
+			}
+		return numero !== 1;
+		}
+	</script>
+</head>
+<body>
+	<h1 id="h1"></h1>
+</body>
+</html>
