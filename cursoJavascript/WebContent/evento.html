@@ -39,23 +39,16 @@
 		</header>
 		<form action="/action_page.php">
 			<section class="form-row py-4">			
-				<div class="form-group col-6">
-					<label for="date">fecha inicio:</label>
-					<input type="date" class="form-control" id="start-date">
+				<div class="form-group col-12 col-sm-6">
+					<label for="date">Fecha inicio:</label>
+					<input type="datetime-local" class="form-control" id="start-date">
 				</div>
-				<div class="form-group col-6">
-					<label for="date">fecha fin:</label>
-					<input type="date" class="form-control" id="start-date">
-				</div>
-				<!-- <div class="form-group col-md-4">
-	    				<label for="inputState">Añadir a este evento:</label>
-	      				<select id="inputState" class="form-control">
-	        				<option selected>A...</option>
-	        				<option>...</option>
-	      				</select>
-	    		</div> -->
-	    		<div class="form-group col">
-						<label for="inputState">Añadir a este evento:</label>
+				<div class="form-group col-12 col-sm-6">
+					<label for="date">Fecha fin:</label>
+					<input type="datetime-local" class="form-control" id="start-date">
+				</div>	    		
+	    		<div class="form-group col-12 col-sm-6">
+						<label for="inputState">Invitados:</label>
 						<input list="browsers" class="form-control" name="browser" multiple="multiple">
 			    		<datalist id="browsers">
 		    	    		<option value="Internet Explorer">
@@ -64,11 +57,29 @@
 		    				<option value="Opera">
 		    				<option value="Safari">
 		  				</datalist>	  
-		  		</div>	
-				<div class="form-group col">
-					<label for="textarea">descripción:</label>
+		  				<label for="inputCalendar">Asociar a calendario:</label>
+	      				<select id="inputCalendar" class="form-control">
+	        				<option selected>Calendario A</option>
+	        				<option>...</option>
+	      				</select>
+	      				<label for="textarea">Aviso:</label>
+	  					<select id="inputAlert" class="form-control">
+		        			<option selected>Aviso...</option>
+		        			<option>15 m</option>
+		      			</select>  						
+		  		</div>			  		
+				<div class="form-group col-12 col-sm-6">
+					<label for="textarea">Descripción:</label>
 					<textarea class="form-control" rows="5" id="comment"></textarea>
-				</div>					
+				</div>	
+				<div class="form-group col-12 col-sm-6">  					
+
+      			</div>	
+				<div class="form-check col-12">
+				    <input type="checkbox" id="repeat">
+				    <label class="form-check-label" for="repeat">Repetir evento</label>
+  				</div>
+  				
 			</section>
 			<button type="submit" class="btn btn-primary">Submit</button>		
 		</form>
