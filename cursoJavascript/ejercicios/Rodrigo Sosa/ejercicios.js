@@ -28,7 +28,8 @@ function cleanTrash(texto)
 
 function groupByElements(texto){
     var characters = texto.split("");
-    var readoo = [];    
+    var readoo = [];
+    //characters.sort();    
     for(i = characters.length; i >= 0 ; i--)
         if(isNaN(characters[i]))
             readoo.push(characters[i])
@@ -131,3 +132,20 @@ function operate(n){
     }
 }
 
+
+//Asociar
+function differ(){
+    word = document.getElementById("word").value;
+    letters = word.split(",");
+
+    var search;
+    for (i = 0; i < letters.length; i++){           
+        search = parseInt(letters[i]);
+        for (j = 0 ; j < letters.length; j++) {
+            if (i != j && (parseInt(letters[j]) < 0) && parseInt(letters[j])+parseInt(letters[i]) == 0)
+                pos = i +","+j;
+        }
+    }
+
+    document.getElementsByTagName("h1")[0].innerHTML = pos;
+}
