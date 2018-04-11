@@ -41,6 +41,3 @@
     // 793 se convertirá en 1 porque 7+9+3 = 19, 1+9 = 10 y 1+0 = 1
     // Este proceso debemos realizarlo sobre un array de elementos y 
     //aplicarlo solo a los números.
-
-
-
