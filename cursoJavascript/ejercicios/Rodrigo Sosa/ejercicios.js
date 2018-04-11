@@ -28,7 +28,8 @@ function cleanTrash(texto)
 
 function groupByElements(texto){
     var characters = texto.split("");
-    var readoo = [];    
+    var readoo = [];
+    //characters.sort();    
     for(i = characters.length; i >= 0 ; i--)
         if(isNaN(characters[i]))
             readoo.push(characters[i])
