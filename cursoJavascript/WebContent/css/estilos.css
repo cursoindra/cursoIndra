@@ -41,6 +41,6 @@
   .noti {
     background-color: #DDD;
   }
-  .like {
+  .like:link {
     text-decoration: none;
   }
