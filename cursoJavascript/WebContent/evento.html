@@ -5,6 +5,8 @@
 	<link rel="icon" href="images/indra.ico" type="image/x-icon"/>
 	<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, maximum-scale=1" >
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/estilos.css" type="text/css">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -39,23 +41,16 @@
 		</header>
 		<form action="/action_page.php">
 			<section class="form-row py-4">			
-				<div class="form-group col-6">
-					<label for="date">fecha inicio:</label>
-					<input type="date" class="form-control" id="start-date">
+				<div class="form-group col-12 col-sm-6">
+					<label for="date">Fecha inicio:</label>
+					<input type="datetime-local" class="form-control" id="start-date">
 				</div>
-				<div class="form-group col-6">
-					<label for="date">fecha fin:</label>
-					<input type="date" class="form-control" id="start-date">
-				</div>
-				<!-- <div class="form-group col-md-4">
-	    				<label for="inputState">Añadir a este evento:</label>
-	      				<select id="inputState" class="form-control">
-	        				<option selected>A...</option>
-	        				<option>...</option>
-	      				</select>
-	    		</div> -->
-	    		<div class="form-group col">
-						<label for="inputState">Añadir a este evento:</label>
+				<div class="form-group col-12 col-sm-6">
+					<label for="date">Fecha fin:</label>
+					<input type="datetime-local" class="form-control" id="start-date">
+				</div>	    		
+	    		<div class="form-group col-12 col-sm-6">
+						<label for="inputState">Invitados:</label>
 						<input list="browsers" class="form-control" name="browser" multiple="multiple">
 			    		<datalist id="browsers">
 		    	    		<option value="Internet Explorer">
@@ -64,17 +59,49 @@
 		    				<option value="Opera">
 		    				<option value="Safari">
 		  				</datalist>	  
-		  		</div>	
-				<div class="form-group col">
-					<label for="textarea">descripción:</label>
+		  				<label for="inputCalendar">Asociar a calendario:</label>
+	      				<select id="inputCalendar" class="form-control">
+	        				<option selected>Calendario A</option>
+	        				<option>...</option>
+	      				</select>
+	      				<label for="textarea">Aviso:</label>
+	  					<select id="inputAlert" class="form-control">
+		        			<option selected>Aviso...</option>
+		        			<option>15 m</option>
+		      			</select>  						
+		  		</div>			  		
+				<div class="form-group col-12 col-sm-6">
+					<label for="textarea">Descripción:</label>
 					<textarea class="form-control" rows="5" id="comment"></textarea>
-				</div>					
+				</div>	
+				<div class="form-group col-12 col-sm-6">  					
+
+      			</div>	
+				<div class="form-check col-12">
+				    <input type="checkbox" id="repeat">
+				    <label class="form-check-label" for="repeat">Repetir evento</label>
+  				</div>
+  				
 			</section>
 			<button type="submit" class="btn btn-primary">Submit</button>		
 		</form>
 	</div>
-	<footer style="height: 200px;" class="bg-dark mt-5">
-			
-		</footer>
+	<footer class="row justify-content-between bg-dark m-0 py-5 mt-5">
+		<div class="col-lg-5 align-self-center">
+			<ul style="list-style: none;" class="text-white p-0 pt-3 text-center">
+				<li>Contacto</li>
+				<li>Blog</li>
+				<li>Mapa del sitio</li>
+			</ul>
+		</div>
+		<div class="col-lg-5 align-self-center">
+			<ul class="text-center p-0">
+				<li class="fa fa-facebook"></li>
+				<li class="fa fa-twitter"></li>
+				<li class="fa fa-instagram"></li>
+				<li class="fa fa-linkedin"></li>
+			</ul>
+		</div>
+	</footer>
 </body>
 </html>
