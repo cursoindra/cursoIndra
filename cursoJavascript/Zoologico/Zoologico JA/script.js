@@ -154,17 +154,17 @@ function comprobarArea(area){
 	}
 }
 
-function mostrarAreas(){
+document.getElementById("zoo").addEventListener("focus", function(){
 	var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
 
 	document.getElementById("nA").innerHTML = area.nombre;
 	document.getElementById("aA").innerHTML = area.aforo;
 	document.getElementById("dA").innerHTML = area.dinero;
-}
+});
 
-function mostrarRecintos(){
-	var zoo = comprobarZoo();
+document.getElementById("").addEventListener("focus", function(){
+    var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
 	var recinto = comprobarRecinto(area);
 
@@ -173,4 +173,4 @@ function mostrarRecintos(){
 	document.getElementById("aR").innerHTML = recinto.aforo;
 	document.getElementById("dR").innerHTML = recinto.dinero;
 	document.getElementById("cR").innerHTML = recinto.capacidad;
-}
+});
