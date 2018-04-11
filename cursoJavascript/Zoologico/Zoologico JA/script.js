@@ -172,6 +172,16 @@ function mostrarRecinto(){
 	var area = comprobarArea(zoo);
 	var recinto = comprobarRecinto(area);
 
+	var select = document.getElementById("recint");
+	var opciones = document.createElement("select");
+	for(var i=0; i<area.recintos.length; i++){
+		var op = document.createElement("option");
+		var txt = document.createTextNode(recinto.especie);
+		op.appendChild(txt);
+		opciones.appendChild(op);
+	}
+	select.appendChild(opciones);
+
 	var tabla = document.getElementById("recintos");
 	for(var i=0; i<zoo.areas.length; i++){
 		var row = tabla.insertRow(tabla.length);
