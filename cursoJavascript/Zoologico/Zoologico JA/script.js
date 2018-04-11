@@ -55,6 +55,14 @@ function crearZoo(){
 	zoologico.ubicacion = ubicacionzoo;
 
 	zoologicos.push(zoologico);
+
+	var zoo = document.getElementById("zoo");
+	var opciones = document.createElement("option");
+	var txt = document.createTextNode(zoologico.nombre);
+	opciones.appendChild(txt);
+	zoo.appendChild(opciones);
+
+
 }
 
 function crearArea(){
