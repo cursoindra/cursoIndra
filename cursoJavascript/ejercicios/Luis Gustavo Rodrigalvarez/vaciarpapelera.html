@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<Input type="text" id="txt">
+<button onclick="vaciarPapelera();">DALE</button>
+<button onclick="agruparElementos();">DALE2</button>
+<button onclick="ponerBonitasLasLetras();">DALE3</button>
+<button onclick="ponerBonitosLosNumeros();">DALe4</button>
+	<script type="text/javascript">
+		
+
+
+		function vaciarPapelera(txt)
+		{
+
+			var txt=document.getElementById("txt").value;
+			var txt2=txt.split("");
+			console.log(txt2);
+					
+					for(var i=0;i<=txt2.length;i++)
+					{
+
+						if(txt2[i]=== '*')
+						{
+
+							txt2.splice(i, 1);
+					
+						}
+					}
+
+					console.log(txt2);
+
+		}
+
+		function agruparElementos(txt)
+		{
+
+			var txt=document.getElementById("txt").value;
+			var txt2=[];
+			var txtconletras = txt.split(/\d+/g).join('');
+			var txtsinletras = txt.match(/\d+/g).join('');
+			txt2.push(txtsinletras);
+			txt2.push(txtconletras);
+			var txt3 =txt2.join("");
+			var txt4=txt3.split("");
+
+
+
+			
+
+			console.log(txt4);
+
+		}
+
+
+		function ponerBonitasLasLetras(txt) 
+		{
+				var txt=document.getElementById("txt").value;
+				var txt2=txt.split("");
+
+					for(var i=0;i<=txt2.length;i++)
+					{
+
+						if(txt.charCodeAt(i)>64 && txt.charCodeAt(i)<91)
+						{
+
+							var let = txt.charAt(i).toLowerCase();
+							txt2.splice(i, 1,let);
+							
+							
+							
+						}
+						else if( txt.charCodeAt(i)>96 && txt.charCodeAt(i)<123)
+						{
+							var let = txt.charAt(i).toUpperCase();
+							txt2.splice(i, 1,let);
+							
+							
+						}
+					}
+
+					console.log(txt2);
+
+
+		}
+
+
+		function ponerBonitosLosNumeros() 
+		{
+
+				var txt=document.getElementById("txt").value;
+				var txt2=txt.split("");
+				var newAry =[];
+				var cont = 0;
+					for(var i=0;i<=txt2.length;i++)
+					{
+
+						if(!isNaN(txt2[i]))
+						{
+
+							var num =parseInt(txt2[i]);
+							cont +=num;
+									if(txt.charCodeAt(i+1)>64 && txt.charCodeAt(i+1)<91 && txt.charCodeAt(i+1)>96 && txt.charCodeAt(i+1)<123)
+									{
+									newAry.push(cont);
+									}
+						}
+						else if (isNaN(txt2[i]))
+						{
+							cont=0;
+							newAry.push(txt2[i]);
+						}
+												
+					}
+
+					console.log(newAry);
+		}
+
+	
+
+	</script>
+
+</body>
+</html>
