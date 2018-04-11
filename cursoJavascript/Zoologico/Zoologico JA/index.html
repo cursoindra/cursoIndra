@@ -18,10 +18,7 @@
 
   <div class="form-group">
     <select class="custom-select col-4" id="zoo" onblur="mostrarArea()" required>
-      <option>Elija un zoo</option>
-      <option>Zoo1</option>
-      <option>Zoo2</option>
-      <option>Zoo3</option>
+      
     </select>
      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     	Agregar Zoo
@@ -30,6 +27,7 @@
   <!-- Button to Open the Modal -->
  
   </div>
+
 
 
   <!-- The Modal -->
@@ -100,7 +98,7 @@
 
 				  </div>
 			
-				  <button class="btn btn-primary" onclick="crearZoo()">Crear zoo</button>
+				  <button class="btn btn-primary" onclick="crearZoo()"  data-dismiss="modal">Crear zoo</button>
 				
 
         </div>
@@ -115,19 +113,30 @@
   </div>
   
 <div class="table-responsive col-7 row">
-  <table class="table">
+  <table class="table" id="areas">
     <tr>
     	<th>Nombre</th>
     	<th>Aforo</th>
     	<th>Dinero</th>
     </tr>
-    <tr>
-    	<td id="nA">Nombre</td>
-    	<td id="aA">Aforo</td>
-    	<td id="dA">Dinero</td>
-    </tr>
   </table>
+  <input type="" name="">
    <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#myModal2">Agregar Área</button>
+</div>
+
+<div class="table-responsive col-7 row">
+	<div id="recint"></div>
+  <table class="table" id="recintos">
+    <tr>
+    	<th>Especie</th>
+    	<th>Cantidad de animales</th>
+    	<th>Aforo</th>
+    	<th>Dinero</th>
+    	<th>Capacidad</th>
+    </tr>
+    <tr>
+  </table>
+   <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#myModal3">Agregar Recinto</button>
 </div>
 	
   <!-- The Modal -->
@@ -161,7 +170,7 @@
 
 				  </div>
 			
-				  <button class="btn btn-primary" onclick="crearArea(),mostrarArea()">Crear zoo</button>
+				  <button class="btn btn-primary"  data-dismiss="modal" onclick="crearArea(),mostrarArea()">Crear zoo</button>
         </div>
         
         <!-- Modal footer -->
@@ -173,6 +182,60 @@
     </div>
 
 </div>
+	
+   <div class="modal fade" id="myModal3">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Agregar Recinto</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+				  <div class="form-row">
+				    <div class="col-md-4 mb-3">
+				      <label for="nombreRecinto">Nombre Recinto</label>
+				      <input type="text" class="form-control" id="nombreRecinto" placeholder="Nombre" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+				    <div class="col-md-4 mb-3">
+				      <label for="aforoRecinto">Aforo</label>
+				      <input type="text" class="form-control" id="aforoRecinto" placeholder="€" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+				     <div class="col-md-4 mb-3">
+				      <label for="dineroRecinto">Dinero</label>
+				      <input type="text" class="form-control" id="dineroRecinto" placeholder="€" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+
+				  </div>
+			
+				  <button class="btn btn-primary"  data-dismiss="modal" onclick="crearRecinto()">Crear zoo</button>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer ">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+
+</div>
+
+    </div>
+
+	</div>
 
 </body>
 </html>
