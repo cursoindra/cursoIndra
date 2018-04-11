@@ -18,27 +18,27 @@ function Ubicacion() {
 }
 
 function Area() {
-	this.recintos: [],
-	this.aforo: 0,
-	this.nombre: "",
-	this.dinero: 0,
-	this.precio: 1000
+	this.recintos = [],
+	this.aforo = 0,
+	this.nombre = "",
+	this.dinero = 0,
+	this.precio = 1000
 }
 
 function Recinto() {
-	this.especie: {},
-	this.cantidadAnimales: 0,
-	this.aforo: 0,
-	this.dinero: 0,
-	this.precio: 100,
-	this.capacidad: 0
+	this.especie = {},
+	this.cantidadAnimales = 0,
+	this.aforo = 0,
+	this.dinero = 0,
+	this.precio = 100,
+	this.capacidad = 0
 }
 
 function Animal() {
-	this.especie: "",
-	this.comida: 0,
-	this.precioComida: 0,
-	this.precio: 50
+	this.especie = "",
+	this.comida = 0,
+	this.precioComida = 0,
+	this.precio = 50
 }
 
 function crearZoo(){
@@ -146,7 +146,7 @@ function comprobarArea(zoo){
 	}
 }
 
-function comprobarArea(area){
+function comprobarRecinto(area){
 	for(var i=0; i<area.recintos.length; i++){
 		if(area.recintos[i].especie == document.getElementById("especieRecinto")){
 			return area.recintos[i];
@@ -154,16 +154,16 @@ function comprobarArea(area){
 	}
 }
 
-document.getElementById("zoo").addEventListener("focus", function(){
+function mostrarArea(){
 	var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
 
 	document.getElementById("nA").innerHTML = area.nombre;
 	document.getElementById("aA").innerHTML = area.aforo;
 	document.getElementById("dA").innerHTML = area.dinero;
-});
+}
 
-document.getElementById("").addEventListener("focus", function(){
+function mostrarRecinto(){
     var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
 	var recinto = comprobarRecinto(area);
@@ -173,4 +173,4 @@ document.getElementById("").addEventListener("focus", function(){
 	document.getElementById("aR").innerHTML = recinto.aforo;
 	document.getElementById("dR").innerHTML = recinto.dinero;
 	document.getElementById("cR").innerHTML = recinto.capacidad;
-});
+}
