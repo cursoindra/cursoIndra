@@ -17,11 +17,11 @@
   <h2>ZOO</h2>
 
   <div class="form-group">
-    <select class="custom-select col-4" id="zoo" onchange="mostrarArea()" required>
-      <option value="">Elija un zoo</option>
-      <option value="1">Zoo1</option>
-      <option value="2">Zoo2</option>
-      <option value="3">Zoo3</option>
+    <select class="custom-select col-4" id="zoo" onblur="mostrarArea()" required>
+      <option>Elija un zoo</option>
+      <option>Zoo1</option>
+      <option>Zoo2</option>
+      <option>Zoo3</option>
     </select>
      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     	Agregar Zoo
@@ -161,7 +161,7 @@
 
 				  </div>
 			
-				  <button class="btn btn-primary" onclick="crearArea()">Crear zoo</button>
+				  <button class="btn btn-primary" onclick="crearArea(),mostrarArea()">Crear zoo</button>
         </div>
         
         <!-- Modal footer -->

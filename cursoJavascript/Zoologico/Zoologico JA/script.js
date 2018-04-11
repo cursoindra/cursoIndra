@@ -55,7 +55,6 @@ function crearZoo(){
 	zoologico.ubicacion = ubicacionzoo;
 
 	zoologicos.push(zoologico);
-	console.log(zoologicos);
 }
 
 function crearArea(){
