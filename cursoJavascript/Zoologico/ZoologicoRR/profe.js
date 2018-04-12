@@ -39,7 +39,6 @@ var zoologicos= new Array();
 var zoologicoActivo;
 var precioEnfermedadAnimal=100;
 
-document.getElementById("botonEntradas").addEventListener("click",venderEntradas(zoologicos[0],document.getElementById("entradas").value));
 
 function comenzarTiempo()
 {
