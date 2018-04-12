@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="script.js" defer="true"></script>
+  <script type="text/javascript"></script>
+</head>
+<body>
+
+<div class="container justify-content-center">
+  <h2 class="text-center">ZOO</h2>
+
+  <div class="form-group">
+    <select class="custom-select col-4" id="zoo" required>
+      
+    </select>
+     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    	Agregar Zoo
+	</button>
+  
+  <!-- Button to Open the Modal -->
+ 
+  </div>
+
+
+  
+<div class="table-responsive col-7 row">
+  <table class="table" id="areas">
+    <tr>
+    	<th>Nombre</th>
+    	<th>Aforo</th>
+    	<th>Dinero</th>
+    </tr>
+  </table>
+  <select class="custom-select col-4" id="selectArea" required onchange="borrarTabla()"></select>
+
+   <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#myModal2">Agregar Área</button>
+</div>
+<hr>
+
+<div class="table-responsive col-7 row">
+  <table class="table" id="recintos">
+    <tr>
+    	<th>Especie</th>
+    	<th>Cantidad de animales</th>
+    	<th>Aforo</th>
+    	<th>Dinero</th>
+    	<th>Capacidad</th>
+    </tr>
+    <tr>
+  </table>
+</div>
+	
+   <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#myModal3">Agregar Recinto</button>
+<!--MODALES-->
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Agregar Zoo</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+				  <div class="form-row">
+				    <div class="col-md-4 mb-3">
+				      <label for="nombreZoo">Nombre Zoo</label>
+				      <input type="text" class="form-control" id="nombreZoo" placeholder="Nombre" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+				    <div class="col-md-4 mb-3">
+				      <label for="horarioAperturaZoo">Horario apertura</label>
+				      <input type="text" class="form-control" id="horarioAperturaZoo" placeholder="horario apertura" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div> 
+				     <div class="col-md-4 mb-3">
+				      <label for="horarioCierreZoo">horario cierre</label>
+				      <input type="text" class="form-control" id="horarioCierreZoo" placeholder="horario cierre" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+				      <div class="col-md-4 mb-3">
+				      <label for="dineroZoo">Dinero inicial</label>
+				      <input type="number" class="form-control" min="0"  id="dineroZoo" placeholder="€" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+				     <div class="col-md-4 mb-3">
+				      <label for="calleZoo">Calle</label>
+				      <input type="text" class="form-control" id="calleZoo" placeholder="calle" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+
+				     <div class="col-md-4 mb-3">
+				      <label for="ciudadZoo">Ciudad</label>
+				      <input type="text" class="form-control" id="ciudadZoo" placeholder="Ciudad" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+				  
+				     <div class="col-md-4 mb-3">
+				      <label for="paisZoo">Ciudad</label>
+				      <input type="text" class="form-control" id="paisZoo" placeholder="pais" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+
+				  </div>
+			
+				  <button class="btn btn-primary" onclick="crearZoo()"  data-dismiss="modal">Crear zoo</button>
+				
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer ">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Agregar 	Area</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+				  <div class="form-row">
+				    <div class="col-md-4 mb-3">
+				      <label for="nombreArea">Nombre Area</label>
+				      <input type="text" class="form-control" id="nombreArea" placeholder="Nombre" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+				    <div class="col-md-4 mb-3">
+				      <label for="dineroArea">Dinero</label>
+				      <input type="text" class="form-control" id="dineroArea" placeholder="€" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+
+				  </div>
+			
+				  <button class="btn btn-primary"  data-dismiss="modal" onclick="crearArea()">Crear Área</button>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer ">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+
+</div>
+	
+   <div class="modal fade" id="myModal3">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Agregar Recinto</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+				  <div class="form-row">
+				    <div class="col-md-4 mb-3">
+				      <label for="capacidadRecinto">Capacidad</label>
+				      <input type="text" class="form-control" id="capacidadRecinto" placeholder="numero animales máx" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+				    <div class="col-md-4 mb-3">
+				      <label for="aforoRecinto">Aforo</label>
+				      <input type="number" class="form-control" id="aforoRecinto" placeholder="cantidad máxima" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+				     <div class="col-md-4 mb-3">
+				      <label for="dineroRecinto">Dinero</label>
+				      <input type="number" class="form-control" id="dineroRecinto" placeholder="€" value="" required>
+				      <div class="valid-tooltip">
+				        Looks good!
+				      </div>
+				    </div>
+
+
+				    <div class="modal-body p-0 ">
+					    <div class="modal-header">
+				          <h4 class="modal-title">Agregar animal</h4>
+				        </div>
+
+				        <div class="row">
+					     <div class="col-md-4 mb-3">
+					      <label for="especieAnimal">Especie</label>
+					      <input type="text" class="form-control" id="especieAnimal" placeholder="i.e: Leon" value="" required>
+					    </div>
+					    <div class="row">
+					     <div class="col-md-4 mb-3">
+					      <label for="cantidadAnimales">Cantidad</label>
+					      <input type="text" class="form-control" id="cantidadAnimales" placeholder="i.e: Leon" value="" required>
+					    </div>
+
+					     <div class="col-md-4 mb-3">
+					      <label for="comidaAnimal">Comidas</label>
+					      <input type="number" class="form-control" id="comidaAnimal" placeholder="nº veces que come" value="" required>
+					    </div>
+
+					     <div class="col-md-4 mb-3">
+					      <label for="precioComidaAnimal">Precio comida</label>
+					      <input type="number" class="form-control" id="precioComidaAnimal" placeholder="€" value="" required>
+					    </div>
+					</div>
+				</div>
+
+				  </div>
+			
+				  <button class="btn btn-primary"  data-dismiss="modal" onclick="crearRecinto()">Crear Recinto</button>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer ">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+
+</div>
+
+    </div>
+
+</body>
+</html>
