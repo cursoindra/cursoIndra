@@ -105,16 +105,22 @@ function crearRecinto(){
 		area.aforo += recinto.aforo;
 		zoo.dinero -= recinto.precio;
 		area.dinero -= recinto.precio;
+
+		if(crearAnimal()){
+			var tabla = document.getElementById("recintos")
+			var row = tabla.insertRow(tabla.length);
+			row.insertCell(0).innerHTML = recinto.especie;
+			row.insertCell(1).innerHTML = recinto.cantidadAnimales;
+			row.insertCell(2).innerHTML = recinto.aforo;
+			row.insertCell(3).innerHTML = recinto.dinero;
+			row.insertCell(4).innerHTML = recinto.capacidad;
+		}
+		else{
+			area.recintos.pop();
+		}
 	}
 	else
 		alert("No hay suficiente dinero");
-	var tabla = document.getElementById("recintos")
-	var row = tabla.insertRow(tabla.length);
-	row.insertCell(0).innerHTML = recinto.especie;
-	row.insertCell(1).innerHTML = recinto.cantidadAnimales;
-	row.insertCell(2).innerHTML = recinto.aforo;
-	row.insertCell(3).innerHTML = recinto.dinero;
-	row.insertCell(4).innerHTML = recinto.capacidad;
 }
 
 function crearAnimal(){
@@ -129,7 +135,11 @@ function crearAnimal(){
 	var area = comprobarArea(zoo);
 	var recinto = comprobarRecinto(area);
 
-	recinto.especie = animal;	
+	if(cantidadAnimales()){
+		recinto.especie = animal;
+		return true;	
+	}
+	return false;
 }
 
 function cantidadAnimales(){
@@ -144,6 +154,7 @@ function cantidadAnimales(){
 			zoo.dinero -= coste;
 			area.dinero -= coste;
 			recinto.dinero -= coste;
+			return true;
 		}
 		else
 			alert("No hay hueco");
@@ -151,6 +162,7 @@ function cantidadAnimales(){
 	}
 	else
 		alert("No hay suficiente dinero");
+	return false;
 }
 
 function comprobarZoo(){
