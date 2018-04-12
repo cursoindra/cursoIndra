@@ -85,6 +85,10 @@ $("submit_animal").addEventListener("click", function () {
         selectedRecinto.cantidad+=1;
         selectedZoo.dinero-=precioAnimal;   
         showRecintos(selectedArea.recintos);
+        if(!selectedZoo.repartido){            
+            repartirDinero(selectedZoo.dinero, selectedZoo);
+            selectedZoo.repartido = true;
+        }
     }else{
         alert("No hay dinero para animalada");
     }
@@ -132,7 +136,8 @@ function createZoo (nombre, ubicacion, apertura, cierre, dinero) {
         "apertura" : apertura,
         "cierre" : cierre,
         "dinero" : dinero,
-        "areas" : []
+        "areas" : [],
+        "repartido": false
     };
     return zoo;
 }
