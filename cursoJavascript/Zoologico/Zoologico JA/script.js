@@ -168,6 +168,11 @@ function mostrarArea(){
 	row.insertCell(0).innerHTML = zoo.areas[zoo.areas.length-1].nombre;
 	row.insertCell(1).innerHTML = zoo.areas[zoo.areas.length-1].aforo;
 	row.insertCell(2).innerHTML = zoo.areas[zoo.areas.length-1].dinero;
+
+	var select = document.getElementById("selectArea");
+	var op = document.createElement("option");
+	var txt = document.createTextNode(zoo.areas[zoo.areas.length-1].nombre);
+	op.appendChild(txt);
 }
 
 function mostrarRecinto(){
