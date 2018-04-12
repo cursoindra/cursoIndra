@@ -5,13 +5,13 @@ function hayDineroArea(){
 	return hayDinero(total)
 }
 
-function hayDineroRecinto(cantidad){
-	total = precioAnimal + precioRecinto + precioComida * cantidad * 7;
+function hayDineroRecinto(){
+	total = precioAnimal + precioRecinto;
 	return hayDinero(total)
 }
 
 function hayDineroAnimal(cantidad){
-	total = precioAnimal + precioComida * cantidad * 7;
+	total = precioAnimal + precioComida * Math.floor(24/cantidad) * 7;
 	return hayDinero(total)
 }
 

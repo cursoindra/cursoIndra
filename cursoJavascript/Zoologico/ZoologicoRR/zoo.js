@@ -37,45 +37,57 @@ $("submit_zoo").addEventListener("click", function () {
     zoos.push(zoo);
     showZoos();
 });
-
+    
 setInterval(function(){
     if(selectedZoo!=null)
      $("dinero").innerHTML=selectedZoo.dinero;
 },10);
 
 $("submit_area").addEventListener("click", function () {
-    var nombre = $("name_area").value;
 
-    var area = createArea(nombre);
-    selectedArea = area;
-    selectedZoo.areas.push(area);
-    selectedZoo.dinero-=precioArea;
-    showAreas();
+    if(hayDineroArea()){
+        var nombre = $("name_area").value;
+        var area = createArea(nombre);
+        selectedArea = area;
+        selectedZoo.areas.push(area);
+        selectedZoo.dinero-=precioArea;
+        showAreas();
+    }else{
+        alert("No hay suficiente money para crear área");
+    }
+    
 });
 
 $("submit_recinto").addEventListener("click", function () {
-    var aforo = $("aforo_recinto").value,        
+    
+    if (hayDineroRecinto()) {
+        var aforo = $("aforo_recinto").value,        
         especie = $("especie_recinto").value,
-        capacidad = $("capacidad_recinto").value;
-              
+        capacidad = $("capacidad_recinto").value;              
 
-    var recinto = createRecinto(aforo, especie, capacidad);
-    selectedArea.recintos.push(recinto);   
-    selectedZoo.dinero-=precioRecinto; 
-    selectedRecinto=recinto;
-    showRecintos(selectedArea.recintos);
+        var recinto = createRecinto(aforo, especie, capacidad);
+        selectedArea.recintos.push(recinto);   
+        selectedZoo.dinero-=precioRecinto; 
+        selectedRecinto=recinto;
+        showRecintos(selectedArea.recintos);
+    }else{
+        alert("No hay dinero para resinto");
+    }
+    
 });
 
 $("submit_animal").addEventListener("click", function () {
     var especie = $("animal_especie").value,        
         comida = $("animal_comida").value;
-            
-
-    var animal = createAnimal(especie,comida);
-    selectedRecinto.animal.push(animal); 
-    selectedRecinto.cantidad+=1;
-    selectedZoo.dinero-=precioAnimal;   
-    showRecintos(selectedArea.recintos);
+    if(hayDineroAnimal(comida)){     
+        var animal = createAnimal(especie,comida);
+        selectedRecinto.animal.push(animal); 
+        selectedRecinto.cantidad+=1;
+        selectedZoo.dinero-=precioAnimal;   
+        showRecintos(selectedArea.recintos);
+    }else{
+        alert("No hay dinero para animalada");
+    }
 });
 
 $("select_zoos").addEventListener("change", function () {
@@ -161,6 +173,8 @@ function showAreas () {
 		row.classList.add("area_"+i);		
 		row.addEventListener("click", function (e) {			
 			
+            cleanBg($("area_tbody").children);  
+            this.classList.add("table-success");   
 			areaSeleccionada(this);
 
 		});
@@ -196,8 +210,9 @@ function showRecintos(rec){
 	for (var i = 0 ; i < rec.length; i++) {
 		var row = $("recinto_tbody").insertRow();		
 		row.classList.add("recinto_"+i);		
-		row.addEventListener("click", function (e) {			
-			
+		row.addEventListener("click", function (e) {
+            cleanBg($("recinto_tbody").children);			
+			this.classList.add("table-success");
 			recintoSeleccionado(this);
 
 		});
@@ -245,6 +260,11 @@ function createAnimal (especie, comida) {
 
 function showAnimal () {
 
+}
+
+function cleanBg(childs){
+    for(i = 0 ; i < childs.length ; i++)
+        childs[i].classList.remove("table-success");
 }
 
 function cleanNastyTables(c){
