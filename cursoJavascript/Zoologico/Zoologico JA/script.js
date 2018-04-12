@@ -74,20 +74,21 @@ function crearArea(){
 	if(parseInt(zoo.dinero) >= (parseInt(area.precio) + parseInt(area.dinero))){
 		zoo.areas.push(area);
 		zoo.dinero -= area.precio;
+
+		var tabla = document.getElementById("areas");
+		var row = tabla.insertRow(tabla.length);
+		row.insertCell(0).innerHTML = area.nombre;
+		row.insertCell(1).innerHTML = area.aforo;
+		row.insertCell(2).innerHTML = area.dinero;
+
+		var select = document.getElementById("selectArea");
+		var op = document.createElement("option");
+		var txt = document.createTextNode(area.nombre);
+		op.appendChild(txt);
+		select.appendChild(op);
 	}
 	else
 		alert("No hay suficiente dinero");
-	var tabla = document.getElementById("areas");
-	var row = tabla.insertRow(tabla.length);
-	row.insertCell(0).innerHTML = area.nombre;
-	row.insertCell(1).innerHTML = area.aforo;
-	row.insertCell(2).innerHTML = area.dinero;
-
-	var select = document.getElementById("selectArea");
-	var op = document.createElement("option");
-	var txt = document.createTextNode(area.nombre);
-	op.appendChild(txt);
-	select.appendChild(op);
 }
 
 function crearRecinto(){
@@ -106,10 +107,10 @@ function crearRecinto(){
 		zoo.dinero -= recinto.precio;
 		area.dinero -= recinto.precio;
 
-		if(crearAnimal()){
+		if(crearAnimal(recinto)){
 			var tabla = document.getElementById("recintos")
 			var row = tabla.insertRow(tabla.length);
-			row.insertCell(0).innerHTML = recinto.especie;
+			row.insertCell(0).innerHTML = recinto.especie.especie;
 			row.insertCell(1).innerHTML = recinto.cantidadAnimales;
 			row.insertCell(2).innerHTML = recinto.aforo;
 			row.insertCell(3).innerHTML = recinto.dinero;
@@ -123,7 +124,7 @@ function crearRecinto(){
 		alert("No hay suficiente dinero");
 }
 
-function crearAnimal(){
+function crearAnimal(recinto){
 	var animal = new Animal();
 	var cantidad = document.getElementById("cantidadAnimales").value;
 
@@ -133,20 +134,19 @@ function crearAnimal(){
 
 	var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
-	var recinto = comprobarRecinto(area);
 
-	if(cantidadAnimales()){
+	if(cantidadAnimales(recinto)){
 		recinto.especie = animal;
 		return true;	
 	}
 	return false;
 }
 
-function cantidadAnimales(){
+function cantidadAnimales(recinto){
 	var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
-	var recinto = comprobarRecinto(area);
-	var coste = document.getElementById("cantidadAnimales").value * document.getElementById("comidaAnimal").value * document.getElementById("precioComidaAnimal").value * 7;
+	var cantidad = document.getElementById("cantidadAnimales").value;
+	var coste = cantidad * document.getElementById("comidaAnimal").value * document.getElementById("precioComidaAnimal").value * 7;
 
 	if(recinto.dinero >= coste){
 		if(recinto.capacidad >= cantidad){
@@ -183,7 +183,7 @@ function comprobarArea(zoo){
 
 function comprobarRecinto(area){
 	for(var i=0; i<area.recintos.length; i++){
-		if(area.recintos[i].especie == document.getElementById("especieAnimal").value){
+		if(area.recintos[i].especie.especie == document.getElementById("especieAnimal").value){
 			return area.recintos[i];
 		}
 	}
@@ -191,6 +191,6 @@ function comprobarRecinto(area){
 
 function borrarTabla(){
 	var tabla = document.getElementById("recintos");
-	for(var i=0; i<tabla.length; i++)
-		tabla.deleteRow(i);
+	for(var i=0; i<=tabla.rows.length; i++)
+		tabla.deleteRow(1);
 }
