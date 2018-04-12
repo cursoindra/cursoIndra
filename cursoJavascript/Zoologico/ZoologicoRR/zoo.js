@@ -73,12 +73,16 @@ $("submit_animal").addEventListener("click", function () {
 
     var animal = createAnimal(especie,comida);
     selectedRecinto.animal.push(animal); 
+    selectedRecinto.cantidad+=1;
     selectedZoo.dinero-=precioAnimal;   
     showRecintos(selectedArea.recintos);
 });
 
 $("select_zoos").addEventListener("change", function () {
 	selectedZoo = $("select_zoos").value;
+
+    selectedArea = null;
+    selectedRecinto = null;
 
 	for(i = 0; i < zoos.length; i++){	
 		if(selectedZoo == zoos[i].nombre){
@@ -141,8 +145,8 @@ function createArea (nombre) {
     var area = {
         "nombre": nombre,
         "recintos" : [],
-        "aforo" : 0
-        
+        "aforo" : 0,
+        "dinero":0        
     };
     return area;
 }
@@ -181,7 +185,9 @@ function createRecinto (aforo, especie, capacidad) {
         "especie": especie,
         "aforo" : aforo,
         "animal" : [],
-        "capacidad" : capacidad
+        "cantidad": 0,
+        "capacidad" : capacidad,
+        "dinero": 0
     };
     return recinto;
 }
@@ -201,23 +207,30 @@ function showRecintos(rec){
 		var cell3 = row.insertCell();
 		var cell5 = row.insertCell();
 		var cell6 = row.insertCell();
+        
 
 		// Add some text to the new cells:
 		cell1.innerHTML = rec[i].aforo;
 		cell2.innerHTML = rec[i].capacidad;
 		cell3.innerHTML = rec[i].dinero;
 		cell5.innerHTML = rec[i].especie;
-		cell6.innerHTML = rec[i].n_animal;
+		cell6.innerHTML = rec[i].cantidad;
 		
 	}
 }
 
-function areaSeleccionada (rec) {
-	var index = rec.classList[0].split("_")[1];
+function areaSeleccionada (ar) {
+	var index = ar.classList[0].split("_")[1];
 
 	selectedArea = selectedZoo.areas[index];
 
 	showRecintos(selectedArea.recintos);
+}
+
+function recintoSeleccionado (rec) {
+    var index = rec.classList[0].split("_")[1];
+
+    selectedRecinto = selectedArea.recintos[index];
 }
 
 function createAnimal (especie, comida) {
@@ -226,7 +239,7 @@ function createAnimal (especie, comida) {
         "comida" : comida
         
     };
-    selectedRecinto.animal.push(animal);
+    
     return animal;
 }
 
