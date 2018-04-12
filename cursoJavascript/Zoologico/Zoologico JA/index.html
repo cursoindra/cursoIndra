@@ -14,7 +14,7 @@
 <body>
 
 <div class="container justify-content-center">
-  <h2>ZOO</h2>
+  <h2 class="text-center">ZOO</h2>
 
   <div class="form-group">
     <select class="custom-select col-4" id="zoo" onblur="mostrarArea()" required>
@@ -29,6 +29,37 @@
   </div>
 
 
+  
+<div class="table-responsive col-7 row">
+  <table class="table" id="areas">
+    <tr>
+    	<th>Nombre</th>
+    	<th>Aforo</th>
+    	<th>Dinero</th>
+    </tr>
+  </table>
+  <select class="custom-select col-4" id="selectArea"></select>
+
+   <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#myModal2">Agregar Área</button>
+</div>
+<hr>
+
+<div class="table-responsive col-7 row">
+	<div id="recint"></div>
+  <table class="table" id="recintos">
+    <tr>
+    	<th>Especie</th>
+    	<th>Cantidad de animales</th>
+    	<th>Aforo</th>
+    	<th>Dinero</th>
+    	<th>Capacidad</th>
+    </tr>
+    <tr>
+  </table>
+   <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#myModal3">Agregar Recinto</button>
+</div>
+	
+<!--MODALES-->
 
   <!-- The Modal -->
   <div class="modal fade" id="myModal">
@@ -111,34 +142,9 @@
       </div>
     </div>
   </div>
-  
-<div class="table-responsive col-7 row">
-  <table class="table" id="areas">
-    <tr>
-    	<th>Nombre</th>
-    	<th>Aforo</th>
-    	<th>Dinero</th>
-    </tr>
-  </table>
-  <input type="" name="">
-   <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#myModal2">Agregar Área</button>
-</div>
 
-<div class="table-responsive col-7 row">
-	<div id="recint"></div>
-  <table class="table" id="recintos">
-    <tr>
-    	<th>Especie</th>
-    	<th>Cantidad de animales</th>
-    	<th>Aforo</th>
-    	<th>Dinero</th>
-    	<th>Capacidad</th>
-    </tr>
-    <tr>
-  </table>
-   <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#myModal3">Agregar Recinto</button>
-</div>
-	
+
+
   <!-- The Modal -->
   <div class="modal fade" id="myModal2">
     <div class="modal-dialog">
@@ -146,7 +152,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Agregar Area</h4>
+          <h4 class="modal-title">Agregar 	Area</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -197,22 +203,22 @@
         <div class="modal-body">
 				  <div class="form-row">
 				    <div class="col-md-4 mb-3">
-				      <label for="nombreRecinto">Nombre Recinto</label>
-				      <input type="text" class="form-control" id="nombreRecinto" placeholder="Nombre" value="" required>
+				      <label for="capacidadRecinto">Capacidad</label>
+				      <input type="text" class="form-control" id="capacidadRecinto" placeholder="numero animales máx" value="" required>
 				      <div class="valid-tooltip">
 				        Looks good!
 				      </div>
 				    </div>
 				    <div class="col-md-4 mb-3">
 				      <label for="aforoRecinto">Aforo</label>
-				      <input type="text" class="form-control" id="aforoRecinto" placeholder="€" value="" required>
+				      <input type="number" class="form-control" id="aforoRecinto" placeholder="cantidad máxima" value="" required>
 				      <div class="valid-tooltip">
 				        Looks good!
 				      </div>
 				    </div>
 				     <div class="col-md-4 mb-3">
 				      <label for="dineroRecinto">Dinero</label>
-				      <input type="text" class="form-control" id="dineroRecinto" placeholder="€" value="" required>
+				      <input type="number" class="form-control" id="dineroRecinto" placeholder="€" value="" required>
 				      <div class="valid-tooltip">
 				        Looks good!
 				      </div>
@@ -234,8 +240,6 @@
 </div>
 
     </div>
-
-	</div>
 
 </body>
 </html>
