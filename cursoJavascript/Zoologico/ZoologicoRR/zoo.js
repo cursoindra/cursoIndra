@@ -1,14 +1,27 @@
-function $(id) {
-    return document.getElementById(id);
-}
+var precioArea=1000;
+var precioRecinto=500;
+var precioAnimal=50;
+var precioComida=20;
+var precioEntrada=10;
+var tiempo=5000;
+var hora=0;
 
-var zoos = [];
+
+var precioEnfermedadAnimal=100;
+
+var zoos = new Array();
 
 var selectedZoo = null;
 
 var selectedArea = null;
 
 var selectedRecinto = null;
+
+
+function $(id) {
+    return document.getElementById(id);
+}
+
 
 $("submit_zoo").addEventListener("click", function () {
     var nombre = $("name_zoo").value,
@@ -18,45 +31,54 @@ $("submit_zoo").addEventListener("click", function () {
         calle = $("address").value,
         numero = $("n_address").value,
         ciudad = $("city").value;
-
+        $("dinero").innerHTML=dinero;
     var ubi = createUbicacion(calle, numero, ciudad);
     var zoo = createZoo(nombre, ubi, apertura, cierre, dinero);
     zoos.push(zoo);
     showZoos();
 });
 
-$("submit_area").addEventListener("click", function () {
-    var nombre = $("name_area").value,        
-        dinero = $("money_area").value,
-        precio = $("price_area").value;
+setInterval(function(){
+    if(selectedZoo!=null)
+     $("dinero").innerHTML=selectedZoo.dinero;
+},10)
 
-    var area = createArea(nombre, precio, dinero);
+$("submit_area").addEventListener("click", function () {
+    var nombre = $("name_area").value;
+
+    var area = createArea(nombre);
     selectedArea = area;
     selectedZoo.areas.push(area);
+    selectedZoo.dinero-=precioArea;
+    if(!hayDineroArea())
+        alert("no hay");
     showAreas();
 });
 
 $("submit_recinto").addEventListener("click", function () {
     var aforo = $("aforo_recinto").value,        
-        dinero = $("money_recinto").value,
-        capacidad = $("capacidad_recinto").value,
-        precio = $("price_recinto").value;        
+        
+        capacidad = $("capacidad_recinto").value;
+              
 
-    var recinto = createRecinto(aforo, capacidad, dinero, precio);
-    selectedArea.recintos.push(recinto);    
+    var recinto = createRecinto(aforo, capacidad);
+    selectedArea.recintos.push(recinto);   
+    selectedZoo.dinero-=precioRecinto; 
+    selectedRecinto=recinto;
     showRecintos(selectedArea.recintos);
 });
 
 $("submit_animal").addEventListener("click", function () {
     var especie = $("animal_especie").value,        
-        comida = $("animal_comida").value,
-        precioComida = $("animal_precioComida").value,
-        precio = $("animal_precio").value,        
+        comida = $("animal_comida").value;
+            
 
-    var animal = createRecinto(especie,comida, precioComida, precio);
-    selectedArea.recintos.push(animal);    
+    var animal = createAnimal(especie,comida);
+    selectedRecinto.animal.push(animal); 
+    selectedZoo.dinero-=precioAnimal;   
     showRecintos(selectedArea.recintos);
 });
+
 $("select_zoos").addEventListener("change", function () {
 	selectedZoo = $("select_zoos").value;
 
@@ -117,13 +139,12 @@ function showZoos () {
     select.dispatchEvent(event);
 }
 
-function createArea (nombre, precio, dinero) {
+function createArea (nombre) {
     var area = {
         "nombre": nombre,
         "recintos" : [],
-        "aforo" : 0,
-        "dinero" : dinero,
-        "precio" : precio
+        "aforo" : 0
+        
     };
     return area;
 }
@@ -145,24 +166,23 @@ function showAreas () {
 		var cell1 = row.insertCell();
 		var cell2 = row.insertCell();
 		var cell3 = row.insertCell();
-		var cell4 = row.insertCell();
+		
 
 		// Add some text to the new cells:
 		cell1.innerHTML = areas[i].nombre;
 		cell2.innerHTML = areas[i].aforo;
 		cell3.innerHTML = areas[i].dinero;
-		cell4.innerHTML = areas[i].precio;
+		
 		
 	}
 	
 }
 
-function createRecinto (aforo, capacidad, dinero, precio) {
+function createRecinto (aforo, capacidad) {
     var recinto = {
         "aforo" : aforo,
         "animal" : [],
-        "dinero" : dinero,
-        "precio" : precio,
+        
         "capacidad" : capacidad
     };
     return recinto;
@@ -181,7 +201,6 @@ function showRecintos(rec){
 		var cell1 = row.insertCell();
 		var cell2 = row.insertCell();
 		var cell3 = row.insertCell();
-		var cell4 = row.insertCell();
 		var cell5 = row.insertCell();
 		var cell6 = row.insertCell();
 
@@ -189,7 +208,6 @@ function showRecintos(rec){
 		cell1.innerHTML = rec[i].aforo;
 		cell2.innerHTML = rec[i].capacidad;
 		cell3.innerHTML = rec[i].dinero;
-		cell4.innerHTML = rec[i].precio;
 		cell5.innerHTML = rec[i].animal;
 		cell6.innerHTML = rec[i].n_animal;
 		
@@ -204,12 +222,11 @@ function areaSeleccionada (rec) {
 	showRecintos(selectedArea.recintos);
 }
 
-function createAnimal (especie, comida, precioComida, precio) {
+function createAnimal (especie, comida) {
     var animal = {
         "especie" : especie,
-        "comida" : comida,
-        "precioComida" : precioComida,
-        "precio" : precio
+        "comida" : comida
+        
     };
     return animal;
 }

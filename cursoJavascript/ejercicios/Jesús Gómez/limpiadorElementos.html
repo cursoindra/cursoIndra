@@ -12,7 +12,7 @@
 			for(var i=0; i<fraseLimpia.length; i++){
 				if(fraseLimpia[i] == "*"){
 					fraseLimpia.splice(i,1);
-					i--;
+					             
 				}
 			}
 			document.getElementById("resultado").innerHTML = fraseLimpia;
@@ -26,9 +26,10 @@
 
 		function lBonitas(){
 			var frase = document.getElementById("frase").value.split("");
+			frase.toLowerCase();
 			for(var i=0; i<frase.length; i++){
 				if(isNaN(frase[i])){
-					frase[i] = frase[i].toLowerCase();
+					//frase[i] = frase[i].toLowerCase();
 					if(frase[i] == 'a' || frase[i] == 'e' || frase[i] == 'i' || frase[i] == 'o' || frase[i] == 'u')
 						frase[i] = frase[i].toUpperCase()	
 				}

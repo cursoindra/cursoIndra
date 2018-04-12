@@ -20,6 +20,7 @@
 			for (j = 0; j < arrayCadena.length; j++){
 				if (arrayCadena[j]=="*"){
 					arrayCadena.splice(j,1);
+					--j;
 				}
 			}
 			document.getElementById('h2').innerHTML = arrayCadena;
@@ -63,6 +64,8 @@
     // ponerBonitasLasLetras([157aJpE])
     // debe devolver:
     // [1,5,7,'A','j','p','E']
+
+    var objet={"nombre":"pepe","apellido":"garcia","edad":67}
 
     	function ponerBonitasLasLetras(){
     		var cadena = document.getElementById('cadena').value;

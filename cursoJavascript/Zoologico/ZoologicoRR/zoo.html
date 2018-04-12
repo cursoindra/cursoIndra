@@ -10,12 +10,13 @@
 	<title>Zoo</title>
 </head>
 <body>
-	<header></header>
+	<header><h1 id="dinero"></h1><h1 id="tiempo"></h1></header>
 	<div class="container">					
 			<label>Seleccionar zoo:</label><select id="select_zoos"><option>No existen zoos</option></select><br>			
 			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#zoos">Crear Zoo</button>
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#areas">Crear Area</button>
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#recintos">Crear Recinto</button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#animales">Comprar Animal</button>
 
 <!-- Modal -->
 <div id="zoos" class="modal fade" role="dialog">
@@ -71,12 +72,7 @@
         <div class="form-group col-12 col-sm-6">
           <label>Nombre: </label><input id="name_area" type="" name="">
         </div>       
-        <div class="form-group col-12 col-sm-6">
-          <label>Inversión:</label><input id="money_area" type="number" name="money">
-        </div>        
-        <div class="form-group col-12 col-sm-6">
-          <label>Precio:</label><input value=200 id="price_area" type="number" name="">
-        </div>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
@@ -97,20 +93,16 @@
       </div>
       <div class="modal-body">
         <div class="form-group col-12 col-sm-6">
-          <label>Animal:</label><input value=10 id="animal_recinto" type="text" name="">
+          <label>Especie:</label><input value=10 id="animal_recinto" type="text" name="">
         </div>
         <div class="form-group col-12 col-sm-6">
           <label>Aforo: </label><input id="aforo_recinto" type="number" name="">
         </div>        
-        <div class="form-group col-12 col-sm-6">
-          <label>Inversión:</label><input id="money_recinto" type="number" name="money">
-        </div>          
+                
         <div class="form-group col-12 col-sm-6">
           <label>Capacidad:</label><input id="capacidad_recinto" type="number" name="money">
         </div>        
-        <div class="form-group col-12 col-sm-6">
-          <label>Precio:</label><input value=10 id="price_recinto" type="number" name="">
-        </div>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
@@ -133,19 +125,15 @@
         <div class="form-group col-12 col-sm-6">
           <label>Especie:</label><input id="animal_especie" type="text" name="">
         </div>
-        <div class="form-group col-12 col-sm-6">
-          <label>Precio: </label><input id="animal_precio" type="number" name="">
-        </div>        
+           
         <div class="form-group col-12 col-sm-6">
           <label>Comida:</label><input id="animal_comida" type="number" name="money">
         </div>          
-        <div class="form-group col-12 col-sm-6">
-          <label>Precio Comida:</label><input id="capacidad_precioComida" type="number" name="money">
-        </div>       
+          
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button id="submit_recinto" type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+        <button id="submit_animal" type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
       </div>
     </div>
   </div>
@@ -175,7 +163,6 @@
           <th>Nombre</th>        
           <th>Aforo</th>
           <th>Dinero</th>
-          <th>Precio</th>
         </tr>            
     </thead>         
     <tbody id="area_tbody">
@@ -190,9 +177,8 @@
           <th>Aforo</th>
           <th>Capacidad</th>
           <th>Dinero</th>
-          <th>Precio</th>
-          <th>Animal</th>          
-          <th>Nº Animales</th>        
+          <th>Especie</th>          
+          <th>Cantidad</th>        
         </tr>    
     </thead>
     <tbody id="recinto_tbody">

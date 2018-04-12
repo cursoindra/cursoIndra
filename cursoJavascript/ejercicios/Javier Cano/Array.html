@@ -26,6 +26,7 @@
 			for (i=0; i<array.length; i++) {
 				if (array[i]=="*") {
 					array.splice(i,1);
+					i--;
 				}
 			}
 			string=array.join("");
@@ -86,10 +87,10 @@
 		}
 
 		function tipoLetra(caracter){
-			var vocales="aeiouAEIOU";
+			var vocales="aeiou";
 			
 			for(j=0;j<vocales.length;j++){
-				if(caracter==vocales[j])
+				if(caracter.toLowerCase()==vocales[j])
 					return true;
 			}
 			return false;
