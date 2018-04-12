@@ -100,7 +100,7 @@ function crearRecinto(){
 	var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
 
-	if(parseInt(area.dinero) >= (parseInt(recinto.precio) + parseInt(recinto.dinero))){
+	if(area.dinero >= recinto.precio + recinto.dinero){
 		area.recintos.push(recinto);
 		area.aforo += recinto.aforo;
 		zoo.dinero -= recinto.precio;
@@ -146,10 +146,10 @@ function cantidadAnimales(){
 	var zoo = comprobarZoo();
 	var area = comprobarArea(zoo);
 	var recinto = comprobarRecinto(area);
-	var coste = parseInt(recinto.cantidadAnimales) * parseInt(recinto.comida) * parseInt(recinto.precioComida) * 7;
+	var coste = document.getElementById("cantidadAnimales").value * document.getElementById("comidaAnimal").value * document.getElementById("precioComidaAnimal").value * 7;
 
-	if(parseInt(recinto.dinero) >= coste){
-		if(parseInt(recinto.capacidad) >= cantidad){
+	if(recinto.dinero >= coste){
+		if(recinto.capacidad >= cantidad){
 			recinto.cantidad = cantidad;
 			zoo.dinero -= coste;
 			area.dinero -= coste;
@@ -183,8 +183,14 @@ function comprobarArea(zoo){
 
 function comprobarRecinto(area){
 	for(var i=0; i<area.recintos.length; i++){
-		if(area.recintos[i].especie == document.getElementById("especieRecinto").value){
+		if(area.recintos[i].especie == document.getElementById("especieAnimal").value){
 			return area.recintos[i];
 		}
 	}
+}
+
+function borrarTabla(){
+	var tabla = document.getElementById("recintos");
+	for(var i=0; i<tabla.length; i++)
+		tabla.deleteRow(i);
 }
