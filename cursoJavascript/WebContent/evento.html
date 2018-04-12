@@ -77,11 +77,20 @@
 				<div class="form-group col-12 col-sm-6">  					
 
       			</div>	
-				<div class="form-check col-12">
+				<div class="form-check col-12" data-toggle="collapse" data-target="#repeat_dates">
 				    <input type="checkbox" id="repeat">
 				    <label class="form-check-label" for="repeat">Repetir evento</label>
   				</div>
-  				
+  				<div id="repeat_dates" class="collapse col-12">
+	  				<div class="form-group col-12 col-sm-6">
+						<label for="date">Fecha inicio:</label>
+						<input type="date" class="form-control" id="start-date-repeated">
+					</div>
+					<div class="form-group col-12 col-sm-6">
+						<label for="date">Fecha fin:</label>
+						<input type="date" class="form-control" id="end-date-repeated	">
+					</div>	    		
+				</div>
 			</section>
 			<button type="submit" class="btn btn-primary">Submit</button>		
 		</form>
