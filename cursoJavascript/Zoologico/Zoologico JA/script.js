@@ -77,7 +77,17 @@ function crearArea(){
 	}
 	else
 		alert("No hay suficiente dinero");
-	console.log(area);
+	var tabla = document.getElementById("areas");
+	var row = tabla.insertRow(tabla.length);
+	row.insertCell(0).innerHTML = area.nombre;
+	row.insertCell(1).innerHTML = area.aforo;
+	row.insertCell(2).innerHTML = area.dinero;
+
+	var select = document.getElementById("selectArea");
+	var op = document.createElement("option");
+	var txt = document.createTextNode(area.nombre);
+	op.appendChild(txt);
+	select.appendChild(op);
 }
 
 function crearRecinto(){
@@ -98,6 +108,13 @@ function crearRecinto(){
 	}
 	else
 		alert("No hay suficiente dinero");
+	var tabla = document.getElementById("recintos")
+	var row = tabla.insertRow(tabla.length);
+	row.insertCell(0).innerHTML = recinto.especie;
+	row.insertCell(1).innerHTML = recinto.cantidadAnimales;
+	row.insertCell(2).innerHTML = recinto.aforo;
+	row.insertCell(3).innerHTML = recinto.dinero;
+	row.insertCell(4).innerHTML = recinto.capacidad;
 }
 
 function crearAnimal(){
@@ -158,46 +175,4 @@ function comprobarRecinto(area){
 			return area.recintos[i];
 		}
 	}
-}
-
-function mostrarArea(){
-	var zoo = comprobarZoo();
-
-	var tabla = document.getElementById("areas");
-	var row = tabla.insertRow(tabla.length);
-	row.insertCell(0).innerHTML = zoo.areas[zoo.areas.length-1].nombre;
-	row.insertCell(1).innerHTML = zoo.areas[zoo.areas.length-1].aforo;
-	row.insertCell(2).innerHTML = zoo.areas[zoo.areas.length-1].dinero;
-
-	var select = document.getElementById("selectArea");
-	var op = document.createElement("option");
-	var txt = document.createTextNode(zoo.areas[zoo.areas.length-1].nombre);
-	op.appendChild(txt);
-}
-
-function mostrarRecinto(){
-    var zoo = comprobarZoo();
-    var area;
-
-    for(var i=0; i<zoo.areas.length; i++){
-		if(zoo.areas[i].nombre == document.getElementById("selectArea").value){
-			area = zoo.areas[i];
-		}
-	}
-
-	var select = document.getElementById("recint");
-	var opciones = document.createElement("select");
-	var op = document.createElement("option");
-	var txt = document.createTextNode(zoo.area.recintos[zoo.area.recintos.length-1].especie);
-	op.appendChild(txt);
-	opciones.appendChild(op);
-	select.appendChild(opciones);
-
-	var tabla = document.getElementById("recintos")
-	var row = tabla.insertRow(tabla.length);
-	row.insertCell(0).innerHTML = zoo.area.recintos[zoo.area.recintos.length-1].especie;
-	row.insertCell(1).innerHTML = zoo.area.recintos[zoo.area.recintos.length-1].cantidadAnimales;
-	row.insertCell(2).innerHTML = zoo.area.recintos[zoo.area.recintos.length-1].aforo;
-	row.insertCell(3).innerHTML = zoo.area.recintos[zoo.area.recintos.length-1].dinero;
-	row.insertCell(4).innerHTML = zoo.area.recintos[zoo.area.recintos.length-1].capacidad;
 }
