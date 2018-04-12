@@ -41,7 +41,7 @@ $("submit_zoo").addEventListener("click", function () {
 setInterval(function(){
     if(selectedZoo!=null)
      $("dinero").innerHTML=selectedZoo.dinero;
-},10)
+},10);
 
 $("submit_area").addEventListener("click", function () {
     var nombre = $("name_area").value;
@@ -50,18 +50,16 @@ $("submit_area").addEventListener("click", function () {
     selectedArea = area;
     selectedZoo.areas.push(area);
     selectedZoo.dinero-=precioArea;
-    if(!hayDineroArea())
-        alert("no hay");
     showAreas();
 });
 
 $("submit_recinto").addEventListener("click", function () {
     var aforo = $("aforo_recinto").value,        
-        
+        especie = $("especie_recinto").value,
         capacidad = $("capacidad_recinto").value;
               
 
-    var recinto = createRecinto(aforo, capacidad);
+    var recinto = createRecinto(aforo, especie, capacidad);
     selectedArea.recintos.push(recinto);   
     selectedZoo.dinero-=precioRecinto; 
     selectedRecinto=recinto;
@@ -165,24 +163,24 @@ function showAreas () {
 		// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
 		var cell1 = row.insertCell();
 		var cell2 = row.insertCell();
-		var cell3 = row.insertCell();
+		
 		
 
 		// Add some text to the new cells:
 		cell1.innerHTML = areas[i].nombre;
 		cell2.innerHTML = areas[i].aforo;
-		cell3.innerHTML = areas[i].dinero;
+		
 		
 		
 	}
 	
 }
 
-function createRecinto (aforo, capacidad) {
+function createRecinto (aforo, especie, capacidad) {
     var recinto = {
+        "especie": especie,
         "aforo" : aforo,
         "animal" : [],
-        
         "capacidad" : capacidad
     };
     return recinto;
@@ -208,7 +206,7 @@ function showRecintos(rec){
 		cell1.innerHTML = rec[i].aforo;
 		cell2.innerHTML = rec[i].capacidad;
 		cell3.innerHTML = rec[i].dinero;
-		cell5.innerHTML = rec[i].animal;
+		cell5.innerHTML = rec[i].especie;
 		cell6.innerHTML = rec[i].n_animal;
 		
 	}
@@ -228,6 +226,7 @@ function createAnimal (especie, comida) {
         "comida" : comida
         
     };
+    selectedRecinto.animal.push(animal);
     return animal;
 }
 
