@@ -40,7 +40,7 @@ $("submit_zoo").addEventListener("click", function () {
     
 setInterval(function(){
     if(selectedZoo!=null)
-     $("dinero").innerHTML=selectedZoo.dinero;
+     $("zoo_dinero").innerHTML = selectedZoo.dinero;
 },10);
 
 $("submit_area").addEventListener("click", function () {
@@ -112,8 +112,9 @@ $("select_zoos").addEventListener("change", function () {
 		$("zoo_name").innerHTML = selectedZoo.nombre;
 		$("zoo_ubicacion").innerHTML = selectedZoo.ubicacion.calle +" "+ selectedZoo.ubicacion.numero +" "+ selectedZoo.ubicacion.ciudad;
 		$("zoo_horario").innerHTML = "De "+selectedZoo.apertura +" a "+ selectedZoo.cierre;
+		$("zoo_dinero").innerHTML = selectedZoo.dinero;
 	}
-	showAreas();
+	showAreas( );
 
 });
 function createUbicacion (calle, numero, ciudad) {
@@ -186,12 +187,12 @@ function showAreas () {
 		// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
 		var cell1 = row.insertCell();
 		var cell2 = row.insertCell();
-		
-		
-
+		var cell3=row.insertCell();
+		cell3.setAttribute("id","area_"+i+"_dinero");
 		// Add some text to the new cells:
 		cell1.innerHTML = areas[i].nombre;
 		cell2.innerHTML = areas[i].aforo;
+		cell3.innerHTML = areas[i].dinero;
 		
 		
 		
@@ -225,6 +226,7 @@ function showRecintos(rec){
 		var cell1 = row.insertCell();
 		var cell2 = row.insertCell();
 		var cell3 = row.insertCell();
+		cell3.setAttribute("id","recinto_"+i+"_dinero");
 		var cell5 = row.insertCell();
 		var cell6 = row.insertCell();
         

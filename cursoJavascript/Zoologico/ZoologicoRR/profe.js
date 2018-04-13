@@ -86,6 +86,7 @@ var precioEnfermedadAnimal=100;
 			console.log("recinto "+recinto.especie+" con dinero "+recinto.dinero);
 		}
 		zoo.dinero=dinero(zoo);
+
 	}	
 
 	function repartirDinero(dinero,zoo)
@@ -139,8 +140,24 @@ function dinero(zoo){
 		});
 		area.dinero=dineroArea;
 	});
+	refrescarDineroAreas();
+
+
 
 	return dinero;
+}
+
+function refrescarDineroAreas()
+{
+
+selectedZoo.areas.forEach(function(area,indice){
+	$("area_"+indice+"_dinero").innerHTML=area.dinero;
+	area.recintos.forEach(function(recinto,indice1){
+		$("recinto_"+indice1+"_dinero").innerHTML=recinto.dinero;
+	});
+	});
+	
+
 }
 
 
