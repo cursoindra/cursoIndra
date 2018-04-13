@@ -131,10 +131,13 @@ function dinero(zoo){
 	var dinero=0;
 	zoo.areas.forEach(function(area)
 	{
+		var dineroArea=0;
 		area.recintos.forEach(function(recinto)
 		{
 			dinero+=recinto.dinero;
+			dineroArea+=recinto.dinero;
 		});
+		area.dinero=dineroArea;
 	});
 
 	return dinero;
