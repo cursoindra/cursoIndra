@@ -28,16 +28,6 @@ Modeliza el zoológico lo más completo que puedas.
 
 */
 
-var precioArea=1000;
-var precioRecinto=500;
-var precioAnimal=50;
-var precioComida=20;
-var precioEntrada=10;
-var tiempo=5000;
-var hora=0;
-var zoologicos= new Array();
-var zoologicoActivo;
-var precioEnfermedadAnimal=100;
 
 
 
@@ -183,100 +173,6 @@ function curarAnimal(recinto,animales)
 {
 	recinto.dinero-=animales*precioEnfermedadAnimal;
 }
-function agregarRecintoAArea(recinto, area){
-	area.recintos.push(recinto);
-	
-}
-
-function agregarAnimalARecinto(recinto,animal){
-	if(recinto.animales.length<recinto.capacidad)
-		recinto.animales.push(animal);
-	else
-		alert("no caben mas animales");
-}
-
-
-function agregarAreaAZoo(area, zoo)
-{
-	zoo.areas.push(area);
-	
-}
-
-
-
-
-
-function crearZoo(nombre,ubicacion,apertura,cierre,dinero)
-{
-		var zoo={
-		"nombre": nombre,
-		"ubicacion": ubicacion,
-		"areas": [],
-		"aforo": 0,
-		"apertura":apertura,
-		"cierre":cierre,
-		"dinero":dinero
-	};
-	 return zoo;
-
-}
-
-function crearUbicacion(direccion,numero, ciudad)
-{
-	
-	var ubicacion={
-		"direccion": direccion,
-		"ciudad": ciudad,
-		"numero": numero
-	};
-	return  ubicacion
-}
-
-
-
-
-
-function crearArea(nombre)
-{
-	
-	var area={
-		"nombre": nombre,
-		"aforo": 0,
-		"recintos": [],
-		"dinero":0
-	}; 
-	return area;
-}
-
-
-
-function crearRecinto(nombre, aforo, capacidad,especie,dinero)
-{
-	 
-	var recinto={
-		"nombre": nombre,
-		"animales": [],
-		"aforo": aforo,
-		"capacidad": capacidad,
-		"especie": especie,
-		"dinero":dinero
-	};
-	return recinto;
-}
-
-
-
-function crearAnimal( especie, comida)
-{
-	
-	var animal={
-		
-		"especie": especie,
-		"comida": comida
-	};
-	return animal;
-}
-
 
 
 
