@@ -72,9 +72,7 @@ Biblioteca.prototype.imprimirEstado=function(){
 			librosSinPrestar+=this.secciones[j].libros.length;
 			res+="Sección "+this.secciones[j].nombre+"\n         Número de libros: "+this.secciones[j].libros.length+"\n";
 			}
-			res+="\nTotal de libros en la biblioteca: "+librosSinPrestar+"\nTotal de libros prestados a los socios: "+ (1000-librosSinPrestar)
-			console.log(res)
-
+			console.log(res+="\nTotal de libros en la biblioteca: "+librosSinPrestar+"\nTotal de libros prestados a los socios: "+ (1000-librosSinPrestar))
 }
 //carga de secciones
 for (i = 0 ; i<tematicas.length; i++){
