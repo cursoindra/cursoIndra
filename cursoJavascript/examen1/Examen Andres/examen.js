@@ -36,7 +36,8 @@ Biblioteca.prototype.añadirLibro = function(libro){
 	}
 
 Biblioteca.prototype.dameLibroAleatorio= function (){
-		return (this.secciones[Math.floor((Math.random() * this.secciones.length))].libros.splice(Math.floor((Math.random() * this.length)),1))[0];
+		var azar = Math.floor((Math.random() * this.secciones.length));
+		return (this.secciones[azar].libros.splice(azar,1))[0];
 	};	
 
 Biblioteca.prototype.devolverLibro= function (libro){
