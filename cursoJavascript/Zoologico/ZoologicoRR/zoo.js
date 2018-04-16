@@ -31,54 +31,74 @@ $("submit_zoo").addEventListener("click", function () {
         calle = $("address").value,
         numero = $("n_address").value,
         ciudad = $("city").value;
-        $("dinero").innerHTML=dinero;
-    var ubi = createUbicacion(calle, numero, ciudad);
-    var zoo = createZoo(nombre, ubi, apertura, cierre, dinero);
+       
+    var ubi = new Ubicacion(calle, numero, ciudad);
+    var zoo = new Zoo(nombre, ubi, apertura, cierre, dinero);
     zoos.push(zoo);
     showZoos();
 });
-
+    
 setInterval(function(){
     if(selectedZoo!=null)
-     $("dinero").innerHTML=selectedZoo.dinero;
+     $("zoo_dinero").innerHTML = selectedZoo.dinero;
 },10);
 
 $("submit_area").addEventListener("click", function () {
-    var nombre = $("name_area").value;
 
-    var area = createArea(nombre);
-    selectedArea = area;
-    selectedZoo.areas.push(area);
-    selectedZoo.dinero-=precioArea;
-    showAreas();
+    if(hayDineroArea()){
+        var nombre = $("name_area").value;
+        var area = new Area(nombre);
+        selectedArea = area;
+        selectedZoo.areas.push(area);
+        selectedZoo.dinero-=precioArea;
+        showAreas();
+    }else{
+        alert("No hay suficiente money para crear área");
+    }
+    
 });
 
 $("submit_recinto").addEventListener("click", function () {
-    var aforo = $("aforo_recinto").value,        
+    
+    if (hayDineroRecinto()) {
+        var aforo = $("aforo_recinto").value,        
         especie = $("especie_recinto").value,
-        capacidad = $("capacidad_recinto").value;
-              
+        capacidad = $("capacidad_recinto").value;              
 
-    var recinto = createRecinto(aforo, especie, capacidad);
-    selectedArea.recintos.push(recinto);   
-    selectedZoo.dinero-=precioRecinto; 
-    selectedRecinto=recinto;
-    showRecintos(selectedArea.recintos);
+        var recinto = new Recinto(aforo, especie, capacidad);
+        selectedArea.recintos.push(recinto);   
+        selectedZoo.dinero-=precioRecinto; 
+        selectedRecinto=recinto;
+        showRecintos(selectedArea.recintos);
+    }else{
+        alert("No hay dinero para resinto");
+    }
+    
 });
 
 $("submit_animal").addEventListener("click", function () {
     var especie = $("animal_especie").value,        
         comida = $("animal_comida").value;
-            
-
-    var animal = createAnimal(especie,comida);
-    selectedRecinto.animal.push(animal); 
-    selectedZoo.dinero-=precioAnimal;   
-    showRecintos(selectedArea.recintos);
+    if(hayDineroAnimal(comida)){     
+        var animal = new Animal(especie,comida);
+        selectedRecinto.animal.push(animal); 
+        selectedRecinto.cantidad+=1;
+        selectedZoo.dinero-=precioAnimal;   
+        showRecintos(selectedArea.recintos);
+        if(!selectedZoo.repartido){            
+            repartirDinero(selectedZoo.dinero, selectedZoo);
+            selectedZoo.repartido = true;
+        }
+    }else{
+        alert("No hay dinero para animalada");
+    }
 });
 
 $("select_zoos").addEventListener("change", function () {
 	selectedZoo = $("select_zoos").value;
+
+    selectedArea = null;
+    selectedRecinto = null;
 
 	for(i = 0; i < zoos.length; i++){	
 		if(selectedZoo == zoos[i].nombre){
@@ -92,23 +112,38 @@ $("select_zoos").addEventListener("change", function () {
 		$("zoo_name").innerHTML = selectedZoo.nombre;
 		$("zoo_ubicacion").innerHTML = selectedZoo.ubicacion.calle +" "+ selectedZoo.ubicacion.numero +" "+ selectedZoo.ubicacion.ciudad;
 		$("zoo_horario").innerHTML = "De "+selectedZoo.apertura +" a "+ selectedZoo.cierre;
+		$("zoo_dinero").innerHTML = selectedZoo.dinero;
 	}
-	showAreas();
+	showAreas( );
 
 });
-function createUbicacion (calle, numero, ciudad) {
-    var ubicacion = {
-        "calle" : calle,
-        "numero" : numero,
-        "ciudad" : ciudad
-    };
-    return ubicacion;
+function Ubicacion (calle, numero, ciudad) {
+    
+        this.calle= calle;
+        this.numero= numero;
+        this.ciudad= ciudad;
+    
 }
 
 
 
+<<<<<<< HEAD
 function createZoo (nombre, ubicacion, apertura, cierre, dinero) {
     var zoo = new Zoo(nombre,ubicacion,apertura,cierre,dinero);
+=======
+function Zoo (nombre, ubicacion, apertura, cierre, dinero) {
+    
+        this.nombre= nombre;
+        this.ubicacion= ubicacion;
+        this.aforo= 0;
+        this.precioEntrada= 10;
+        this.apertura= apertura;
+        this.cierre= cierre;
+        this.dinero= dinero;
+        this.areas= new Array();
+        this.repartido= false;
+    
+>>>>>>> 84570b53a45aa65383606e788bdb8d06160b9c5e
 }
 
 function showZoos () {
@@ -127,9 +162,19 @@ function showZoos () {
     select.dispatchEvent(event);
 }
 
+<<<<<<< HEAD
 function createArea (nombre) {
     var area = new Area(nombre);
     return area;
+=======
+function Area (nombre) {
+    
+        this.nombre= nombre;
+        this.recintos= [];
+        this.aforo= 0;
+        this.dinero=0 ;       
+   
+>>>>>>> 84570b53a45aa65383606e788bdb8d06160b9c5e
 }
 
 function showAreas () {
@@ -142,18 +187,20 @@ function showAreas () {
 		row.classList.add("area_"+i);		
 		row.addEventListener("click", function (e) {			
 			
+            cleanBg($("area_tbody").children);  
+            this.classList.add("table-success");   
 			areaSeleccionada(this);
 
 		});
 		// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
 		var cell1 = row.insertCell();
 		var cell2 = row.insertCell();
-		
-		
-
+		var cell3=row.insertCell();
+		cell3.setAttribute("id","area_"+i+"_dinero");
 		// Add some text to the new cells:
 		cell1.innerHTML = areas[i].nombre;
 		cell2.innerHTML = areas[i].aforo;
+		cell3.innerHTML = areas[i].dinero;
 		
 		
 		
@@ -161,17 +208,30 @@ function showAreas () {
 	
 }
 
+<<<<<<< HEAD
 function createRecinto (aforo, especie, capacidad) {
     var recinto = new Recinto(aforo,especie,capacidad,precioRecinto);
     return recinto;
+=======
+function Recinto (aforo, especie, capacidad) {
+    
+        this.especie= especie;
+        this.aforo= aforo;
+        this.animal= new Array();
+        this.cantidad= 0;
+        this.capacidad= capacidad;
+        this.dinero=0;
+    
+>>>>>>> 84570b53a45aa65383606e788bdb8d06160b9c5e
 }
 function showRecintos(rec){
 	cleanNastyTables(1);
 	for (var i = 0 ; i < rec.length; i++) {
 		var row = $("recinto_tbody").insertRow();		
 		row.classList.add("recinto_"+i);		
-		row.addEventListener("click", function (e) {			
-			
+		row.addEventListener("click", function (e) {
+            cleanBg($("recinto_tbody").children);			
+			this.classList.add("table-success");
 			recintoSeleccionado(this);
 
 		});
@@ -179,39 +239,53 @@ function showRecintos(rec){
 		var cell1 = row.insertCell();
 		var cell2 = row.insertCell();
 		var cell3 = row.insertCell();
+		cell3.setAttribute("id","recinto_"+i+"_dinero");
 		var cell5 = row.insertCell();
 		var cell6 = row.insertCell();
+        
 
 		// Add some text to the new cells:
 		cell1.innerHTML = rec[i].aforo;
 		cell2.innerHTML = rec[i].capacidad;
 		cell3.innerHTML = rec[i].dinero;
 		cell5.innerHTML = rec[i].especie;
+<<<<<<< HEAD
 		cell6.innerHTML = rec[i].animal;
+=======
+		cell6.innerHTML = rec[i].cantidad;
+>>>>>>> 84570b53a45aa65383606e788bdb8d06160b9c5e
 		
 	}
 }
 
-function areaSeleccionada (rec) {
-	var index = rec.classList[0].split("_")[1];
+function areaSeleccionada (ar) {
+	var index = ar.classList[0].split("_")[1];
 
 	selectedArea = selectedZoo.areas[index];
 
 	showRecintos(selectedArea.recintos);
 }
 
-function createAnimal (especie, comida) {
-    var animal = {
-        "especie" : especie,
-        "comida" : comida
-        
-    };
-    selectedRecinto.animal.push(animal);
-    return animal;
+function recintoSeleccionado (rec) {
+    var index = rec.classList[0].split("_")[1];
+
+    selectedRecinto = selectedArea.recintos[index];
+}
+
+function Animal (especie, comida) {
+    
+        this.especie= especie;
+        this.comida= comida;
+    
 }
 
 function showAnimal () {
 
+}
+
+function cleanBg(childs){
+    for(i = 0 ; i < childs.length ; i++)
+        childs[i].classList.remove("table-success");
 }
 
 function cleanNastyTables(c){

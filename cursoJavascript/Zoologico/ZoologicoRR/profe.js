@@ -28,20 +28,9 @@ Modeliza el zoológico lo más completo que puedas.
 
 */
 
-var precioArea=1000;
-var precioRecinto=500;
-var precioAnimal=50;
-var precioComida=20;
-var precioEntrada=10;
-var tiempo=5000;
-var hora=0;
-var zoologicos= new Array();
-var zoologicoActivo;
-var precioEnfermedadAnimal=100;
 
 
-function comenzarTiempo()
-{
+
 	
 	setInterval(function(){
 		hora++;
@@ -50,56 +39,71 @@ function comenzarTiempo()
 				hora=0;
 		}
 		document.getElementById("hora").innerHTML="HORA:"+hora;
-		zoologicos.forEach(function(zoo)
+		try
 		{
-			zoo.areas.forEach(function(area)
+			zoos.forEach(function(zoo)
 			{
-				area.recintos.forEach(function(recinto)
-				{		
-					recinto.animales.forEach(function(animal)
-					{
-						if(hora==0 || !(hora%animal.comida))
+				zoo.areas.forEach(function(area)
+				{
+					area.recintos.forEach(function(recinto)
+					{		
+						recinto.animal.forEach(function(animal)
 						{
-							comer(recinto);
-						}	
-					});
-				});						
-			});		
-		});
+							if(hora==0 || !(hora%animal.comida))
+							{
+								comer(recinto,zoo,animal);
+							}	
+						});
+					});						
+				});		
+			});
+		}
+		catch(e)
+		{
+			console.log("zoo incompleto");
+		
+		}
 	},tiempo);
-}
+
 
 	
-	function comer(recinto)
+	function comer(recinto,zoo,animal)
 	{	
 		
-		recinto.dinero-=recinto.animales.length*precioComida;
+		recinto.dinero-=animal*precioComida;
 		if(recinto.dinero<0)
 		{
-			console.log("recinto "+recinto.nombre+" con dinero "+recinto.dinero);
+			console.log("recinto "+recinto.especie+" con dinero "+recinto.dinero);
 		}
+		zoo.dinero=dinero(zoo);
+
 	}	
 
-function venderEntradas(zoo,personas)
-{
-	try
+	function repartirDinero(dinero,zoo)
 	{
-	importe=personas*precioEntrada/dameRecintos(zoo);
-	zoo.areas.forEach(function(area)
-	{
-		area.recintos.forEach(function(recinto)
+		var importe=dinero/dameRecintos(zoo);
+		zoo.areas.forEach(function(area)
 		{
-			recinto.dinero+=importe;
+			area.recintos.forEach(function(recinto)
+			{
+				recinto.dinero+=importe;
+			});
 		});
-	});
 	}
-	catch(e)
+
+	function venderEntradas(zoo,personas)
 	{
+		try
+		{
+		repartirDinero(personas*precioEntrada,zoo);
+		}
+		catch(e)
+		{
+			console.log(e);
+		}		
 
-	}		
 
-
-}
+	}
 
 function detectarCambio(variable,elemento){
 	var variableAntigua=0;
@@ -118,24 +122,50 @@ function dinero(zoo){
 	var dinero=0;
 	zoo.areas.forEach(function(area)
 	{
+		var dineroArea=0;
 		area.recintos.forEach(function(recinto)
 		{
 			dinero+=recinto.dinero;
+			dineroArea+=recinto.dinero;
 		});
+		area.dinero=dineroArea;
 	});
+	refrescarDineroAreas();
+
+
 
 	return dinero;
+}
+
+function refrescarDineroAreas()
+{
+
+selectedZoo.areas.forEach(function(area,indice){
+	$("area_"+indice+"_dinero").innerHTML=area.dinero;
+	area.recintos.forEach(function(recinto,indice1){
+		$("recinto_"+indice1+"_dinero").innerHTML=recinto.dinero;
+	});
+	});
+	
+
 }
 
 
 function dameRecintos(zoo)
 {
-	var recintos=0;
-	zoo.areas.forEach(function(area)
+	try
 	{
-		recintos+=area.recintos.length;
-	});
-	return recintos;
+		var recintos=0;
+		zoo.areas.forEach(function(area)
+		{
+			recintos+=area.recintos.length;
+		});
+		return recintos;
+	}
+	catch(e)
+	{
+		console.log(e);
+	}
 }
 
 
@@ -143,104 +173,7 @@ function curarAnimal(recinto,animales)
 {
 	recinto.dinero-=animales*precioEnfermedadAnimal;
 }
-function agregarRecintoAArea(recinto, area){
-	area.recintos.push(recinto);
-	
-}
-
-function agregarAnimalARecinto(recinto,animal){
-	if(recinto.animales.length<recinto.capacidad)
-		recinto.animales.push(animal);
-	else
-		alert("no caben mas animales");
-}
-
-
-function agregarAreaAZoo(area, zoo)
-{
-	zoo.areas.push(area);
-	
-}
 
 
 
-
-
-function crearZoo(nombre,ubicacion,apertura,cierre,dinero)
-{
-		var zoo={
-		"nombre": nombre,
-		"ubicacion": ubicacion,
-		"areas": [],
-		"aforo": 0,
-		"apertura":apertura,
-		"cierre":cierre,
-		"dinero":dinero
-	};
-	 return zoo;
-
-}
-
-function crearUbicacion(direccion,numero, ciudad)
-{
-	
-	var ubicacion={
-		"direccion": direccion,
-		"ciudad": ciudad,
-		"numero": numero
-	};
-	return  ubicacion
-}
-
-
-var zoo1=crearZoo("zoo1",crearUbicacion("calle del Pez",1,"Madrid"),10,21,5000);
-zoologicos.push(zoo1);
-
-
-function crearArea(nombre)
-{
-	
-	var area={
-		"nombre": nombre,
-		"aforo": 0,
-		"recintos": [],
-		"dinero":0
-	}; 
-	return area;
-}
-
-
-agregarAreaAZoo(crearArea("mamiferos"),zoologicos[0]);
-function crearRecinto(nombre, aforo, capacidad,especie,dinero)
-{
-	 
-	var recinto={
-		"nombre": nombre,
-		"animales": [],
-		"aforo": aforo,
-		"capacidad": capacidad,
-		"especie": especie,
-		"dinero":dinero
-	};
-	return recinto;
-}
-
-var recinto=crearRecinto("leones","30",5,"leon",5);
-var area=zoologicos[0].areas[0];
-
-agregarRecintoAArea(recinto,area);
-function crearAnimal( especie, comida)
-{
-	
-	var animal={
-		
-		"especie": especie,
-		"comida": comida
-	};
-	return animal;
-}
-
-agregarAnimalARecinto(zoologicos[0].areas[0].recintos[0],crearAnimal("leon",4))
-
-comenzarTiempo();
 

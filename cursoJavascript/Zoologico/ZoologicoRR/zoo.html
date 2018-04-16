@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -12,7 +13,7 @@
 	<title>Zoo</title>
 </head>
 <body> 
-	<header><h1 id="dinero"></h1><h1 id="hora"></h1></header>
+	<header><h1 id="hora"></h1></header>
 	<div class="container">					
 			<label>Seleccionar zoo:</label><select id="select_zoos"><option>No existen zoos</option></select><br>			
 			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#zoos">Crear Zoo</button>
@@ -95,7 +96,7 @@
       </div>
       <div class="modal-body">
         <div class="form-group col-12 col-sm-6">
-          <label>Especie:</label><input value=10 id="especie_recinto" type="text" name="">
+          <label>Especie:</label><input id="especie_recinto" type="text" name="">
         </div>
         <div class="form-group col-12 col-sm-6">
           <label>Aforo: </label><input id="aforo_recinto" type="number" name="">
@@ -141,12 +142,14 @@
   </div>
 </div>
 <div>
+  <h2>Zoo</h2>
   <table class="table table-bordered">
       <thead>
         <tr>
           <th>Nombre</th>        
           <th>Ubicación</th>
           <th>Horario</th>
+          <th>Dinero</th>
         </tr>
       </thead>
       <tbody class="table-info">
@@ -154,16 +157,19 @@
           <td><span id="zoo_name"></span></td>
           <td><span id="zoo_ubicacion"></span></td>
           <td><span id="zoo_horario"></span></td>
+           <td><span id="zoo_dinero"></span></td>
         </tr>
       </tbody>
   </table>
 </div>
 <div>
-  <table id="table_areas" class="table table-bordered"> 
+  <h2>Áreas</h2>
+  <table id="table_areas" class="table table-bordered table-hover"> 
     <thead>
         <tr>
           <th>Nombre</th>        
-          <th>Aforo</th>         
+          <th>Aforo</th> 
+          <th>Dinero</th>      
         </tr>            
     </thead>         
     <tbody id="area_tbody">
@@ -172,14 +178,16 @@
   </table>
 </div>
 <div>
-  <table id="table_recintos" class="table table-bordered">
+  <h2>Recintos</h2>
+  <table id="table_recintos" class="table table-bordered table-hover">
     <thead>
         <tr>          
           <th>Aforo</th>
           <th>Capacidad</th>
           <th>Dinero</th>
           <th>Especie</th>          
-          <th>Cantidad</th>        
+          <th>Cantidad</th> 
+              
         </tr>    
     </thead>
     <tbody id="recinto_tbody">
