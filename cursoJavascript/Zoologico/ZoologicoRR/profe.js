@@ -51,7 +51,7 @@ Modeliza el zoológico lo más completo que puedas.
 						{
 							if(hora==0 || !(hora%animal.comida))
 							{
-								comer(recinto,zoo);
+								comer(recinto,zoo,animal);
 							}	
 						});
 					});						
@@ -67,10 +67,10 @@ Modeliza el zoológico lo más completo que puedas.
 
 
 	
-	function comer(recinto,zoo)
+	function comer(recinto,zoo,animal)
 	{	
 		
-		recinto.dinero-=recinto.animal.length*precioComida;
+		recinto.dinero-=animal*precioComida;
 		if(recinto.dinero<0)
 		{
 			console.log("recinto "+recinto.especie+" con dinero "+recinto.dinero);

@@ -31,9 +31,9 @@ $("submit_zoo").addEventListener("click", function () {
         calle = $("address").value,
         numero = $("n_address").value,
         ciudad = $("city").value;
-        $("dinero").innerHTML=dinero;
-    var ubi = createUbicacion(calle, numero, ciudad);
-    var zoo = createZoo(nombre, ubi, apertura, cierre, dinero);
+       
+    var ubi = new Ubicacion(calle, numero, ciudad);
+    var zoo = new Zoo(nombre, ubi, apertura, cierre, dinero);
     zoos.push(zoo);
     showZoos();
 });
@@ -47,7 +47,7 @@ $("submit_area").addEventListener("click", function () {
 
     if(hayDineroArea()){
         var nombre = $("name_area").value;
-        var area = createArea(nombre);
+        var area = new Area(nombre);
         selectedArea = area;
         selectedZoo.areas.push(area);
         selectedZoo.dinero-=precioArea;
@@ -65,7 +65,7 @@ $("submit_recinto").addEventListener("click", function () {
         especie = $("especie_recinto").value,
         capacidad = $("capacidad_recinto").value;              
 
-        var recinto = createRecinto(aforo, especie, capacidad);
+        var recinto = new Recinto(aforo, especie, capacidad);
         selectedArea.recintos.push(recinto);   
         selectedZoo.dinero-=precioRecinto; 
         selectedRecinto=recinto;
@@ -80,7 +80,7 @@ $("submit_animal").addEventListener("click", function () {
     var especie = $("animal_especie").value,        
         comida = $("animal_comida").value;
     if(hayDineroAnimal(comida)){     
-        var animal = createAnimal(especie,comida);
+        var animal = new Animal(especie,comida);
         selectedRecinto.animal.push(animal); 
         selectedRecinto.cantidad+=1;
         selectedZoo.dinero-=precioAnimal;   
@@ -117,30 +117,28 @@ $("select_zoos").addEventListener("change", function () {
 	showAreas( );
 
 });
-function createUbicacion (calle, numero, ciudad) {
-    var ubicacion = {
-        "calle" : calle,
-        "numero" : numero,
-        "ciudad" : ciudad
-    };
-    return ubicacion;
+function Ubicacion (calle, numero, ciudad) {
+    
+        this.calle= calle;
+        this.numero= numero;
+        this.ciudad= ciudad;
+    
 }
 
 
 
-function createZoo (nombre, ubicacion, apertura, cierre, dinero) {
-    var zoo = {
-        "nombre" : nombre,
-        "ubicacion" : ubicacion,
-        "aforo" : 0,
-        "precioEntrada" : 10,
-        "apertura" : apertura,
-        "cierre" : cierre,
-        "dinero" : dinero,
-        "areas" : [],
-        "repartido": false
-    };
-    return zoo;
+function Zoo (nombre, ubicacion, apertura, cierre, dinero) {
+    
+        this.nombre= nombre;
+        this.ubicacion= ubicacion;
+        this.aforo= 0;
+        this.precioEntrada= 10;
+        this.apertura= apertura;
+        this.cierre= cierre;
+        this.dinero= dinero;
+        this.areas= new Array();
+        this.repartido= false;
+    
 }
 
 function showZoos () {
@@ -159,14 +157,13 @@ function showZoos () {
     select.dispatchEvent(event);
 }
 
-function createArea (nombre) {
-    var area = {
-        "nombre": nombre,
-        "recintos" : [],
-        "aforo" : 0,
-        "dinero":0        
-    };
-    return area;
+function Area (nombre) {
+    
+        this.nombre= nombre;
+        this.recintos= [];
+        this.aforo= 0;
+        this.dinero=0 ;       
+   
 }
 
 function showAreas () {
@@ -200,16 +197,15 @@ function showAreas () {
 	
 }
 
-function createRecinto (aforo, especie, capacidad) {
-    var recinto = {
-        "especie": especie,
-        "aforo" : aforo,
-        "animal" : [],
-        "cantidad": 0,
-        "capacidad" : capacidad,
-        "dinero": 0
-    };
-    return recinto;
+function Recinto (aforo, especie, capacidad) {
+    
+        this.especie= especie;
+        this.aforo= aforo;
+        this.animal= new Array();
+        this.cantidad= 0;
+        this.capacidad= capacidad;
+        this.dinero=0;
+    
 }
 function showRecintos(rec){
 	cleanNastyTables(1);
@@ -255,14 +251,11 @@ function recintoSeleccionado (rec) {
     selectedRecinto = selectedArea.recintos[index];
 }
 
-function createAnimal (especie, comida) {
-    var animal = {
-        "especie" : especie,
-        "comida" : comida
-        
-    };
+function Animal (especie, comida) {
     
-    return animal;
+        this.especie= especie;
+        this.comida= comida;
+    
 }
 
 function showAnimal () {
