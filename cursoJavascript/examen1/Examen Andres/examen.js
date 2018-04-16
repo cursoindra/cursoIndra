@@ -25,7 +25,7 @@ var autores = ["Benito Perez Galdos", "Miguel de Cervantes", "Terry Pratchet", "
 var nombreSocios = ["Juan", "Saul", "Fernando", "Sergio", "Jorge", "David", "Sara", "Marta", "Raquel", "Ignacio", "Julio"];
 var tematicas = ["Amor", "Aventuras", "Naturaleza", "Historia", "Viajes"];
 var titulos = ["Harry Potter y el cáliz de fuego", "Mundo disco", "El ladron del rayo", "Temerario", "Los templarios", "Colmillo Blanco", "El código Da Vinci", "Indra libro"];
-var biblioteca = new Biblioteca();
+var biblioteca = new Biblioteca("Biblioteca Municipal");
 
 Biblioteca.prototype.añadirLibro = function(libro){
 		for(j = 0 ; j<this.secciones.length;j++){
@@ -36,7 +36,8 @@ Biblioteca.prototype.añadirLibro = function(libro){
 	}
 
 Biblioteca.prototype.dameLibroAleatorio= function (){
-		return (this.secciones[Math.floor((Math.random() * this.secciones.length))].libros.splice(Math.floor((Math.random() * this.length)),1))[0];
+		var azar = Math.floor((Math.random() * this.secciones.length));
+		return (this.secciones[azar].libros.splice(azar,1))[0];
 	};	
 
 Biblioteca.prototype.devolverLibro= function (libro){
@@ -67,7 +68,7 @@ Biblioteca.prototype.ejecutarCiclo=function(){
 	};
 Biblioteca.prototype.imprimirEstado=function(){
 		var librosSinPrestar=0;
-		var res="Biblioteca Municipal:\n";
+		var res=this.nombre+":\n";
 		for(var j = 0 ; j<this.secciones.length;j++){
 			librosSinPrestar+=this.secciones[j].libros.length;
 			res+="Sección "+this.secciones[j].nombre+"\n         Número de libros: "+this.secciones[j].libros.length+"\n";
