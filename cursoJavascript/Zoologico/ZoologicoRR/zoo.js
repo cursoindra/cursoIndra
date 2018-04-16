@@ -24,7 +24,11 @@ $("submit_zoo").addEventListener("click", function () {
         calle = $("address").value,
         numero = $("n_address").value,
         ciudad = $("city").value;
+<<<<<<< HEAD
         $("dinero").innerHTML=dinero;
+=======
+       
+>>>>>>> 84570b53a45aa65383606e788bdb8d06160b9c5e
     var ubi = new Ubicacion(calle, numero, ciudad);
     var zoo = new Zoo(nombre, ubi, apertura, cierre, dinero);
     zoos.push(zoo);
@@ -102,6 +106,7 @@ $("select_zoos").addEventListener("change", function () {
 	showAreas( );
 });
 function Ubicacion (calle, numero, ciudad) {
+<<<<<<< HEAD
     this.calle = calle;
     this.numero = numero;
     this.ciudad = ciudad;
@@ -117,6 +122,29 @@ function Zoo (nombre, ubicacion, apertura, cierre, dinero) {
     this.dinero = dinero;
     this.areas = [];
     this.repartido = false;
+=======
+    
+        this.calle= calle;
+        this.numero= numero;
+        this.ciudad= ciudad;
+    
+}
+
+
+
+function Zoo (nombre, ubicacion, apertura, cierre, dinero) {
+    
+        this.nombre= nombre;
+        this.ubicacion= ubicacion;
+        this.aforo= 0;
+        this.precioEntrada= 10;
+        this.apertura= apertura;
+        this.cierre= cierre;
+        this.dinero= dinero;
+        this.areas= new Array();
+        this.repartido= false;
+    
+>>>>>>> 84570b53a45aa65383606e788bdb8d06160b9c5e
 }
 
 function showZoos () {
@@ -134,10 +162,19 @@ function showZoos () {
 }
 
 function Area (nombre) {
+<<<<<<< HEAD
         this.nombre = nombre;
         this.recintos = [];
         this.aforo = 0;
         this.dinero = 0;       
+=======
+    
+        this.nombre= nombre;
+        this.recintos= [];
+        this.aforo= 0;
+        this.dinero=0 ;       
+   
+>>>>>>> 84570b53a45aa65383606e788bdb8d06160b9c5e
 }
 
 function showAreas () {
@@ -164,12 +201,23 @@ function showAreas () {
 }
 
 function Recinto (aforo, especie, capacidad) {
+<<<<<<< HEAD
     this.especie = especie;
     this.aforo = aforo;
     this.animal = [];
     this.cantidad = 0;
     this.capacidad = capacidad;
     this.dinero = 0;
+=======
+    
+        this.especie= especie;
+        this.aforo= aforo;
+        this.animal= new Array();
+        this.cantidad= 0;
+        this.capacidad= capacidad;
+        this.dinero=0;
+    
+>>>>>>> 84570b53a45aa65383606e788bdb8d06160b9c5e
 }
 
 function showRecintos(rec){
@@ -210,8 +258,19 @@ function recintoSeleccionado (rec) {
 }
 
 function Animal (especie, comida) {
+<<<<<<< HEAD
     this.especie = especie;
     this.comida = comida;
+=======
+    
+        this.especie= especie;
+        this.comida= comida;
+    
+}
+
+function showAnimal () {
+
+>>>>>>> 84570b53a45aa65383606e788bdb8d06160b9c5e
 }
 
 function cleanBg(childs){
