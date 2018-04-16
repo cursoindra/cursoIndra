@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Biblioteca</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+		//Clases
+		function Biblioteca(nombre, secciones, socios){ 
+		   	this.nombre = nombre, 
+		   	this.secciones = secciones, 
+		   	this.socios = socios 
+		}
+
+		function Libro(nombre, numeroPaginas, autor, tematica){ 
+		   	this.nombre = nombre,
+		   	this.numeroPaginas = numeroPaginas,
+		   	this.autor = autor,
+		   	this.tematica = tematica
+		}
+
+		function Seccion(nombre, libros){ 
+		   	this.nombre = nombre, 
+		   	this.libros = new Array() 
+		}
+
+		function Socio(nombre, numeroSocio, libros){ 
+		   	this.nombre = nombre, 
+		   	this.numeroSocio = numeroSocio,
+		   	this.libros = new Array() 
+		}
+
+		añadirLibro();
+
+		function añadirLibro(libro){
+			var secciones = ["Amor", "Aventuras", "Naturaleza","Historia","Viajes"];
+			var socios= ["Javier","Pedro","Alberto","Antonio","Carlos","Alicia","Amelia","Sergio"];
+
+			//Generar 100 socios aleatorios
+			for(i=0;i<=8;i++){
+				var sociosAleatorios = socios[Math.floor(Math.random()*socios.length)];
+			}
+
+			//Secciones aleatorias
+			for(i=0;i<5;i++){
+				var seccionesAleatorias = secciones[Math.floor(Math.random()*secciones.length)];
+			}
+		
+			biblioteca = new Biblioteca("Biblioteca",seccionesAleatorias,sociosAleatorios);
+			console.log(biblioteca);
+		}
+
+		function generarLibros(){
+			numeroAleatorio(100, 200); //Numero aleatorio de pagina
+			var autores= ["autor1","autor2","autor3","autor4","autor5","autor6","autor7"];
+			//Generar 1000 libros aleatorios
+			var libros=new Array("Titulo1", "Titulo2", "Titulo3","Titulo4", "Titulo5","Titulo6","Titulo7");
+			for(i=1;i<=7;i++){
+				var librosAleatorios = libros[Math.floor(Math.random()*libros.length)];
+			}
+			for(i=1;i<=7;i++){
+				var autoresAleatorios = autores[Math.floor(Math.random()*autores.length)];
+			}
+			libro = new Libro(librosAleatorios,numero,autoresAleatorios);
+			console.log(libro);
+		}
+		
+
+		function numeroAleatorio(min, max) {
+		  return numero=Math.round(Math.random() * (max - min) + min);
+		} 
+
+		function imprimirEstado(){
+			setInterval(function(){
+				generarLibros(); 
+			 }, 4000);
+		}
+		
+	</script>
+</head>
+<body onload="imprimirEstado()">
+
+</body>
+</html>
