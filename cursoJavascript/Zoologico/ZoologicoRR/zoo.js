@@ -15,7 +15,7 @@ var selectedZoo = null;
 
 var selectedArea = null;
 
-var selectedRecinto = null;
+var selectedRecinto =null;
 
 
 function $(id) {
@@ -108,17 +108,7 @@ function createUbicacion (calle, numero, ciudad) {
 
 
 function createZoo (nombre, ubicacion, apertura, cierre, dinero) {
-    var zoo = {
-        "nombre" : nombre,
-        "ubicacion" : ubicacion,
-        "aforo" : 0,
-        "precioEntrada" : 10,
-        "apertura" : apertura,
-        "cierre" : cierre,
-        "dinero" : dinero,
-        "areas" : []
-    };
-    return zoo;
+    var zoo = new Zoo(nombre,ubicacion,apertura,cierre,dinero);
 }
 
 function showZoos () {
@@ -138,12 +128,7 @@ function showZoos () {
 }
 
 function createArea (nombre) {
-    var area = {
-        "nombre": nombre,
-        "recintos" : [],
-        "aforo" : 0
-        
-    };
+    var area = new Area(nombre);
     return area;
 }
 
@@ -177,12 +162,7 @@ function showAreas () {
 }
 
 function createRecinto (aforo, especie, capacidad) {
-    var recinto = {
-        "especie": especie,
-        "aforo" : aforo,
-        "animal" : [],
-        "capacidad" : capacidad
-    };
+    var recinto = new Recinto(aforo,especie,capacidad,precioRecinto);
     return recinto;
 }
 function showRecintos(rec){
@@ -207,7 +187,7 @@ function showRecintos(rec){
 		cell2.innerHTML = rec[i].capacidad;
 		cell3.innerHTML = rec[i].dinero;
 		cell5.innerHTML = rec[i].especie;
-		cell6.innerHTML = rec[i].n_animal;
+		cell6.innerHTML = rec[i].animal;
 		
 	}
 }
@@ -250,3 +230,34 @@ function cleanNastyTables(c){
         el.remove();
     });
 }
+ function Zoo(nombre, ubicacion, apertura, cierre, dinero)
+        {
+            this.nombre=nombre;
+            this.ubicacion=ubicacion;
+            this.aforo=0;
+            this.precioEntrada=10;
+            this.apertura=apertura;
+            this.cierre=cierre;
+            this.dinero=dinero
+            this.areas=[];
+            
+
+        }
+ function Area(nombre)
+        {
+            this.nombre=nombre;
+            this.recintos=[];
+            this.aforo=0;
+    
+        }
+
+ function Recinto(aforo, especie, capacidad)
+        {
+            this.aforo=aforo;
+            this.especie=especie;
+            this.capacidad=capacidad
+            this.animal=[];
+            this.precioRecinto=precioRecinto;
+
+        }
+        console.log(zoo.nombre);
