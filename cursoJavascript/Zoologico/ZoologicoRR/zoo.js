@@ -6,22 +6,15 @@ var precioEntrada=10;
 var tiempo=5000;
 var hora=0;
 
-
 var precioEnfermedadAnimal=100;
-
 var zoos = new Array();
-
 var selectedZoo = null;
-
 var selectedArea = null;
-
 var selectedRecinto = null;
-
 
 function $(id) {
     return document.getElementById(id);
 }
-
 
 $("submit_zoo").addEventListener("click", function () {
     var nombre = $("name_zoo").value,
@@ -32,8 +25,8 @@ $("submit_zoo").addEventListener("click", function () {
         numero = $("n_address").value,
         ciudad = $("city").value;
         $("dinero").innerHTML=dinero;
-    var ubi = createUbicacion(calle, numero, ciudad);
-    var zoo = createZoo(nombre, ubi, apertura, cierre, dinero);
+    var ubi = new Ubicacion(calle, numero, ciudad);
+    var zoo = new Zoo(nombre, ubi, apertura, cierre, dinero);
     zoos.push(zoo);
     showZoos();
 });
@@ -44,43 +37,39 @@ setInterval(function(){
 },10);
 
 $("submit_area").addEventListener("click", function () {
-
     if(hayDineroArea()){
         var nombre = $("name_area").value;
-        var area = createArea(nombre);
+        var area = new Area(nombre);
         selectedArea = area;
         selectedZoo.areas.push(area);
         selectedZoo.dinero-=precioArea;
         showAreas();
     }else{
         alert("No hay suficiente money para crear área");
-    }
-    
+    }    
 });
 
-$("submit_recinto").addEventListener("click", function () {
-    
+$("submit_recinto").addEventListener("click", function () {    
     if (hayDineroRecinto()) {
         var aforo = $("aforo_recinto").value,        
         especie = $("especie_recinto").value,
         capacidad = $("capacidad_recinto").value;              
 
-        var recinto = createRecinto(aforo, especie, capacidad);
+        var recinto = new Recinto(aforo, especie, capacidad);
         selectedArea.recintos.push(recinto);   
         selectedZoo.dinero-=precioRecinto; 
         selectedRecinto=recinto;
         showRecintos(selectedArea.recintos);
     }else{
         alert("No hay dinero para resinto");
-    }
-    
+    }    
 });
 
 $("submit_animal").addEventListener("click", function () {
     var especie = $("animal_especie").value,        
         comida = $("animal_comida").value;
     if(hayDineroAnimal(comida)){     
-        var animal = createAnimal(especie,comida);
+        var animal = new Animal(especie,comida);
         selectedRecinto.animal.push(animal); 
         selectedRecinto.cantidad+=1;
         selectedZoo.dinero-=precioAnimal;   
@@ -96,51 +85,38 @@ $("submit_animal").addEventListener("click", function () {
 
 $("select_zoos").addEventListener("change", function () {
 	selectedZoo = $("select_zoos").value;
-
     selectedArea = null;
     selectedRecinto = null;
-
 	for(i = 0; i < zoos.length; i++){	
 		if(selectedZoo == zoos[i].nombre){
 			selectedZoo = zoos[i];					
 			break;
 		}
 	}
-
-	if (selectedZoo != null)
-	{
+	if (selectedZoo != null){
 		$("zoo_name").innerHTML = selectedZoo.nombre;
 		$("zoo_ubicacion").innerHTML = selectedZoo.ubicacion.calle +" "+ selectedZoo.ubicacion.numero +" "+ selectedZoo.ubicacion.ciudad;
 		$("zoo_horario").innerHTML = "De "+selectedZoo.apertura +" a "+ selectedZoo.cierre;
 		$("zoo_dinero").innerHTML = selectedZoo.dinero;
 	}
 	showAreas( );
-
 });
-function createUbicacion (calle, numero, ciudad) {
-    var ubicacion = {
-        "calle" : calle,
-        "numero" : numero,
-        "ciudad" : ciudad
-    };
-    return ubicacion;
+function Ubicacion (calle, numero, ciudad) {
+    this.calle = calle;
+    this.numero = numero;
+    this.ciudad = ciudad;
 }
 
-
-
-function createZoo (nombre, ubicacion, apertura, cierre, dinero) {
-    var zoo = {
-        "nombre" : nombre,
-        "ubicacion" : ubicacion,
-        "aforo" : 0,
-        "precioEntrada" : 10,
-        "apertura" : apertura,
-        "cierre" : cierre,
-        "dinero" : dinero,
-        "areas" : [],
-        "repartido": false
-    };
-    return zoo;
+function Zoo (nombre, ubicacion, apertura, cierre, dinero) {
+    this.nombre = nombre;
+    this.ubicacion = ubicacion;
+    this.aforo = 0;
+    this.precioEntrada = 10;
+    this.apertura = apertura;
+    this.cierre = cierre;
+    this.dinero = dinero;
+    this.areas = [];
+    this.repartido = false;
 }
 
 function showZoos () {
@@ -149,40 +125,31 @@ function showZoos () {
     options.forEach((el) => {
         el.remove();
     });
-
     zoos.forEach( function(zoo, index) {
         var option = document.createElement("option");
         select.appendChild(option).text = zoo.nombre;
     });
-
     event = new Event("change");
     select.dispatchEvent(event);
 }
 
-function createArea (nombre) {
-    var area = {
-        "nombre": nombre,
-        "recintos" : [],
-        "aforo" : 0,
-        "dinero":0        
-    };
-    return area;
+function Area (nombre) {
+        this.nombre = nombre;
+        this.recintos = [];
+        this.aforo = 0;
+        this.dinero = 0;       
 }
 
 function showAreas () {
 	cleanNastyTables(0);
 	var areas = selectedZoo.areas;
-
-
 	for (var i = 0 ; i < areas.length; i++) {
 		var row = $("area_tbody").insertRow();		
 		row.classList.add("area_"+i);		
 		row.addEventListener("click", function (e) {			
-			
             cleanBg($("area_tbody").children);  
             this.classList.add("table-success");   
 			areaSeleccionada(this);
-
 		});
 		// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
 		var cell1 = row.insertCell();
@@ -192,25 +159,19 @@ function showAreas () {
 		// Add some text to the new cells:
 		cell1.innerHTML = areas[i].nombre;
 		cell2.innerHTML = areas[i].aforo;
-		cell3.innerHTML = areas[i].dinero;
-		
-		
-		
-	}
-	
+		cell3.innerHTML = areas[i].dinero;		
+	}	
 }
 
-function createRecinto (aforo, especie, capacidad) {
-    var recinto = {
-        "especie": especie,
-        "aforo" : aforo,
-        "animal" : [],
-        "cantidad": 0,
-        "capacidad" : capacidad,
-        "dinero": 0
-    };
-    return recinto;
+function Recinto (aforo, especie, capacidad) {
+    this.especie = especie;
+    this.aforo = aforo;
+    this.animal = [];
+    this.cantidad = 0;
+    this.capacidad = capacidad;
+    this.dinero = 0;
 }
+
 function showRecintos(rec){
 	cleanNastyTables(1);
 	for (var i = 0 ; i < rec.length; i++) {
@@ -220,7 +181,6 @@ function showRecintos(rec){
             cleanBg($("recinto_tbody").children);			
 			this.classList.add("table-success");
 			recintoSeleccionado(this);
-
 		});
 		// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
 		var cell1 = row.insertCell();
@@ -229,44 +189,29 @@ function showRecintos(rec){
 		cell3.setAttribute("id","recinto_"+i+"_dinero");
 		var cell5 = row.insertCell();
 		var cell6 = row.insertCell();
-        
-
 		// Add some text to the new cells:
 		cell1.innerHTML = rec[i].aforo;
 		cell2.innerHTML = rec[i].capacidad;
 		cell3.innerHTML = rec[i].dinero;
 		cell5.innerHTML = rec[i].especie;
-		cell6.innerHTML = rec[i].cantidad;
-		
+		cell6.innerHTML = rec[i].cantidad;		
 	}
 }
 
 function areaSeleccionada (ar) {
 	var index = ar.classList[0].split("_")[1];
-
 	selectedArea = selectedZoo.areas[index];
-
 	showRecintos(selectedArea.recintos);
 }
 
 function recintoSeleccionado (rec) {
     var index = rec.classList[0].split("_")[1];
-
     selectedRecinto = selectedArea.recintos[index];
 }
 
-function createAnimal (especie, comida) {
-    var animal = {
-        "especie" : especie,
-        "comida" : comida
-        
-    };
-    
-    return animal;
-}
-
-function showAnimal () {
-
+function Animal (especie, comida) {
+    this.especie = especie;
+    this.comida = comida;
 }
 
 function cleanBg(childs){
@@ -274,16 +219,14 @@ function cleanBg(childs){
         childs[i].classList.remove("table-success");
 }
 
-function cleanNastyTables(c){
-		
+function cleanNastyTables(c){		
 	if(c == 0){
 		var table_a = $("area_tbody");
 		var tbody_a = [...table_a.children];		
 		tbody_a.forEach((el) => {
         el.remove();
     	});
-	}
-	
+	}	
 	var table_r = $("recinto_tbody");    
     var tbody_r = [...table_r.children];    
     tbody_r.forEach((el) => {
