@@ -14,19 +14,16 @@ Biblioteca.prototype = {
                 seccion.libros.push(libro);
         });
     },
-
     dameLibroAleatorio : function () {
         var ranSect = Math.floor(Math.random()*(this.secciones.length));
         var ranBook = Math.floor(Math.random()*(this.secciones[ranSect].libros.length));
         var book = this.secciones[ranSect].libros.splice(ranBook, 1)[0];
         return book;
     },
-
     devolverLibro : function (libro) {
         this.secciones.forEach( function (seccion) {
-            if (seccion.nombre == libro.tematica) {
+            if (seccion.nombre == libro.tematica)
                 seccion.libros.push(libro);
-            }
         });
     },
     ejecutarCiclo : function () {
