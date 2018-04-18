@@ -1,4 +1,4 @@
-package indra.bbva.curso.datos;
+package indra.bbva.curso;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class Calendario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	private int id;
+	@EmbeddedId
+	private CalendarioPK id;
 
 	private String descripcion;
 
@@ -34,11 +34,11 @@ public class Calendario implements Serializable {
 	public Calendario() {
 	}
 
-	public int getId() {
+	public CalendarioPK getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(CalendarioPK id) {
 		this.id = id;
 	}
 

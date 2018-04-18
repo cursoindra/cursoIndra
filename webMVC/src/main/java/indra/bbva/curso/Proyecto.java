@@ -1,4 +1,4 @@
-package indra.bbva.curso.datos;
+package indra.bbva.curso;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class Proyecto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	private int id;
+	@EmbeddedId
+	private ProyectoPK id;
 
 	private String descripcion;
 
@@ -27,11 +27,11 @@ public class Proyecto implements Serializable {
 	public Proyecto() {
 	}
 
-	public int getId() {
+	public ProyectoPK getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(ProyectoPK id) {
 		this.id = id;
 	}
 

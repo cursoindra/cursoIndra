@@ -1,18 +1,17 @@
-package indra.bbva.curso.datos;
+package indra.bbva.curso;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Set;
 
 
 /**
- * The persistent class for the TIPO_CALENDARIO database table.
+ * The persistent class for the TIPO_EVENTO database table.
  * 
  */
 @Entity
-@Table(name="TIPO_CALENDARIO")
-@NamedQuery(name="TipoCalendario.findAll", query="SELECT t FROM TipoCalendario t")
-public class TipoCalendario implements Serializable {
+@Table(name="TIPO_EVENTO")
+@NamedQuery(name="TipoEvento.findAll", query="SELECT t FROM TipoEvento t")
+public class TipoEvento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -21,7 +20,7 @@ public class TipoCalendario implements Serializable {
 
 	private String descripcion;
 
-	public TipoCalendario() {
+	public TipoEvento() {
 	}
 
 	public int getId() {

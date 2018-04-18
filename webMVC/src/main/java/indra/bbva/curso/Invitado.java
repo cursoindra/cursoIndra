@@ -1,4 +1,4 @@
-package indra.bbva.curso.datos;
+package indra.bbva.curso;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -14,17 +14,17 @@ import javax.persistence.*;
 public class Invitado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	private int id;
+	@EmbeddedId
+	private InvitadoPK id;
 
 	public Invitado() {
 	}
 
-	public int getId() {
+	public InvitadoPK getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(InvitadoPK id) {
 		this.id = id;
 	}
 

@@ -1,4 +1,4 @@
-package indra.bbva.curso.datos;
+package indra.bbva.curso;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -27,21 +27,8 @@ public class Publicacione implements Serializable {
 	private String url;
 
 	//bi-directional many-to-many association to DatosPersonale
-	@ManyToMany
-	@JoinTable(
-		name="DATOS_PERSONALES_LIKE_PUBLICACIONES"
-		, joinColumns={
-			@JoinColumn(name="PUBLICACIONES_ID")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="DATOS_PERSONALES_ID")
-			}
-		)
+	@ManyToMany(mappedBy="publicaciones1")
 	private Set<DatosPersonale> datosPersonales1;
-
-	//bi-directional many-to-many association to DatosPersonale
-	@ManyToMany(mappedBy="publicaciones2")
-	private Set<DatosPersonale> datosPersonales2;
 
 	//bi-directional many-to-many association to Comentario
 	@ManyToMany
@@ -55,6 +42,19 @@ public class Publicacione implements Serializable {
 			}
 		)
 	private Set<Comentario> comentarios;
+
+	//bi-directional many-to-many association to DatosPersonale
+	@ManyToMany
+	@JoinTable(
+		name="DATOS_PERSONALES_LIKE_PUBLICACIONES"
+		, joinColumns={
+			@JoinColumn(name="PUBLICACIONES_ID")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="DATOS_PERSONALES_ID")
+			}
+		)
+	private Set<DatosPersonale> datosPersonales2;
 
 	public Publicacione() {
 	}
@@ -99,20 +99,20 @@ public class Publicacione implements Serializable {
 		this.datosPersonales1 = datosPersonales1;
 	}
 
-	public Set<DatosPersonale> getDatosPersonales2() {
-		return this.datosPersonales2;
-	}
-
-	public void setDatosPersonales2(Set<DatosPersonale> datosPersonales2) {
-		this.datosPersonales2 = datosPersonales2;
-	}
-
 	public Set<Comentario> getComentarios() {
 		return this.comentarios;
 	}
 
 	public void setComentarios(Set<Comentario> comentarios) {
 		this.comentarios = comentarios;
+	}
+
+	public Set<DatosPersonale> getDatosPersonales2() {
+		return this.datosPersonales2;
+	}
+
+	public void setDatosPersonales2(Set<DatosPersonale> datosPersonales2) {
+		this.datosPersonales2 = datosPersonales2;
 	}
 
 }

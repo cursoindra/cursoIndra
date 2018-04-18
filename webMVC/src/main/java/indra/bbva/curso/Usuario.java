@@ -1,4 +1,4 @@
-package indra.bbva.curso.datos;
+package indra.bbva.curso;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -22,6 +22,10 @@ public class Usuario implements Serializable {
 	private String clave;
 
 	private String usuario;
+
+	//bi-directional many-to-one association to DatosPersonale
+	@OneToMany(mappedBy="usuario")
+	private Set<DatosPersonale> datosPersonales;
 
 	//bi-directional many-to-many association to Role
 	@ManyToMany
@@ -61,6 +65,28 @@ public class Usuario implements Serializable {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+
+	public Set<DatosPersonale> getDatosPersonales() {
+		return this.datosPersonales;
+	}
+
+	public void setDatosPersonales(Set<DatosPersonale> datosPersonales) {
+		this.datosPersonales = datosPersonales;
+	}
+
+	public DatosPersonale addDatosPersonale(DatosPersonale datosPersonale) {
+		getDatosPersonales().add(datosPersonale);
+		datosPersonale.setUsuario(this);
+
+		return datosPersonale;
+	}
+
+	public DatosPersonale removeDatosPersonale(DatosPersonale datosPersonale) {
+		getDatosPersonales().remove(datosPersonale);
+		datosPersonale.setUsuario(null);
+
+		return datosPersonale;
 	}
 
 	public Set<Role> getRoles() {
