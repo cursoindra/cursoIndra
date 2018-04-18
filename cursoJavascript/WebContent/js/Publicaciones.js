@@ -2,7 +2,7 @@
 
 class Publicaciones{
 
-	constructor(id,titulo,contenido,url){
+	constructor(id=0,titulo,contenido,url){
 		this.id=id;
 		this.titulo=titulo;
 		this.contenido=contenido;
@@ -13,7 +13,7 @@ class Publicaciones{
 class Comentarios{
 
 
-	constructor(id,texto)
+	constructor(id=0,texto)
 	{
 		this.id=id;
 		this.texto=texto;
