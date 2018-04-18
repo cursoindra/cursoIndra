@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class Proyecto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private ProyectoPK id;
+	@Id
+	private int id;
 
 	private String descripcion;
 
@@ -27,11 +27,11 @@ public class Proyecto implements Serializable {
 	public Proyecto() {
 	}
 
-	public ProyectoPK getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(ProyectoPK id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

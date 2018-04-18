@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class Calendario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private CalendarioPK id;
+	@Id
+	private int id;
 
 	private String descripcion;
 
@@ -34,11 +34,11 @@ public class Calendario implements Serializable {
 	public Calendario() {
 	}
 
-	public CalendarioPK getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(CalendarioPK id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
