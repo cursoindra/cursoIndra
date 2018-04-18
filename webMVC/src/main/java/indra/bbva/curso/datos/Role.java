@@ -21,18 +21,6 @@ public class Role implements Serializable {
 
 	private String rol;
 
-	//bi-directional many-to-one association to Calendario
-	@OneToMany(mappedBy="role")
-	private Set<Calendario> calendarios;
-
-	//bi-directional many-to-one association to Grupo
-	@OneToMany(mappedBy="role")
-	private Set<Grupo> grupos;
-
-	//bi-directional many-to-many association to Usuario
-	@ManyToMany(mappedBy="roles")
-	private Set<Usuario> usuarios;
-
 	public Role() {
 	}
 
@@ -50,58 +38,6 @@ public class Role implements Serializable {
 
 	public void setRol(String rol) {
 		this.rol = rol;
-	}
-
-	public Set<Calendario> getCalendarios() {
-		return this.calendarios;
-	}
-
-	public void setCalendarios(Set<Calendario> calendarios) {
-		this.calendarios = calendarios;
-	}
-
-	public Calendario addCalendario(Calendario calendario) {
-		getCalendarios().add(calendario);
-		calendario.setRole(this);
-
-		return calendario;
-	}
-
-	public Calendario removeCalendario(Calendario calendario) {
-		getCalendarios().remove(calendario);
-		calendario.setRole(null);
-
-		return calendario;
-	}
-
-	public Set<Grupo> getGrupos() {
-		return this.grupos;
-	}
-
-	public void setGrupos(Set<Grupo> grupos) {
-		this.grupos = grupos;
-	}
-
-	public Grupo addGrupo(Grupo grupo) {
-		getGrupos().add(grupo);
-		grupo.setRole(this);
-
-		return grupo;
-	}
-
-	public Grupo removeGrupo(Grupo grupo) {
-		getGrupos().remove(grupo);
-		grupo.setRole(null);
-
-		return grupo;
-	}
-
-	public Set<Usuario> getUsuarios() {
-		return this.usuarios;
-	}
-
-	public void setUsuarios(Set<Usuario> usuarios) {
-		this.usuarios = usuarios;
 	}
 
 }
