@@ -1,38 +1,29 @@
-package indra.bbva.curso;
+package indra.bbva.curso.datos;
 
 import java.io.Serializable;
 import javax.persistence.*;
 
 /**
- * The primary key class for the CALENDARIOS database table.
+ * The primary key class for the GRUPOS database table.
  * 
  */
 @Embeddable
-public class CalendarioPK implements Serializable {
+public class GrupoPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
 	private int id;
 
-	@Column(name="TIPO_CALENDARIO_ID", insertable=false, updatable=false)
-	private int tipoCalendarioId;
-
 	@Column(name="ROLES_ID", insertable=false, updatable=false)
 	private int rolesId;
 
-	public CalendarioPK() {
+	public GrupoPK() {
 	}
 	public int getId() {
 		return this.id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getTipoCalendarioId() {
-		return this.tipoCalendarioId;
-	}
-	public void setTipoCalendarioId(int tipoCalendarioId) {
-		this.tipoCalendarioId = tipoCalendarioId;
 	}
 	public int getRolesId() {
 		return this.rolesId;
@@ -45,13 +36,12 @@ public class CalendarioPK implements Serializable {
 		if (this == other) {
 			return true;
 		}
-		if (!(other instanceof CalendarioPK)) {
+		if (!(other instanceof GrupoPK)) {
 			return false;
 		}
-		CalendarioPK castOther = (CalendarioPK)other;
+		GrupoPK castOther = (GrupoPK)other;
 		return 
 			(this.id == castOther.id)
-			&& (this.tipoCalendarioId == castOther.tipoCalendarioId)
 			&& (this.rolesId == castOther.rolesId);
 	}
 
@@ -59,7 +49,6 @@ public class CalendarioPK implements Serializable {
 		final int prime = 31;
 		int hash = 17;
 		hash = hash * prime + this.id;
-		hash = hash * prime + this.tipoCalendarioId;
 		hash = hash * prime + this.rolesId;
 		
 		return hash;
