@@ -21,6 +21,10 @@ public class TipoCalendario implements Serializable {
 
 	private String descripcion;
 
+	//bi-directional many-to-one association to Calendario
+	@OneToMany(mappedBy="tipoCalendario")
+	private Set<Calendario> calendarios;
+
 	public TipoCalendario() {
 	}
 
@@ -38,6 +42,28 @@ public class TipoCalendario implements Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public Set<Calendario> getCalendarios() {
+		return this.calendarios;
+	}
+
+	public void setCalendarios(Set<Calendario> calendarios) {
+		this.calendarios = calendarios;
+	}
+
+	public Calendario addCalendario(Calendario calendario) {
+		getCalendarios().add(calendario);
+		calendario.setTipoCalendario(this);
+
+		return calendario;
+	}
+
+	public Calendario removeCalendario(Calendario calendario) {
+		getCalendarios().remove(calendario);
+		calendario.setTipoCalendario(null);
+
+		return calendario;
 	}
 
 }

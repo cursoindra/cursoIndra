@@ -1,13 +1,7 @@
 package indra.bbva.curso.datos;
 
 import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 /**
@@ -20,8 +14,8 @@ import javax.persistence.Table;
 public class Grupo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	private int id;
+	@EmbeddedId
+	private GrupoPK id;
 
 	private String descripcion;
 
@@ -33,11 +27,11 @@ public class Grupo implements Serializable {
 	public Grupo() {
 	}
 
-	public int getId() {
+	public GrupoPK getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(GrupoPK id) {
 		this.id = id;
 	}
 
