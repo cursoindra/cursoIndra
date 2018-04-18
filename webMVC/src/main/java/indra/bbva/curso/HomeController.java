@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import indra.bbva.curso.datos.Agenda;
+
 /**
  * Handles requests for the application home page.
  */

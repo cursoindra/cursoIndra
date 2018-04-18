@@ -1,4 +1,4 @@
-package indra.bbva.curso;
+package indra.bbva.curso.datos;
 
 import java.io.Serializable;
 import javax.persistence.*;

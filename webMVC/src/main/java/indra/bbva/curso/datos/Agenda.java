@@ -1,4 +1,4 @@
-package indra.bbva.curso;
+package indra.bbva.curso.datos;
 
 public class Agenda {
 	
