@@ -38,13 +38,14 @@ var secciones=["Amor","Aventuras","Naturaleza","Historia","Viajes"];
 		},
 		ejecutarCiclo:function()
 		{
-			
+			alert(this)
 			for(var i=0;i<this.socios.length;i++)
 			{
 				this.socios[i].ejecutarCiclo()
 			}
 				
 		},
+		
 		imprimirEstado:function()
 		{
 			var num=0;
@@ -58,7 +59,7 @@ var secciones=["Amor","Aventuras","Naturaleza","Historia","Viajes"];
         	console.log("Total de libros prestados a los socios: " + (1000 - num) + "\n\n");  
 		}
 
-	}
+	};
 
 	function Libro(nombre,num_pag,autor,tematica)
 	{
@@ -66,20 +67,20 @@ var secciones=["Amor","Aventuras","Naturaleza","Historia","Viajes"];
 		this.num_pag=num_pag;
 		this.autor=autor;
 		this.tematica=tematica;
-	}
+	};
 
 	function Seccion(nombre)
 	{
 		this.nombre=nombre;
 		this.libros=new Array();
-	}
+	};
 
 	function Socio(nombre,num_soc)
 	{
 		this.nombre=nombre;
 		this.num_soc=num_soc;
 		this.libros=new Array();
-	}
+	};
 
 	Socio.prototype={
 		ejecutarCiclo:function()
@@ -97,7 +98,7 @@ var secciones=["Amor","Aventuras","Naturaleza","Historia","Viajes"];
 			
 			}
 			
-		}
+		};
 	
 
 
