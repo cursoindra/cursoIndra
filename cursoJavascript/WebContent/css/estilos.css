@@ -1,4 +1,4 @@
-  .fa {
+footer .fa {
     padding: 20px;
     font-size: 30px;
     width: 65px;
@@ -44,3 +44,39 @@
   .like:link {
     text-decoration: none;
   }
+
+
+
+.mes th,
+.mes td,
+.mes caption {
+  font: normal 23px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 6px 4px;
+}
+
+.mes .fa{
+  margin: 0 25px;
+}
+
+.tabla_mes {
+  border-spacing: 3px;
+  empty-cells: hide;
+}
+
+.mes td {
+  text-align: center;
+  cursor: pointer;
+}
+
+.mes th {
+  color: #999;
+}
+
+.mes caption.titulo {
+  text-align: left;
+  font-size: 30px;
+  caption-side: top;
+  color: #17a2b8;
+  font-weight: bold; 
+  text-align: center;
+}
