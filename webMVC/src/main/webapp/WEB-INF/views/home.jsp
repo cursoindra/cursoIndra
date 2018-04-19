@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>Home</title>
-	
+	<script src="/curso/resources/scripts/script.js"></script>
 	
 </head>
 <body>
@@ -11,6 +11,6 @@
 	Hello world!  
 </h1>
 
-<h1>  ${texto}.</h1>
+<button onclick="grabar()">enviar</button>
 </body>
 </html>
