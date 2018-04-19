@@ -1,3 +1,15 @@
+$(document).ready(function () {
+    $('#submit_register').click(function() {
+      checked = $("input[type=checkbox]:checked").length;
+
+      if(!checked) {
+        alert("Debes seleccionar al menos un rol.");
+        return false;
+      }
+
+    });
+});
+
 function reg() {
   window.captureEvents(Event.SUBMIT);
   window.onsubmit = carga;
