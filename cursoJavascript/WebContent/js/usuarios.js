@@ -17,10 +17,11 @@ class Datos_Personales{
 
 class Usuario{
 
-	constructor(usuario,clave,id=0){
+	constructor(usuario,clave,rol,id=0){
 
 		this.usuario=usuario;
 		this.clave=clave;
 		this.id=id;
+		this.rol=rol;
 	}
 }

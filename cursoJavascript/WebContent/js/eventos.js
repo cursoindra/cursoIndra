@@ -34,3 +34,11 @@ class Calendario{
 		this.rol_id = rol;
 	}
 }
+
+class Agenda{
+	constructor(direccion, nombre, telefono){
+		this.direccion=direccion;
+		this.nombre=nombre;
+		this.telefono=telefono;
+	}
+}

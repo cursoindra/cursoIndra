@@ -2,18 +2,19 @@
 
 class Publicaciones{
 
-	constructor(id=0,titulo,contenido,url){
+	constructor(titulo,contenido,url,comentarios,id=0){
 		this.id=id;
 		this.titulo=titulo;
 		this.contenido=contenido;
 		this.url=url;
+		this.comentarios=comentarios;
 
 	}
 }
 class Comentarios{
 
 
-	constructor(id=0,texto)
+	constructor(texto,id=0)
 	{
 		this.id=id;
 		this.texto=texto;

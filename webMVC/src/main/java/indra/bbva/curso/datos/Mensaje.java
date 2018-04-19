@@ -2,6 +2,7 @@ package indra.bbva.curso.datos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.Date;
 
 
@@ -15,8 +16,8 @@ import java.util.Date;
 public class Mensaje implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	private int id;
+	@EmbeddedId
+	private MensajePK id;
 
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
@@ -38,11 +39,11 @@ public class Mensaje implements Serializable {
 	public Mensaje() {
 	}
 
-	public int getId() {
+	public MensajePK getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(MensajePK id) {
 		this.id = id;
 	}
 
