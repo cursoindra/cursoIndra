@@ -1,0 +1,61 @@
+*
+
+Vamos a realizar una biblioteca 
+
+1) Crea la clase Biblioteca, la cual deberá tener:
+	- Nombre (String)
+	- Secciones (Array)
+	- Socios (Array)
+
+2) Crea la clase Libro, la cual deberá tener:
+	- Nombre (String)
+	- Número de páginas (Number)
+	- Autor (String)
+	- Temática (String) (Puede ser Amor, Aventuras, Naturaleza, Historia o Viajes)
+
+3) Crea la clase Sección (para la biblioteca) que tendrá:
+	- Nombre (String)
+	- Libros (Array)
+
+5) Crea la clase Socio que tendrá:
+	- Nombre (String)
+	- Numero de socio (Number)
+	- Libros (Array)
+
+6) Instancia una nueva biblioteca
+Añade 5 seciones a la biblioteca: Amor, Aventuras, Naturaleza, Historia, Viajes
+Añade 100 socios aleatorios a la biblioteca
+Genera 1000 libros aleatoriamente y añádelos a la biblioteca.
+Para ello haz uso de una función añadirLibro(libro) que deberá estar en el objeto biblioteca.
+Los libros deberán colocarse en la sección apropiada según su temática.
+
+7) Añade el método ejecutarCiclo() dentro de un socio
+En cada ciclo un socio dejará los libros que tenía alquilados y cogerá varios (aleatorio entre 1-3) de forma aleatoria.
+Para coger libros deberá hacer uso de una funcion de Biblioteca llamada dameLibroAleatorio();
+Para dejar libros deberá hacer uso de una función de Biblioteca llamada devolverLibro(libro);
+
+8) Realiza la función ejecutarCiclo para la biblioteca
+La función ejecutarCiclo de biblioteca, llamará a ejecutar ciclo de todos sus socios
+
+8) Crea un intervalo que se encargue de llamar a ejecutarCiclo de biblioteca cada segundo
+Crea una función imprimirEstado en biblioteca, que se encargue de imprimir el estado de toda la biblioteca.
+
+Por ejemplo:
+
+Biblioteca Municipal:
+
+Sección Amor
+	Numero de libros: 80
+Sección Aventuras
+	Numero de libros: 80
+Sección Naturaleza
+	Numero de libros: 80
+Sección Historia
+	Numero de libros: 80
+Sección Viajes
+	Numero de libros: 80
+
+Total de libros en la biblioteca: 400
+Total de libros prestados a los socios: 600
+
+*/

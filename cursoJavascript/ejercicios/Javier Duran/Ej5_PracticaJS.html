@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ej 5 Practica</title>
+	<script type="text/javascript">
+
+//function vaciarPapelera(texto) 
+    // Esta función debe recibir texto y convertirlo a un array y 
+    //devolverlo habiéndole quitado los elementos que sean un asterisco (*)
+    // Por ejeplo:
+    // vaciarPapelera(a1*5) 
+    // debe devolver:
+    // ['a',1,5]
+
+		function vaciarPapelera(){
+			var cadena = document.getElementById('cadena').value;
+			var arrayCadena = cadena.split("");
+
+			for (j = 0; j < arrayCadena.length; j++){
+				if (arrayCadena[j]=="*"){
+					arrayCadena.splice(j,1);
+					--j;
+				}
+			}
+			document.getElementById('h2').innerHTML = arrayCadena;
+
+			str = arrayCadena.join([''])
+			document.getElementById('h3').innerHTML = str;
+		}
+
+//function agruparElementos(texto) 
+    // Esta función debbe recibir un texto y convertirlo a 
+    //un array con números y letras y devolverlo habiendo agrupado 
+    //los elementos
+    // En primer lugar se deben encontrar números, depués letras. 
+    //El orden dentro de cada grupo no importa.
+    // Por ejemplo: 
+    // agruparElementos(Bba423J) 
+    // debe devolver:
+    // [4,2,3, 'B', 'a', 'J']
+
+		function agruparElementos(){
+			var cadena = document.getElementById('cadena').value;
+			var arrayCadena = cadena.split("");
+			var arrayCadena2 = [];
+			for (i = 0; i < arrayCadena.length; i++) {
+				if (!isNaN(arrayCadena[i])){
+					arrayCadena2.unshift(arrayCadena[i]);
+				}else{
+					arrayCadena2.push(arrayCadena[i]);
+				}
+			}
+			document.getElementById('h4').innerHTML = arrayCadena2;
+		//  document.getElementById('h4').innerHTML = arrayCadena.sort; 
+		// (Esto hace lo mismo que toda la función)
+		}
+
+//function ponerBonitasLasLetras(texto) 
+    // Esta función debe recibir un texto y convertirlo a un array de números
+    // y letras y devolverlo con las letras vocales en mayúsculas 
+    // y las consonantes en minúsculas. Los números no deben ser tratados.
+    // Por ejemplo:
+    // ponerBonitasLasLetras([157aJpE])
+    // debe devolver:
+    // [1,5,7,'A','j','p','E']
+
+    var objet={"nombre":"pepe","apellido":"garcia","edad":67}
+
+    	function ponerBonitasLasLetras(){
+    		var cadena = document.getElementById('cadena').value;
+			var arrayCadena = cadena.split("");
+			for (i = 0; i < arrayCadena.length; i++){
+				if (arrayCadena[i] == 'a' || 'e' || 'i' || 'o' || 'u' || 'A' || 'E' || 'I' || 'O' || 'U'){
+					console.log("Vocales");
+				}else{
+					console.log("Consonantes");
+				}
+			}
+			document.getElementById('h5').innerHTML = arrayCadena;
+    	}
+	</script>
+</head>
+<body>
+	<input type="text" id="cadena">
+	<input type="button" value="Vaciar papelera" onclick="vaciarPapelera()">
+	<input type="button" value="Agrupar elementos" onclick="agruparElementos()">
+	<input type="button" value="Letras bonitas" onclick="ponerBonitasLasLetras()">
+	<p id="h2"></p>
+	<p id="h3"></p>
+	<p id="h4"></p>
+	<p id="h5"></p>
+
+</body>
+</html>

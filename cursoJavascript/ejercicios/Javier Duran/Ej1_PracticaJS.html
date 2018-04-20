@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ej 1 Practica</title>
+	<script type="text/javascript">
+		
+		function calculo(){
+			var letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+			dni = document.getElementById('dni').value;
+			var posicion = dni % 23;
+			var resultado = letras.substring(posicion, posicion+1)
+			document.getElementById('h1').innerHTML=resultado;
+		}
+	</script>
+</head>
+<body>
+		<input type="text" maxlength="8" id="dni">
+		<input type="button" value="Calcular" onclick="calculo()">
+		<h1 id="h1"></h1>
+</body>
+</html>

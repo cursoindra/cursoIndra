@@ -1,0 +1,32 @@
+<!--TRWAGMYFPDXBNJZSQVHLCKE-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calcular letra DNI</title>
+	<script type="text/javascript">
+		var letras = ["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"];
+		function calcular(){
+			var num = document.getElementById("numero").value;
+			var pos = num % 23;
+			if(!isNaN(pos)){
+				if(num.length == 8){
+					if(num > 0)
+						document.getElementById("letra").value = letras[pos];
+					else
+						alert("El numero introducido debe ser positivo");
+				}
+				else
+					alert("El numero introducido debe tener 8 digitos");
+			}
+			else
+				alert("No has introducido un numero");
+		}
+	</script>
+</head>
+<body>
+	Introduce numero: <input type="text" id="numero">
+	<input type="text" id="letra">
+	<button onclick="calcular()">Calcular</button>
+</body>
+</html>

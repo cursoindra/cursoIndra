@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+Manifest-Version: 1.0
+Built-By: jduranm
+Build-Jdk: 1.8.0_161
+Created-By: Maven Integration for Eclipse
+
+=======
+Manifest-Version: 1.0
+Built-By: jgomezmor
+Build-Jdk: 1.8.0_161
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> 109ffbe2209e896ed42a1510e50a397789f49f9a

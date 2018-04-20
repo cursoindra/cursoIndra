@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="images/indra.ico" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, maximum-scale=1" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/estilos.css" type="text/css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/calendario.js" defer="true"></script>
+	<title>Red Social Indra</title>
+</head>
+<body >
+	<div class="container-fluid">	
+		<header class="row py-2" style="background-color: #00b0ca;">
+				<nav class="navbar navbar-expand-lg col-lg-12 navbar-light ">
+					 <a href="#"><img src="https://login.indraweb.net/logon/themes/Default/custom_media/logo.png"></a>
+					  <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+					    <span class="navbar-toggler-icon"></span>
+					  </button>
+					 <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+					    <ul class="navbar-nav mt-2 mt-lg-0  text-right ">
+					      <li class="nav-item active">
+					        <a class="nav-link text-white font-weight-bold" href="index.html">Home <span class="sr-only">(current)</span></a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link text-white font-weight-bold" href="calendar.html">Calendario</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link  text-white font-weight-bold" href="noticias.html">Noticias</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link  text-white font-weight-bold " href="login.html">Login</a>
+					      </li>
+					    </ul>				    
+					 </div>
+				</nav>
+		</header>
+		<section class="row justify-content-center mt-5">
+			<article id="calend" class="col-lg-5 col-sm-10 m-0 col-sm-10 mes"></article>
+			<article class="col-lg-4 col-sm-10 m-0 col-sm-10 mr-lg-5 mt-3 mt-lg-0">
+				<table class="table table-striped ml-lg-5">
+				    <thead class="text-white">
+				      <tr style="background-color: #00b0ca;"">
+				        <th>Hora</th>
+				        <th>Evento</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <tr>
+				        <td>9:00</td>
+				        <td>asdasdasd</td>
+				      </tr>
+				      <tr>
+				        <td>11:00</td>
+				        <td>Masdasdasdoe</td>
+				      </tr>
+				      <tr>
+				        <td>13:00</td>
+				        <td>asdasdasdas</td>
+				      </tr>
+				    </tbody>
+				 </table>
+			</article>
+			<article class="col-sm-10 col-lg-10 mt-lg-5">
+				<div class="card">
+					<header class="card-header">
+						<h3 class="card-title text-info">Titulo</h3>
+					</header>
+					<p style="text-indent: 15px; text-align: justify;" class=" p-3 card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<footer class="text-right m-0 p-0">
+						<i class="fa fa-edit m-0 p-0"></i><i class="fa fa-trash m-0 p-0"></i>
+					</footer>
+				</div>
+			</article>
+		</section>
+	</div>
+	<footer class="row justify-content-between bg-dark m-0 py-5 mt-5">
+		<div class="col-lg-5 align-self-center">
+			<ul style="list-style: none;" class="text-white p-0 pt-3 text-center">
+				<li>Contacto</li>
+				<li>Blog</li>
+				<li>Mapa del sitio</li>
+			</ul>
+		</div>
+		<div class="col-lg-5 align-self-center">
+			<ul class="text-center p-0">
+				<li class="fa fa-facebook"></li>
+				<li class="fa fa-twitter"></li>
+				<li class="fa fa-instagram"></li>
+				<li class="fa fa-linkedin"></li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>

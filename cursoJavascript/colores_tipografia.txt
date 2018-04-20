@@ -1,0 +1,16 @@
+#ff1079 rosa
+#F61078 otro rosa
+#A8A8A8 gris oscuro
+#fbb900 amarillo
+#DDD gris claro
+#adadad gris logos
+#333-#444 negro letra
+#000 negro fondo
+#0072c6	azul link
+#663399 link visitado
+#999 fondo footer gris
+#00B0CA azul botones
+#4d4d4d negro footer
+
+NeoSans-n7, NeoSans, Arial, Helvetica, sans-serif
+Arial, Helvetica, sans-serif
