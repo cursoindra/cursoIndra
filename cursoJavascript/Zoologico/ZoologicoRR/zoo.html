@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>	
+  <script type="text/javascript" src="zoo.js" defer></script>
+  <script type="text/javascript" src="script.js" defer></script>
+   <script type="text/javascript" src="profe.js" defer></script>
+	<title>Zoo</title>
+</head>
+<body> 
+	<header><h1 id="hora"></h1></header>
+	<div class="container">					
+			<label>Seleccionar zoo:</label><select id="select_zoos"><option>No existen zoos</option></select><br>			
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#zoos">Crear Zoo</button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#areas">Crear Area</button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#recintos">Crear Recinto</button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#animales">Comprar Animal</button>
+
+<!-- Modal -->
+<div id="zoos" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        <h4 class="modal-title">Crear Zoo</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group col-12 col-sm-6">
+          <label>Nombre: </label><input id="name_zoo" type="" name="name_zoo">
+        </div>
+        <div class="form-group col-12 col-sm-6">
+          <label>Hora Apertura: </label><input id="open" type="number" name="open">
+        </div>
+        <div class="form-group col-12 col-sm-6">
+          <label>Hora Cierre: </label><input id="close" type="number" name="close">
+        </div>
+        <div class="form-group col-12 col-sm-6">
+          <label>Inversión:</label><input id="money" type="number" name="money">
+        </div>
+        <div class="form-group col-12 col-sm-6">
+          <label>Calle:</label><input id="address" type="text" name="address">
+        </div>        
+        <div class="form-group col-12 col-sm-6">
+          <label>Número:</label><input id="n_address" type="number" name="n_address">
+        </div>
+        <div class="form-group col-12 col-sm-6">
+          <label>Ciudad:</label><input id="city" type="text" name="city">
+        </div>        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button id="submit_zoo" type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div id="areas" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        <h4 class="modal-title">Crear Area</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group col-12 col-sm-6">
+          <label>Nombre: </label><input id="name_area" type="" name="">
+        </div>       
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button id="submit_area" type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div id="recintos" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        <h4 class="modal-title">Crear Recinto</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group col-12 col-sm-6">
+          <label>Especie:</label><input id="especie_recinto" type="text" name="">
+        </div>
+        <div class="form-group col-12 col-sm-6">
+          <label>Aforo: </label><input id="aforo_recinto" type="number" name="">
+        </div>        
+                
+        <div class="form-group col-12 col-sm-6">
+          <label>Capacidad:</label><input id="capacidad_recinto" type="number" name="money">
+        </div>        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button id="submit_recinto" type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div id="animales" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        <h4 class="modal-title">Crear Recinto</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group col-12 col-sm-6">
+          <label>Especie:</label><input id="animal_especie" type="text" name="">
+        </div>
+           
+        <div class="form-group col-12 col-sm-6">
+          <label>Comida:</label><input id="animal_comida" type="number" name="money">
+        </div>          
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button id="submit_animal" type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <h2>Zoo</h2>
+  <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>        
+          <th>Ubicación</th>
+          <th>Horario</th>
+          <th>Dinero</th>
+        </tr>
+      </thead>
+      <tbody class="table-info">
+        <tr>
+          <td><span id="zoo_name"></span></td>
+          <td><span id="zoo_ubicacion"></span></td>
+          <td><span id="zoo_horario"></span></td>
+           <td><span id="zoo_dinero"></span></td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+<div>
+  <h2>Áreas</h2>
+  <table id="table_areas" class="table table-bordered table-hover"> 
+    <thead>
+        <tr>
+          <th>Nombre</th>        
+          <th>Aforo</th> 
+          <th>Dinero</th>      
+        </tr>            
+    </thead>         
+    <tbody id="area_tbody">
+      
+    </tbody>
+  </table>
+</div>
+<div>
+  <h2>Recintos</h2>
+  <table id="table_recintos" class="table table-bordered table-hover">
+    <thead>
+        <tr>          
+          <th>Aforo</th>
+          <th>Capacidad</th>
+          <th>Dinero</th>
+          <th>Especie</th>          
+          <th>Cantidad</th> 
+              
+        </tr>    
+    </thead>
+    <tbody id="recinto_tbody">
+      
+    </tbody>
+  </table>
+</div>
+	</div>
+
+	<footer></footer>
+</body>
+</html>
