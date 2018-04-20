@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/estilos.css" type="text/css">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/register.js"></script>
 	<style type="text/css">
 	*[class="form-horizontal"] {
    		max-width: 700px;
@@ -20,22 +21,8 @@
 	  max-width:180px;
 }
 	</style>
-	<script type="text/javascript">
-		function readURL(input) {
-          	if (input.files && input.files[0]) {
-              	var reader = new FileReader();
-
-              	reader.onload = function (e) {
-                  	$('#image')
-                      	.attr('src', e.target.result);
-              	};
-
-              	reader.readAsDataURL(input.files[0]);
-          	}
-  	     }
-	</script>
 </head>
-<body>
+<body onload="reg();">
 	<div class="container-fluid">
 				<header class="row py-2" style="background-color: #00b0ca;">
 			<nav class="navbar navbar-expand-lg col-lg-12 navbar-light">
@@ -64,7 +51,7 @@
 		<br>
 	</div>
 	<div class="container-fluid">
-            <form class="form-horizontal">
+            <form name="formulario" class="form-horizontal">
                 <h3>Dar de alta usuario</h3>
                 <div class="form-group">
                     <label for="id" class="col-sm-5 control-label">ID (Número de identificación)</label>
@@ -76,19 +63,19 @@
                     <label class="col-sm-3 control-label">Roles</label>
                     <div class="col-sm-9">
                         <div>
-                            <label><input type="checkbox" value="option1"> Usuario</label>
+                            <label><input type="checkbox" name="user" value="Usuario"> Usuario</label>
                         </div>
                         <div>
-                            <label><input type="checkbox" value="option2"> Administrador</label>
+                            <label><input type="checkbox" name="admin" value="Administrador"> Administrador</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" value="option3"> Proyecto 1</label>
+                            <label><input type="checkbox" name="proyect1" value="Proyecto1"> Proyecto 1</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" value="option4"> Proyecto 2</label>
+                            <label><input type="checkbox" name="proyect2" value="Proyecto2"> Proyecto 2</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" value="option5"> Proyecto 3</label>
+                            <label><input type="checkbox" name="proyect3" value="Proyecto3"> Proyecto 3</label>
                         </div>
                     </div>
                 </div>
@@ -124,14 +111,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                	<label for="image" class="col-sm-3 control-label">Imágen de usuario</label>
+                	<label class="col-sm-3 control-label">Imágen de usuario</label>
                 	<div class="col-sm-9">
                			<img id="image" src="images/img_avatar1.png"/>
 					</div>
 				</div>
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                        <button id="submit_register" type="submit" class="btn btn-primary btn-block">Registrar</button>
                     </div>
                 </div>
             </form>
