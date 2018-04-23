@@ -8,21 +8,21 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/estilos.css" type="text/css">
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/register.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/register.js" defer></script>
 	<style type="text/css">
-	*[class="form-horizontal"] {
+	*[class="form-horizontal"]{
    		max-width: 700px;
     	padding: 15px;
     	margin: 0 auto;
 }
-	#image{
+	#image{ 
 	  max-width:180px;
 }
 	</style>
 </head>
-<body onload="reg();">
+<body>
 	<div class="container-fluid">
 				<header class="row py-2" style="background-color: #00b0ca;">
 			<nav class="navbar navbar-expand-lg col-lg-12 navbar-light">
@@ -51,12 +51,12 @@
 		<br>
 	</div>
 	<div class="container-fluid">
-            <form name="formulario" class="form-horizontal">
+            <form name="formulario" class="form-horizontal" onsubmit="return validar(this);">
                 <h3>Dar de alta usuario</h3>
                 <div class="form-group">
                     <label for="id" class="col-sm-5 control-label">ID (Número de identificación)</label>
                     <div class="col-sm-9">
-                        <input type="text" pattern="\d*" maxlength="11" minlength="11" placeholder="Número de 11 dígitos" id="id" class="form-control" required autofocus>
+                        <input type="text" minlength="11" maxlength="11" placeholder="Número de 11 dígitos" id="id" class="form-control" required autofocus>
                     </div>
                 </div>
                 <div class="checkbox-group">  
@@ -83,25 +83,25 @@
                 <div class="form-group">
                     <label for="nombre" class="col-sm-3 control-label">Nombre</label>
                     <div class="col-sm-9">
-                        <input type="text" maxlength="45" id="nombre" class="form-control" required>
+                        <input type="text" maxlength="45" id="nombre" class="form-control" pattern="^[A-Z]+[a-z]*$" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="apellido1" class="col-sm-3 control-label">Apellido 1</label>
                     <div class="col-sm-9">
-                        <input type="text" maxlength="45" id="apellido1" class="form-control" required>
+                        <input type="text" maxlength="45" id="apellido1" class="form-control" pattern="^[A-Z]+[a-z]*$" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="apellido2" class="col-sm-3 control-label">Apellido 2</label>
                     <div class="col-sm-9">
-                        <input type="text" maxlength="45" id="apellido2" class="form-control" required>
+                        <input type="text" maxlength="45" id="apellido2" class="form-control" pattern="^[A-Z]+[a-z]*$" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email (@indra.es)</label>
                     <div class="col-sm-9">
-                        <input type="email" maxlength="45" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@indra.es" placeholder="ej: xxxxx@indra.es" class="form-control" required>
+                        <input type="email" maxlength="45" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@indra.es|[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@eservicios.indra.es" placeholder="ej: xxxxx@indra.es" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-group">
