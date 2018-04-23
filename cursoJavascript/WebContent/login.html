@@ -12,18 +12,18 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/login.js" defer></script>
 	<style type="text/css"> /* Animación del botón */
-		button{
+		button[id="animation"]{
 			background-color: #00b0ca;
 			margin-bottom: 10px;
 			transition: all 0.5s;
 		}
-		button span{
+		button[id="animation"] span{
   			cursor: pointer;
   			display: inline-block;
   			position: relative;
   			transition: 0.5s;
 		}
-		button span:after{
+		button[id="animation"] span:after{
   			content: '\00bb';
   			position: absolute;
   			opacity: 0;
@@ -31,10 +31,10 @@
   			right: -20px;
   			transition: 0.5s;
 		}
-		button:hover span{
+		button[id="animation"]:hover span{
 			padding-right: 25px;
 		}
-		button:hover span:after {
+		button[id="animation"]:hover span:after {
   			opacity: 1;
   			right: 0;
 		}
@@ -88,7 +88,7 @@
             </div>
              <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block"><span>Entrar</span></button>
+                        <button id="animation" type="submit" class="btn btn-primary btn-block"><span>Entrar</span></button>
                         <span><a data-toggle="modal" data-target="#myModal" href="#">¿Olvidaste tu contraseña?</a></span>
                     </div>
                 </div>
