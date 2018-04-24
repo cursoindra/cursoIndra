@@ -27,3 +27,13 @@ function carga(){
 	var datoJson = JSON.stringify(datos);
 	alert(datoJson);
 }
+
+function mostrarInfo(){
+	div = document.getElementById('info');
+	div.style.display = 'block';
+}
+
+function closeInfo(){
+	div =document.getElementById('info');
+    div.style.display = 'none';
+}
