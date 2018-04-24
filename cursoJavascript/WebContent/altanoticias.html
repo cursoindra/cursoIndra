@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="icon" href="images/indra.ico" type="image/x-icon"/>
-	<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, maximum-scale=1" >
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-	<title>Alta noticias</title>
+		<meta charset="UTF-8">
+		<link rel="icon" href="images/indra.ico" type="image/x-icon"/>
+		<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, maximum-scale=1" >
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/estilos.css" type="text/css">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<title>Red Social Indra</title>
+	
 </head>
-<body>
+<body onload="loadGroups()">
 	<div class="container-fluid">	
 		<header class="row py-2" style="background-color: #00b0ca;">
 				<nav class="navbar navbar-expand-lg col-lg-12 navbar-light">
@@ -46,48 +48,105 @@
 		</div>
 
 
-		<div class="form-group">
+		<form enctype='application/json' id="form_noticia">
 			<div class="form-group">
-  				<label for="text-input" class="col-2 col-form-label">Titulo de la noticia</label>
- 				 <div class="col-10">
-   				 <input class="form-control" type="text" value="Titulo" id="example-text-input">
-  				</div>
+  				<label for="text-input" class="col-form-label">Titulo de la noticia</label> 				 
+   				 <input class="form-control" type="text" value="Titulo" id="example-text-input">  				
 			</div>	
-    		<label for="exampleTextarea">Introduce tu noticia</label>
-    		<textarea class="form-control" id="exampleTextarea" rows="6"></textarea>
-    		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4" style="margin-top: 5px;">
+			<div class="form-group">
+    		<label for="exampleTextarea"  class="col-form-label">Introduce tu noticia</label>
+				<textarea class="form-control" id="exampleTextarea" rows="6"></textarea>
+			</div>
+    		<button class="btn btn-primary" type="submit" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4" style="margin-top: 5px;">
 			Publicar noticia
 			</button>
-
-  		<div class="form-group">
-	   		<label for="exampleSelect2">Tema noticia</label>
-	    	<select  class="form-control" id="exampleSelect2">
-	      	<option>1</option>
-	      	<option>2</option>
-	      	<option>3</option>
-	      	<option>4</option>
-	    	</select>
- 		</div>
-
-
-
-	<footer style="height: 200px;" class="row justify-content-between bg-dark m-0 p-0 mt-5">
-		<div class="col-lg-5">
-			<ul style="list-style: none;" class="text-white p-0 pt-3 text-center">
-				<li>Contacto</li>
-				<li>Blog</li>
-				<li>Mapa del sitio</li>
-			</ul>
-		</div>
-		<div class="col-lg-5">
-			<ul class="text-center p-0">
-				<li class="fa fa-facebook"></li>
-				<li class="fa fa-twitter"></li>
-				<li class="fa fa-instagram"></li>
-				<li class="fa fa-linkedin"></li>
-			</ul>
-		</div>
-	</footer>
+			<template id="t1">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+					<label class="form-check-label" for="defaultCheck1"></label>
+				</div>
+			</template>
+			<div id="grupos" class="mt-4"><p>Grupos</p></div>
+		</form>
+		<script type="text/javascript">
+			var loadGroups = () => {
+				var groups = new Array("grupo test A", "group an", "grupo test B","grupo test C","grupo test D");
+				var cols = groups.length;
+				var templateT1 = document.querySelector("#t1").content;            	
+				var div = templateT1.querySelector(".form-check");
+				var input = templateT1.querySelector("input");
+				var label = templateT1.querySelector("label");
+				div.remove();
+				
+            	groups.forEach((group, index) => {
+					var newDiv = div.cloneNode(false);	
+					var newInput = input.cloneNode(false);
+					var newLabel = label.cloneNode(true);
+					newLabel.textContent = group;				
+					newInput.setAttribute("value", index);				
+					newDiv.appendChild(newInput);
+					newDiv.appendChild(newLabel);				
+					templateT1.appendChild(newDiv);                									
+				
+            	});
+				var clonT1 = templateT1.cloneNode(true);
+            	document.querySelector("#grupos").appendChild(clonT1);
+			}
+			class Publicacion{
+					constructor(titulo, contenido, grupos, id = 0){
+							this.titulo = titulo;
+							this.id = id;
+							this.contenido = contenido;
+							this.grupos = grupos;
+							this.url = document.URL+titulo;													
+					}					
+			}
+			
+			document.querySelector("#form_noticia").addEventListener("submit", function(event){		
+							var obj = null;
+							
+							var breakEmpty = {
+								 message : "Tiene que rellenar todos los campos"
+							}
+							this.querySelectorAll("input, textarea, select").forEach(element => {								
+								try{
+									if(element.value == "" || element.value == undefined) throw breakEmpty																														
+									if(element.type == "text")	
+										titulo = element.value;								
+									if(element.type == "textarea")
+										contenido = element.value;									
+									if(element.type == "select-one")
+										grupos = element.value;									
+								}catch(e){
+									  alert(e.message);
+								}
+									
+							});					 
+							
+							obj = new Publicacion(titulo, contenido, tema, 24);
+							alert(JSON.stringify(obj)); 
+							event.preventDefault();
+				
+			});
+		</script>
+</div>
+		 <footer class="row justify-content-between bg-dark m-0 py-5 mt-5">
+				<div class="col-lg-5 align-self-center">
+					<ul style="list-style: none;" class="text-white p-0 pt-3 text-center">
+						<li>Contacto</li>
+						<li>Blog</li>
+						<li>Mapa del sitio</li>
+					</ul>
+				</div>
+				<div class="col-lg-5 align-self-center">
+					<ul class="text-center p-0">
+						<li class="fa fa-facebook"></li>
+						<li class="fa fa-twitter"></li>
+						<li class="fa fa-instagram"></li>
+						<li class="fa fa-linkedin"></li>
+					</ul>
+				</div>
+			</footer>
 
 
 </body>
