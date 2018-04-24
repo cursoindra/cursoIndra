@@ -20,4 +20,5 @@ function entrar(){
 function recuperarPass(){
 	var email = document.getElementById('email2').value;
 	alert(email);
+	
 }
