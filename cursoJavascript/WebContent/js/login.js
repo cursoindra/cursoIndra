@@ -6,11 +6,11 @@ class Login{
 }
 
 function entrar(){
-	var user = document.getElementById('email').value;
+	var email = document.getElementById('email').value;
 	var pass = document.getElementById('pass').value;
 
 	var login = new Login();
-	login.user = user;
+	login.user = email;
 	login.pass = pass;
 
 	var datoJson = JSON.stringify(login);
@@ -20,5 +20,4 @@ function entrar(){
 function recuperarPass(){
 	var email = document.getElementById('email2').value;
 	alert(email);
-	
 }
