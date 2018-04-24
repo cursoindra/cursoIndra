@@ -54,9 +54,9 @@
             <form name="formulario" class="form-horizontal" onsubmit="return validar(this);">
                 <h3>Dar de alta usuario</h3>
                 <div class="form-group">
-                    <label for="id" class="col-sm-5 control-label">ID (Número de identificación)</label>
+                    <label for="id" class="col-sm-5 control-label">ID number</label>
                     <div class="col-sm-9">
-                        <input type="text" minlength="11" maxlength="11" placeholder="Número de 11 dígitos" id="id" class="form-control" required autofocus>
+                        <input type="text" maxlength="11" placeholder="Número de identificación" pattern="^[0-9]{0,11}$" id="id" class="form-control" required autofocus>
                     </div>
                 </div>
                 <div class="checkbox-group">  

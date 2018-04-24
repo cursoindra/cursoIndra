@@ -54,8 +54,12 @@ footer .fa {
   padding: 6px 4px;
 }
 
-.mes .fa{
-  margin: 0 25px;
+.mes .fa-arrow-circle-left{
+  margin-right: 25px;
+}
+
+.mes .fa-arrow-circle-right{
+  margin-left: 25px;
 }
 
 .tabla_mes {
@@ -74,7 +78,7 @@ footer .fa {
 
 .mes caption.titulo {
   text-align: left;
-  font-size: 30px;
+  font-size: 28px;
   caption-side: top;
   color: #17a2b8;
   font-weight: bold; 
