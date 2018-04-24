@@ -1,21 +1,21 @@
-$(document).ready(function () {
-    $('#submit_register').click(function() {
-      checked = $("input[type=checkbox]:checked").length;
-
-      if(!checked) {
-        alert("Debes seleccionar al menos un rol.");
-        return false;
-      }
-
-    });
-});
-
-function reg() {
-  window.captureEvents(Event.SUBMIT);
-  window.onsubmit = carga;
+function validar(esto){ 
+	valido=false; 
+	for(a=0;a<esto.elements.length;a++){ 
+		if(esto[a].type=="checkbox" && esto[a].checked==true){ 
+			valido=true;
+			carga();
+		break;
+		} 
+	} 
+	if(!valido){
+		alert("Debe seleccionar al menos un Rol.");
+		return false; 
+	}
 }
 
-function Registro(id, nombre, apellido1, apellido2, email, fechaNacimiento){
+class Registro{
+	constructor(pass, id, nombre, apellido1, apellido2, email, fechaNacimiento){
+	this.pass = pass;
 	this.id = id;
 	this.roles = [];
 	this.nombre = nombre;
@@ -23,9 +23,16 @@ function Registro(id, nombre, apellido1, apellido2, email, fechaNacimiento){
 	this.apellido2 = apellido2;
 	this.email = email;
 	this.fechaNacimiento = fechaNacimiento;
+	}
 }
 
 function carga(){
+		var numeros = "12346789";
+		var pass = "";
+  		for (i=0; i<8; i++) {
+  			pass += numeros.charAt(Math.floor(Math.random()*numeros.length))
+  		};
+
 		var id = document.getElementById('id').value;
 		var roles = [];
 		var nombre = document.getElementById('nombre').value;
@@ -60,6 +67,7 @@ function carga(){
     	};
 
 		var registro = new Registro();
+		registro.pass = pass;
 		registro.id = id;
 		registro.roles = roles;
 		registro.nombre = nombre;
@@ -69,5 +77,5 @@ function carga(){
 		registro.fechaNacimiento = fechaNacimiento;
 
 		var datoJson = JSON.stringify(registro);
-		alert(datoJson); 
+		alert(datoJson); // Json a enviar.
 };
