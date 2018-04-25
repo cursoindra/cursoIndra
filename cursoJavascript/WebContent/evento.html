@@ -10,6 +10,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="./js/invitados.js" defer></script>
 	<title>Red Social Indra</title>
 </head>
 <body >
@@ -51,14 +52,27 @@
 				</div>	    		
 	    		<div class="form-group col-12 col-sm-6">
 						<label for="inputState">Invitados:</label>
-						<input list="browsers" class="form-control" name="browser" multiple="multiple">
+						<!--<input list="browsers" class="form-control" name="browser" multiple="multiple">
 			    		<datalist id="browsers">
 		    	    		<option value="Internet Explorer">
-		     				<option value="Jesús Gómes">
-		    				<option value="Jacinto">
-		    				<option value="Opera">
-		    				<option value="Safari">
-		  				</datalist>	  
+									<option value="Jesús Gómes">
+									<option value="Jacinto">
+									<option value="Opera">
+									<option value="Safari">
+							</datalist> -->
+							<div class="row justify-content-between col-12 m-0 p-0">
+							<select id="posiblesInvitados" class="form-control col-sm-4" size="6" multiple="multiple">
+									<option>Andres APX</option>
+									<option>Andres JS</option>	
+									<option>R CHI</option>
+									<option>RSosa</option>	
+								</select>
+								<div class="text-center">
+									<br><button id="agregarInvitado" type="button" class="btn btn-info">Agregar</button><br><br>
+									<button id="quitarInvitado" type="button" class="btn btn-info">Quitar</button>
+								</div>
+								<select id="invitadosAgregados" class="form-control col-sm-4" name="cars" size="6" multiple="multiple"></select>
+								</div>
 		  				<label for="inputCalendar">Asociar a calendario:</label>
 	      				<select id="inputCalendar" class="form-control">
 	        				<option selected>Calendario A</option>
@@ -74,25 +88,12 @@
 					<label for="textarea">Descripción:</label>
 					<textarea class="form-control" rows="5" id="comment"></textarea>
 				</div>	
-				<div class="form-group col-12 col-sm-6">  					
-
-      			</div>	
 				<div class="form-check col-12" data-toggle="collapse" data-target="#repeat_dates">
 				    <input type="checkbox" id="repeat">
 				    <label class="form-check-label" for="repeat">Repetir evento</label>
-  				</div>
-  				<div id="repeat_dates" class="collapse col-12">
-	  				<div class="form-group col-12 col-sm-6">
-						<label for="date">Fecha inicio:</label>
-						<input type="date" class="form-control" id="start-date-repeated">
-					</div>
-					<div class="form-group col-12 col-sm-6">
-						<label for="date">Fecha fin:</label>
-						<input type="date" class="form-control" id="end-date-repeated	">
-					</div>	    		
-				</div>
+  			</div>
 			</section>
-			<button type="submit" class="btn btn-primary">Submit</button>		
+			<button type="submit" class="btn btn-primary">Crear</button>		
 		</form>
 	</div>
 	<footer class="row justify-content-between bg-dark m-0 py-5 mt-5">
