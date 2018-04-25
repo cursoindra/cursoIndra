@@ -57,12 +57,12 @@
     		<label for="exampleTextarea"  class="col-form-label">Introduce tu noticia</label>
 				<textarea class="form-control" id="exampleTextarea" rows="6"></textarea>
 			</div>
-			<div id="grupos" class="my-4 px-2 row"><p class="col-12">Grupos</p></div>
+			<div id="grupos" class="my-4 px-4 row"><p class="col-12">Grupos</p></div>
     		<button class="btn btn-primary" type="submit" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4" style="margin-top: 5px;">
 			Publicar noticia
 			</button>
 			<template id="t1">
-				<div class="form-check">
+				<div class="form-check py-2">
 					<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 					<label class="form-check-label" for="defaultCheck1"></label>
 				</div>
@@ -70,8 +70,8 @@
 		</form>
 		<script type="text/javascript">
 			var loadGroups = () => {
-				var groups = new Array("grupo test D", "grupo test A", "grupo test A", "grupo test A");
-				var cols = groups.length;
+				var groups = new Array({"descripcion": "contractors", "roles" : "muchos", "id":6}, { "descripcion": "velociraptors", "roles": "muchos", "id": 7 }, { "descripcion": "predators", "roles": "muchos", "id": 7 }, { "descripcion": "tractors", "roles": "muchos", "id": 8 });
+				var cols = groups.length;				
 				var templateT1 = document.querySelector("#t1").content;            	
 				var div = templateT1.querySelector(".form-check");
 				var input = templateT1.querySelector("input");
@@ -82,13 +82,13 @@
 					var newDiv = div.cloneNode(false);	
 					var newInput = input.cloneNode(false);
 					var newLabel = label.cloneNode(true);
-					newLabel.textContent = group;	
+					newLabel.textContent = group.descripcion+"-"+index;	
 					if(cols > 5)
 						newDiv.classList.add("col-6", "col-md-2");
 					else
 						newDiv.classList.add("col-12");
 
-					newInput.setAttribute("value", index);				
+					newInput.setAttribute("value", group.id);				
 					newDiv.appendChild(newInput);
 					newDiv.appendChild(newLabel);				
 					templateT1.appendChild(newDiv);                									
@@ -97,6 +97,14 @@
 				var clonT1 = templateT1.cloneNode(true);
             	document.querySelector("#grupos").appendChild(clonT1);
 			}
+			class Grupo {
+				constructor(descripcion, roles, id = 0) {
+					this.id = id;
+					this.descripcion = descripcion;
+					this.roles = roles;
+				}
+			}
+			
 			class Publicacion{
 					constructor(titulo, contenido, grupos, id = 0){
 							this.titulo = titulo;
@@ -109,19 +117,19 @@
 			
 			document.querySelector("#form_noticia").addEventListener("submit", function(event){		
 							
-							
+							var grupos = new Array();
 							var breakEmpty = {
 								 message : "Tiene que rellenar todos los campos"
 							}
 							this.querySelectorAll("input, textarea, select").forEach(element => {								
-								try{
+								try{									
 									if(element.value == "") throw breakEmpty																														
 									if(element.type == "text")	
 										titulo = element.value;								
 									if(element.type == "textarea")
 										contenido = element.value;									
-									if(element.type == "select-one")
-										grupos = element.value;									
+									if(element.type == "checkbox" && element.checked)
+										grupos.push(element.value);									
 								}catch(e){
 									  alert(e.message);
 								}
