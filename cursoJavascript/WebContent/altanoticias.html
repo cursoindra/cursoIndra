@@ -57,6 +57,7 @@
     		<label for="exampleTextarea"  class="col-form-label">Introduce tu noticia</label>
 				<textarea class="form-control" id="exampleTextarea" rows="6"></textarea>
 			</div>
+			<div id="grupos" class="my-4 px-2 row"><p class="col-12">Grupos</p></div>
     		<button class="btn btn-primary" type="submit" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4" style="margin-top: 5px;">
 			Publicar noticia
 			</button>
@@ -65,12 +66,11 @@
 					<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 					<label class="form-check-label" for="defaultCheck1"></label>
 				</div>
-			</template>
-			<div id="grupos" class="mt-4"><p>Grupos</p></div>
+			</template>			
 		</form>
 		<script type="text/javascript">
 			var loadGroups = () => {
-				var groups = new Array("grupo test A", "group an", "grupo test B","grupo test C","grupo test D");
+				var groups = new Array("grupo test D", "grupo test A", "grupo test A", "grupo test A");
 				var cols = groups.length;
 				var templateT1 = document.querySelector("#t1").content;            	
 				var div = templateT1.querySelector(".form-check");
@@ -82,7 +82,12 @@
 					var newDiv = div.cloneNode(false);	
 					var newInput = input.cloneNode(false);
 					var newLabel = label.cloneNode(true);
-					newLabel.textContent = group;				
+					newLabel.textContent = group;	
+					if(cols > 5)
+						newDiv.classList.add("col-6", "col-md-2");
+					else
+						newDiv.classList.add("col-12");
+
 					newInput.setAttribute("value", index);				
 					newDiv.appendChild(newInput);
 					newDiv.appendChild(newLabel);				
@@ -103,14 +108,14 @@
 			}
 			
 			document.querySelector("#form_noticia").addEventListener("submit", function(event){		
-							var obj = null;
+							
 							
 							var breakEmpty = {
 								 message : "Tiene que rellenar todos los campos"
 							}
 							this.querySelectorAll("input, textarea, select").forEach(element => {								
 								try{
-									if(element.value == "" || element.value == undefined) throw breakEmpty																														
+									if(element.value == "") throw breakEmpty																														
 									if(element.type == "text")	
 										titulo = element.value;								
 									if(element.type == "textarea")
@@ -123,8 +128,8 @@
 									
 							});					 
 							
-							obj = new Publicacion(titulo, contenido, tema, 24);
-							alert(JSON.stringify(obj)); 
+							obj = new Publicacion(titulo, contenido, grupos, 24);
+							alert(JSON.stringify(obj)); 							
 							event.preventDefault();
 				
 			});
