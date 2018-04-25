@@ -23,6 +23,25 @@
 	
 	<context:component-scan base-package="indra.bbva.curso" />
 	
-	
+	<beans:bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <beans:property name="dataSource" ref="dataSource" />
+        <beans:property name="packagesToScan" value="indra.bbva.curso.datos" />
+        <beans:property name="hibernateProperties">
+            <beans:props>
+                <beans:prop key="hibernate.dialect">${jdbc.dialect}</beans:prop>
+               <beans:prop key="hibernate.show_sql">true</beans:prop>
+               <beans:prop key="hibernate.format_sql">true</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
+  
+    <beans:bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <beans:property name="url" value="jdbc:mysql://localhost:3306/indrabook" />
+        <beans:property name="username" value="curso" />
+        <beans:property name="password" value="cursocurso" />
+    </beans:bean>
 	
 </beans:beans>
