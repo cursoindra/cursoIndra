@@ -10,10 +10,11 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/altaNoticia.js" defer></script>
 		<title>Red Social Indra</title>
 	
 </head>
-<body onload="loadGroups()">
+<body>
 	<div class="container-fluid">	
 		<header class="row py-2" style="background-color: #00b0ca;">
 				<nav class="navbar navbar-expand-lg col-lg-12 navbar-light">
@@ -68,80 +69,7 @@
 				</div>
 			</template>			
 		</form>
-		<script type="text/javascript">
-			var loadGroups = () => {
-				var groups = new Array({"descripcion": "contractors", "roles" : "muchos", "id":6}, { "descripcion": "velociraptors", "roles": "muchos", "id": 7 }, { "descripcion": "predators", "roles": "muchos", "id": 7 }, { "descripcion": "tractors", "roles": "muchos", "id": 8 });
-				var cols = groups.length;				
-				var templateT1 = document.querySelector("#t1").content;            	
-				var div = templateT1.querySelector(".form-check");
-				var input = templateT1.querySelector("input");
-				var label = templateT1.querySelector("label");
-				div.remove();
-				
-            	groups.forEach((group, index) => {
-					var newDiv = div.cloneNode(false);	
-					var newInput = input.cloneNode(false);
-					var newLabel = label.cloneNode(true);
-					newLabel.textContent = group.descripcion+"-"+index;	
-					if(cols > 5)
-						newDiv.classList.add("col-6", "col-md-2");
-					else
-						newDiv.classList.add("col-12");
-
-					newInput.setAttribute("value", group.id);				
-					newDiv.appendChild(newInput);
-					newDiv.appendChild(newLabel);				
-					templateT1.appendChild(newDiv);                									
-				
-            	});
-				var clonT1 = templateT1.cloneNode(true);
-            	document.querySelector("#grupos").appendChild(clonT1);
-			}
-			class Grupo {
-				constructor(descripcion, roles, id = 0) {
-					this.id = id;
-					this.descripcion = descripcion;
-					this.roles = roles;
-				}
-			}
-			
-			class Publicacion{
-					constructor(titulo, contenido, grupos, id = 0){
-							this.titulo = titulo;
-							this.id = id;
-							this.contenido = contenido;
-							this.grupos = grupos;
-							this.url = document.URL+titulo;													
-					}					
-			}
-			
-			document.querySelector("#form_noticia").addEventListener("submit", function(event){		
-							
-							var grupos = new Array();
-							var breakEmpty = {
-								 message : "Tiene que rellenar todos los campos"
-							}
-							this.querySelectorAll("input, textarea, select").forEach(element => {								
-								try{									
-									if(element.value == "") throw breakEmpty																														
-									if(element.type == "text")	
-										titulo = element.value;								
-									if(element.type == "textarea")
-										contenido = element.value;									
-									if(element.type == "checkbox" && element.checked)
-										grupos.push(element.value);									
-								}catch(e){
-									  alert(e.message);
-								}
-									
-							});					 
-							
-							obj = new Publicacion(titulo, contenido, grupos, 24);
-							alert(JSON.stringify(obj)); 							
-							event.preventDefault();
-				
-			});
-		</script>
+		
 </div>
 		 <footer class="row justify-content-between bg-dark m-0 py-5 mt-5">
 				<div class="col-lg-5 align-self-center">
