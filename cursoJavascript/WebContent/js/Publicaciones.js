@@ -1,19 +1,21 @@
 var templateNews = document.getElementById("news-template").content;
 var templateComments = document.getElementById("comments-template").content;
+var templateNewComment = document.getElementById("new-comment-template").content;
 
 
 var publicaciones = JSON.parse(localStorage.getItem("publicaciones"));
+//var comentarios = JSON.parse(localStorage.getItem("comentarios"));
+//var usuarios = JSON.parse(localStorage.getItem("usuarios"));
 
 
 
-var publicacion = { "titulo": "", "contenido": "", "url": "", "grupos": ["descripcion"], "propietario": "ID_DATOS_PERS", "likes": ["ID_DATOS_PERS"], "comentarios": ["ID_COMEN"] };
+//var publicacion = { "titulo": "", "contenido": "", "url": "", "grupos": ["descripcion"], "propietario": "ID_DATOS_PERS", "likes": ["ID_DATOS_PERS"], "comentarios": ["ID_COMEN"] };
 
-var comentario = { "id": num, "texto": "", "propietario": "ID_DATOS_PERS", "likes": ["ID_DATOS_PERS"] };
+//var comentario = { "id": num, "texto": "", "propietario": "ID_DATOS_PERS", "likes": ["ID_DATOS_PERS"] };
 
 
-publicaciones.array.forEach((publicacion, index) => {
+publicaciones.forEach((publicacion, index) => {
 	
-
 	var noticia = templateNews.cloneNode(true);
 	noticia.getElementById("news-title").textContent = publicacion.titulo;
 	noticia.getElementById("news-content").textContent = publicacion.contenido;
@@ -21,9 +23,33 @@ publicaciones.array.forEach((publicacion, index) => {
 	noticia.getElementById("collapse-button").setAttribute("data-target", "#collapse"+index);
 	noticia.getElementById("collapse").setAttribute("id", "collapse"+index);
 	noticia.getElementById("num-comments").textContent = publicacion.comentarios.length;
-	//noticia.getElementById("comments").appendChild(comm1);
-	//noticia.getElementById("comments").appendChild(comm2);
+	publicacion.comentarios.forEach(comentario => {
+		var comentario = comentarios.filter((com)=>{
+			return com.id == comentario;
+		});
+		if (comentario) {
+			var user = usuarios.filter((us) => {
+				return us.nombre == comentario.propietario;
+			}); 
+			var com = templateComments.cloneNode(true);
+			com.getElementById("user-avatar").setAttribute("src", "images/img_avatar1.png"); // TODO: mostrar img del user
+			com.getElementById("user-name").textContent = user.nombre;
+			com.getElementById("comment-content").textContent = comentario.texto;
+
+			noticia.getElementById("comments").appendChild(com);
+		}
+	});
+
+	var newCom = templateNewComment.cloneNode(true);
+	noticia.getElementById("comments").appendChild(newCom);
+
+	document.getElementById("news").appendChild(noticia);
 });
+
+
+
+
+
 
 /**
 var comm1 = templateComments.cloneNode(true);

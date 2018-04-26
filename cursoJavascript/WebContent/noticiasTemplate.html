@@ -10,7 +10,7 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/noticias.js" defer></script>
+		<script type="text/javascript" src="js/Publicaciones.js " defer></script>
 		<title>Red Social Indra</title>
 	</head>
 	<body >
@@ -93,6 +93,7 @@
 
 	<!-- Template del comentario -->
 	<template id="comments-template">
+		<hr>
 		<div class="media mt-3">
 			<div class="media-left px-3">
 				<img src="" class="media-object" style="width:60px" id="user-avatar">
@@ -100,6 +101,25 @@
 			<div class="media-body px-3">
 				<h4 class="media-heading" id="user-name"></h4>
 				<p class="text-justify" id="comment-content"></p>
+			</div>
+		</div>
+	</template>
+
+	<!-- Template de nuevo comentario -->
+	<template id="new-comment-template">
+		<hr>
+		<div class="media">
+			<div class="media-left px-3">
+				<img src="images/img_avatar1.png" class="media-object" style="width:60px">
+			</div>
+			<div class="media-body px-3">
+				<h4 class="media-heading">Nuevo comentario</h4>
+				<form>
+					<div class="form-group">
+						<textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary mb-3">Enviar</button>
+				</form>
 			</div>
 		</div>
 	</template>
