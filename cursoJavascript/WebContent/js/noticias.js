@@ -5,12 +5,12 @@ var templateComments = document.getElementById("comments-template").content;
 var comm1 = templateComments.cloneNode(true);
 comm1.getElementById("user-avatar").setAttribute("src", "images/img_avatar1.png");
 comm1.getElementById("user-name").textContent = "Usuario1";
-comm1.getElementById("comment-content").textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+comm1.getElementById("comment-content").textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam";
 
 var comm2 = templateComments.cloneNode(true);
 comm2.getElementById("user-avatar").setAttribute("src", "images/img_avatar1.png");
 comm2.getElementById("user-name").textContent = "Usuario2";
-comm2.getElementById("comment-content").textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+comm2.getElementById("comment-content").textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam";
 
 var comm3 = comm2.cloneNode(true);
 
@@ -37,3 +37,9 @@ noticia2.getElementById("comments").appendChild(comm3);
 
 document.getElementById("news").appendChild(noticia1);
 document.getElementById("news").appendChild(noticia2);
+
+
+
+var publicacion = {"titulo":"", "contenido":"", "url":"", "grupos":["descripcion"], "propietario":"ID_DATOS_PERS","likes":["ID_DATOS_PERS"], "comentarios":["ID_COMEN"]};
+
+var comentario = {"id":num,  "texto": "", "propietario": "ID_DATOS_PERS", "likes": ["ID_DATOS_PERS"]};
