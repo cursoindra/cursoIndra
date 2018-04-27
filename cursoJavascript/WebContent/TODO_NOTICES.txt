@@ -1,0 +1,12 @@
+campo link que no sea obligatorio en el alta de noticia
+mostrar link si llega en el campo
+
+cambiar grupos por roles en tos laos
+
+refresco que actualize en segundo plano cada 15 segundos 
+para ver si hay noticias o comentarios nuevos
+Pero que no actualize la pagina entera 
+
+likes en comentarios
+
+mostrar numero de likes

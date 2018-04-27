@@ -14,14 +14,12 @@ function validar(esto){
 }
 
 class Registro{
-	constructor(pass, id, nombre, apellido1, apellido2, email, fechaNacimiento){
-	this.pass = pass;
-	this.id = id;
+	constructor(nombre, apellido1, apellido2, fechaNacimiento){
+	this.user = [];
 	this.roles = [];
 	this.nombre = nombre;
 	this.apellido1 = apellido1;
 	this.apellido2 = apellido2;
-	this.email = email;
 	this.fechaNacimiento = fechaNacimiento;
 	}
 }
@@ -32,50 +30,50 @@ function carga(){
   		for (i=0; i<8; i++) {
   			pass += numeros.charAt(Math.floor(Math.random()*numeros.length))
   		};
-
-		var id = document.getElementById('id').value;
 		var roles = [];
 		var nombre = document.getElementById('nombre').value;
 		var apellido1 = document.getElementById('apellido1').value;
 		var apellido2 = document.getElementById('apellido2').value;
-		var email = document.getElementById('email').value;
+		var email = document.getElementById('user').value;
+		var user = {"user":email,
+					"password":pass};
 		var fechaNacimiento = document.getElementById('fechaNacimiento').value;
 
-		if (document.formulario.user.checked == true) {
-    		var rol1 = document.formulario.user.value;
+		if (document.formulario.rol_user.checked == true) {
+    		var rol1 = document.formulario.rol_user.value;
     		roles.push(rol1);
     	};
 
-		if (document.formulario.admin.checked == true) {
-    		var rol2 = document.formulario.admin.value;
+		if (document.formulario.rol_admin.checked == true) {
+    		var rol2 = document.formulario.rol_admin.value;
     		roles.push(rol2);
     	};
 
-		if (document.formulario.proyect1.checked == true) {
-    		var rol3 = document.formulario.proyect1.value;
+		if (document.formulario.rol_proyect1.checked == true) {
+    		var rol3 = document.formulario.rol_proyect1.value;
     		roles.push(rol3);
     	};
 
-		if (document.formulario.proyect2.checked == true) {
-    		var rol4 = document.formulario.proyect2.value;
+		if (document.formulario.rol_proyect2.checked == true) {
+    		var rol4 = document.formulario.rol_proyect2.value;
     		roles.push(rol4);
     	};
 
-		if (document.formulario.proyect3.checked == true) {
-    		var rol5 = document.formulario.proyect3.value;
+		if (document.formulario.rol_proyect3.checked == true) {
+    		var rol5 = document.formulario.rol_proyect3.value;
     		roles.push(rol5);
     	};
 
 		var registro = new Registro();
-		registro.pass = pass;
-		registro.id = id;
+		registro.user = user;
 		registro.roles = roles;
 		registro.nombre = nombre;
 		registro.apellido1 = apellido1;
 		registro.apellido2 = apellido2;
-		registro.email = email;
 		registro.fechaNacimiento = fechaNacimiento;
 
-		var datoJson = JSON.stringify(registro);
-		alert(datoJson); // Json a enviar.
+		
+		localStorage.setItem("registro", JSON.stringify(registro));
+		var datoLocal = localStorage.getItem("registro");
+		alert(datoLocal);
 };

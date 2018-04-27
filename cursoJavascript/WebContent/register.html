@@ -60,28 +60,28 @@
             <form name="formulario" class="form-horizontal" onsubmit="return validar(this);">
                 <h3>Dar de alta usuario</h3>
                 <div class="form-group">
-                    <label for="id" class="col-sm-5 control-label">ID number</label>
+                    <label for="email" class="col-sm-8 control-label">Email/User (@indra.es o @eservicios.indra.es)</label>
                     <div class="col-sm-9">
-                        <input type="text" maxlength="11" placeholder="Número de identificación" pattern="^[0-9]{0,11}$" id="id" class="form-control" required autofocus>
+                        <input type="email" maxlength="45" id="user" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@indra.es|[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@eservicios.indra.es" placeholder="ej: xxxxx@indra.es" class="form-control" required>
                     </div>
                 </div>
                 <div class="checkbox-group">  
                     <label class="col-sm-3 control-label">Roles</label>
                     <div class="col-sm-9">
                         <div class="checkbox">
-                            <label><input type="checkbox" name="user" value="Usuario"> Usuario</label>
+                            <label><input type="checkbox" name="rol_user" value="Usuario"> Usuario</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" name="admin" value="Administrador"> Administrador</label>
+                            <label><input type="checkbox" name="rol_admin" value="Administrador"> Administrador</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" name="proyect1" value="Proyecto1"> Proyecto 1</label>
+                            <label><input type="checkbox" name="rol_proyect1" value="Proyecto1"> Proyecto 1</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" name="proyect2" value="Proyecto2"> Proyecto 2</label>
+                            <label><input type="checkbox" name="rol_proyect2" value="Proyecto2"> Proyecto 2</label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" name="proyect3" value="Proyecto3"> Proyecto 3</label>
+                            <label><input type="checkbox" name="rol_proyect3" value="Proyecto3"> Proyecto 3</label>
                         </div>
                     </div>
                 </div>
@@ -104,12 +104,7 @@
                         <input type="text" maxlength="45" id="apellido2" class="form-control" pattern="^[A-Z]+[a-z]*$" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-8 control-label">Email (@indra.es o @eservicios.indra.es)</label>
-                    <div class="col-sm-9">
-                        <input type="email" maxlength="45" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@indra.es|[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@eservicios.indra.es" placeholder="ej: xxxxx@indra.es" class="form-control" required>
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <label for="fechaNacimiento" class="col-sm-5 control-label">Fecha de nacimiento</label>
                     <div class="col-sm-9">
