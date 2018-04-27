@@ -1,3 +1,10 @@
+var calendarios = new Array();
+var eventos = new Array();
+if(localStorage.getItem("calendario"))
+	calendarios.push(JSON.parse(localStorage.getItem("calendario")));
+if(localStorage.getItem("evento"))
+	eventos.push(JSON.parse(localStorage.getItem("evento")));
+
 class Calendario{
     constructor(nombre,tipoCalendario,roles,propietario,id=0){
         this.nombre = nombre;
@@ -30,12 +37,14 @@ class Agenda{
 }
 
 function crearCalendario(){
+	event.preventDefault();
 	var nombre = document.getElementById('nombre').value;
 	var roles = new Array;
 	var tipoCalendario = document.getElementById('tipoCalendario').value;
 
 	if (document.formulario.user.checked == true) {
-		var rol1 = document.formulario.user.value;
+		var rol1 
+		= document.formulario.user.value;
 		roles.push(rol1);
 	}
 	if (document.formulario.admin.checked == true) {
@@ -63,13 +72,18 @@ function crearCalendario(){
 		calendario.tipoCalendario = tipoCalendario;
 		calendario.roles = roles;
 
-		var datosJson = JSON.stringify(calendario);
-		localStorage.setItem("calendario", datosJson);
-		alert(datosJson);
+		if(calendarios.length > 0)
+			calendario.id = calendarios[calendarios.length - 1].id + 1;
+
+		calendarios.push(calendario);
+		console.log(calendarios);
+		localStorage.setItem("calendario",JSON.stringify(calendarios));
+		console.log(localStorage.getItem("calendario",calendarios));
 	}
 };
 
 function crearEvento(){
+	event.preventDefault();
 	var fechaInicio = document.getElementById("start-date").value;
 	var fechaFin = document.getElementById("end-date").value;
 	var invitadosAgregados = new Array();
@@ -89,7 +103,8 @@ function crearEvento(){
 	evento.invitados = invitadosAgregados;
 	evento.tipoEvento = nombreEvento;
 
-	var datosJson = JSON.stringify(evento);
-	localStorage.setItem("evento", datosJson);
-	alert(datosJson);
+	eventos.push(evento);
+	console.log(eventos);
+	localStorage.setItem("calendario",JSON.stringify(eventos));
+	console.log(localStorage.getItem("evento",eventos));
 }
