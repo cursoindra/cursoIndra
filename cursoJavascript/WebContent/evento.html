@@ -11,6 +11,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="./js/invitados.js" defer></script>
+	<script type="text/javascript" src="./js/eventos.js" defer></script>
 	<title>Red Social Indra</title>
 </head>
 <body >
@@ -40,7 +41,7 @@
 					 </div>
 				</nav>
 		</header>
-		<form action="/action_page.php">
+		<form onsubmit="crearEvento();">
 			<section class="form-row py-4">			
 				<div class="form-group col-12 col-sm-6">
 					<label for="date">Fecha inicio:</label>
@@ -48,7 +49,7 @@
 				</div>
 				<div class="form-group col-12 col-sm-6">
 					<label for="date">Fecha fin:</label>
-					<input type="datetime-local" class="form-control" id="start-date">
+					<input type="datetime-local" class="form-control" id="end-date">
 				</div>	    		
 	    		<div class="form-group col-12 col-sm-6">
 						<label for="inputState">Invitados:</label>
@@ -65,8 +66,8 @@
 								</div>
 								<select id="invitadosAgregados" class="form-control col-sm-4" name="cars" size="6" multiple="multiple"></select>
 								</div><br>	
-		  				<label for="inputCalendar">Asociar a calendario:</label>
-	      				<select id="inputCalendar" class="form-control">
+		  				<label for="tipoCalendario">Asociar a calendario:</label>
+	      				<select id="tipoCalendario" class="form-control">
 	        				<option selected>Calendario A</option>
 	        				<option>...</option>
 	      				</select><br>
@@ -77,13 +78,11 @@
 		      			</select>  						
 		  		</div>			  		
 				<div class="form-group col-12 col-sm-6">
+						<label for="textarea">Nombre evento:</label>
+						<input type="text" class="form-control" id="nombreEvento" placeholder="Nombre del evento"><br>
 					<label for="textarea">Descripción:</label>
-					<textarea class="form-control" rows="5" id="comment"></textarea>
+					<textarea class="form-control" rows="5" id="descripcion" placeholder="Descripcion del evento"></textarea>
 				</div>	
-				<div class="form-check col-12" data-toggle="collapse" data-target="#repeat_dates">
-				    <input type="checkbox" id="repeat">
-				    <label class="form-check-label" for="repeat">Repetir evento</label>
-  			</div>
 			</section>
 			<button type="submit" class="btn btn-primary">Crear</button>		
 		</form>

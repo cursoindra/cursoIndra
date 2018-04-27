@@ -51,31 +51,32 @@ class Publicacion{
 
 document.querySelector("#form_noticia").addEventListener("submit", function(event){		
                 
-                var grupos = new Array();
-                var breakEmpty = {
-                        message : "Tiene que rellenar todos los campos"
-                }
-                this.querySelectorAll("input, textarea, select").forEach(element => {								
-                    try{									
-                        if(element.value == "") throw breakEmpty																														
-                        if(element.type == "text")	
-                            titulo = element.value;								
-                        if(element.type == "textarea")
-                            contenido = element.value;									
-                        if(element.type == "checkbox" && element.checked)
-                            grupos.push(element.value);									
-                    }catch(e){
-                            alert(e.message);
-                    }
-                        
-                });					 
-                
-                obj = new Publicacion(titulo, contenido, grupos, "Pepe");
-                publicaciones.push(obj);
-                localStorage.setItem("publicaciones", JSON.stringify(publicaciones));
-                console.log(localStorage.getItem("publicaciones"));
-                alert(JSON.stringify(obj)); 							
-                event.preventDefault();
+    var grupos = new Array();
+    var breakEmpty = {
+            message : "Tiene que rellenar todos los campos"
+    }
+    this.querySelectorAll("input, textarea, select").forEach(element => {								
+        try{									
+            if(element.value == "") throw breakEmpty																														
+            if(element.type == "text")	
+                titulo = element.value;								
+            if(element.type == "textarea")
+                contenido = element.value;									
+            if(element.type == "checkbox" && element.checked)
+                grupos.push(element.value);									
+        }catch(e){
+                alert(e.message);
+        }
+            
+    });					 
+    
+    obj = new Publicacion(titulo, contenido, grupos, "Pepe");
+    publicaciones.push(obj);
+    localStorage.setItem("publicaciones", JSON.stringify(publicaciones));
+    console.log(localStorage.getItem("publicaciones"));
+    alert(JSON.stringify(obj)); 							
+    event.preventDefault();
+    location.reload();
     
 });
 
