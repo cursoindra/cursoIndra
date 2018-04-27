@@ -1,3 +1,5 @@
+import {default as gp} from './grupos.js'
+
 if (localStorage.getItem("publicaciones") == null)
     var publicaciones = new Array();
 else
@@ -5,7 +7,7 @@ else
 
 
 var loadGroups = () => {
-    var groups = new Array({"descripcion": "contractors", "roles" : "muchos", "id":6}, { "descripcion": "velociraptors", "roles": "muchos", "id": 7 }, { "descripcion": "predators", "roles": "muchos", "id": 7 }, { "descripcion": "tractors", "roles": "muchos", "id": 8 });
+    var groups = new Array({ "descripcion": "contractors", "roles": "muchos", "id": 6 }, { "descripcion": "velociraptors", "roles": "muchos", "id": 7 }, { "descripcion": "predators", "roles": "muchos", "id": 7 }, { "descripcion": "tractors", "roles": "muchos", "id": 8 });
     var cols = groups.length;				
     var templateT1 = document.querySelector("#t1").content;            	
     var div = templateT1.querySelector(".form-check");
@@ -33,13 +35,6 @@ var loadGroups = () => {
     document.querySelector("#grupos").appendChild(clonT1);
 }
 
-class Grupo {
-    constructor(descripcion, roles, id = 0) {
-        this.id = id;
-        this.descripcion = descripcion;
-        this.roles = roles;
-    }
-}
 
 class Publicacion{
         constructor(titulo, contenido, grupos, propietario){
@@ -55,8 +50,10 @@ class Publicacion{
 }
 
 document.querySelector("#form_noticia").addEventListener("submit", function(event){		
-                
+    var obj;        
     var grupos = new Array();
+    var titulo;
+    var contenido;
     var breakEmpty = {
             message : "Tiene que rellenar todos los campos"
     }
