@@ -10,7 +10,7 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/Publicaciones.js " defer></script>
+		<script type="text/javascript" src="js/publicaciones.js" defer></script>
 		<title>Red Social Indra</title>
 	</head>
 	<body >
@@ -77,8 +77,8 @@
 		<li class="list-group-item ">
 			<h5 class="card-title"><a href="#" id="news-title"></a></h5>
 			<p class="card-text" id="news-content"></p>
-			<a href="#" class="like">
-				<img src="" class="mr-2" id="like">
+			<a href="#" class="like-button">
+				<img src="" class="mr-2" id="like-img">
 			</a>
 			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls="collapse" id="collapse-button">
 				(<span id="num-comments"></span>) Comentarios
@@ -114,11 +114,12 @@
 			</div>
 			<div class="media-body px-3">
 				<h4 class="media-heading">Nuevo comentario</h4>
-				<form>
+				<form  class="form_comentario">
 					<div class="form-group">
-						<textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+						<textarea class="form-control" id="textoComentario"></textarea>
+						<input type="hidden" name="numNoticia" id="numNoticia">
 					</div>
-					<button type="submit" class="btn btn-primary mb-3">Enviar</button>
+					<button type="submit" class="btn btn-primary mb-3 enviar-coment">Enviar</button>
 				</form>
 			</div>
 		</div>
