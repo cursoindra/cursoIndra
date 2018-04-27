@@ -1,4 +1,4 @@
-export default class Grupo{
+class Grupo{
 	constructor(descripcion, roles, id=0){
 		this.id = id;
 		this.descripcion = descripcion;
