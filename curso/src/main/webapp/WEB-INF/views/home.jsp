@@ -1,14 +1,38 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+<meta http-equiv="Content-Type"
+	content="text/html; charset=windows-1252">
+<title></title>
+
+<script type="text/javascript">
+	var datos = {
+		id : 0,
+		usuario : "pepe",
+		clave : "1234",
+		roles : [ {
+			id : 0,
+			rol : "ROLE_USER"
+		} ]
+	}
+	var response = {
+		headers : {
+			'Accept' : 'application/json',
+			'Content-Type' : 'application/json'
+		},
+		url : '/curso1/dameUsuario.html',
+		method : 'POST',
+		body : datos
+
+	}
+	fetch(response).then(function(datos1) {
+		console.log(datos1);
+	})
+</script>
 </head>
 <body>
-<h1>
-	Hello world! ${usuario }
-</h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<h1>dentro</h1>
+
 </body>
 </html>
