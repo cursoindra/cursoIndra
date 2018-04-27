@@ -50,8 +50,10 @@ class Publicacion{
 }
 
 document.querySelector("#form_noticia").addEventListener("submit", function(event){		
-                
+    var obj;        
     var grupos = new Array();
+    var titulo;
+    var contenido;
     var breakEmpty = {
             message : "Tiene que rellenar todos los campos"
     }
