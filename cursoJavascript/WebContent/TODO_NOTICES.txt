@@ -8,3 +8,5 @@ para ver si hay noticias o comentarios nuevos
 Pero que no actualize la pagina entera 
 
 likes en comentarios
+
+mostrar numero de likes
