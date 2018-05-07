@@ -23,8 +23,6 @@ class Registro{
 	this.fechaNacimiento = fechaNacimiento;
 	}
 }
-		var datoPrueba = localStorage.getItem("registros");
-		alert(datoPrueba);
 function carga(){
 		var numeros = "12346789";
 		var pass = "";
