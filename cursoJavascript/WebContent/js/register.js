@@ -23,7 +23,8 @@ class Registro{
 	this.fechaNacimiento = fechaNacimiento;
 	}
 }
-
+		var datoPrueba = localStorage.getItem("registros");
+		alert(datoPrueba);
 function carga(){
 		var numeros = "12346789";
 		var pass = "";
@@ -72,8 +73,17 @@ function carga(){
 		registro.apellido2 = apellido2;
 		registro.fechaNacimiento = fechaNacimiento;
 
-		
-		localStorage.setItem("registro", JSON.stringify(registro));
-		var datoLocal = localStorage.getItem("registro");
-		alert(datoLocal);
+		var datos = JSON.parse(localStorage.getItem("registros"))
+		if(datos==undefined) {
+ 			var datos = [];
+ 			datos.push(registro);
+ 			localStorage.setItem("registros", JSON.stringify(datos));
+		}else{
+  			datos.push(registro);
+ 			localStorage.setItem("registros", JSON.stringify(datos));
+ 		};
+
+		var datoPrueba = localStorage.getItem("registros");
+		alert(datoPrueba);
+		// localStorage.clear();
 };

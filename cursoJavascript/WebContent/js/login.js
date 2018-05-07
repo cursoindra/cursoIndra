@@ -13,11 +13,21 @@ function entrar(){
 	login.user = email;
 	login.pass = pass;
 
-	var datoJson = JSON.stringify(login);
-	alert(datoJson);
+	sessionStorage.setItem("login", JSON.stringify(login));
+	var datos = sessionStorage.getItem("login");
+	alert(datos);
+
+	if (isNaN(pass)){
+		window.location.href="noticias.html";
+		return false;
+	}else{
+		window.location.href="newPassword.html";
+		return false;
+	};
 }
 
 function recuperarPass(){
 	var email = document.getElementById('email2').value;
+	sessionStorage.setItem("email", email);
 	alert(email);
 }

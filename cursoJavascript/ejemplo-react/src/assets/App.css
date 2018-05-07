@@ -7,8 +7,17 @@ li {
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 0.06s linear;
   height: 80px;
+  position: absolute;
+  right: 40%;
+}
+
+.App-logob {
+  animation: App-logob-spin infinite 0.06s linear;
+  height: 80px;
+  position: absolute;
+  right: 40%;
 }
 
 .App-header {
@@ -23,7 +32,11 @@ li {
 }
 
 @keyframes App-logo-spin {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+
+}
+@keyframes App-logob-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
